@@ -1,0 +1,11 @@
+Fitter Status : Successful - Tue Nov 27 16:35:58 2018
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : pipeline_risc
+Top-level Entity Name : datapath
+Family : MAX V
+Device : 5M240ZT144C4
+Timing Models : Final
+Total logic elements : 0 / 240 ( 0 % )
+Total pins : 2 / 114 ( 2 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

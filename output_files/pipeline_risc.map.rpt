@@ -1,0 +1,503 @@
+Analysis & Synthesis report for pipeline_risc
+Tue Nov 27 16:35:52 2018
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "reg3:PR2_rfa3"
+ 10. Port Connectivity Checks: "reg16:PR2_d2"
+ 11. Port Connectivity Checks: "reg16:PR2_d1"
+ 12. Port Connectivity Checks: "reg16:PR2_LS7"
+ 13. Port Connectivity Checks: "reg16:PR2_SE6"
+ 14. Port Connectivity Checks: "reg16:PR2_SE9"
+ 15. Port Connectivity Checks: "reg16:PR2_pc"
+ 16. Port Connectivity Checks: "stage2:stage2_2"
+ 17. Port Connectivity Checks: "reg3:PR1_pe"
+ 18. Port Connectivity Checks: "reg16:PR1_instr"
+ 19. Port Connectivity Checks: "reg16:PR1_pc"
+ 20. Port Connectivity Checks: "reg8:PR0_mux"
+ 21. Port Connectivity Checks: "reg16:PR0_instr"
+ 22. Port Connectivity Checks: "reg16:PR0_pc"
+ 23. Port Connectivity Checks: "stage0:stage0_1|memory:InstrMem"
+ 24. Port Connectivity Checks: "stage0:stage0_1"
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Tue Nov 27 16:35:52 2018       ;
+; Quartus Prime Version       ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
+; Revision Name               ; pipeline_risc                               ;
+; Top-level Entity Name       ; datapath                                    ;
+; Family                      ; MAX V                                       ;
+; Total logic elements        ; 0                                           ;
+; Total pins                  ; 2                                           ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; datapath           ; pipeline_risc      ;
+; Family name                                                                ; MAX V              ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                       ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+; stage0.vhd                       ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd     ;         ;
+; rf_Updated.vhd                   ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/rf_Updated.vhd ;         ;
+; reg16.vhd                        ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd      ;         ;
+; mux8.vhd                         ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd       ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/memory.vhd     ;         ;
+; extenders.vhd                    ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd  ;         ;
+; encoder.vhd                      ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd    ;         ;
+; decoder.vhd                      ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/decoder.vhd    ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd   ;         ;
+; stage1.vhd                       ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage1.vhd     ;         ;
+; stage2.vhd                       ; yes             ; User VHDL File  ; /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd     ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 0     ;
+;     -- Combinational with no register       ; 0     ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 0     ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- 2 input functions                    ; 0     ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+; I/O pins                                    ; 2     ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; |datapath                  ; 0 (0)       ; 0            ; 0          ; 2    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |datapath           ; datapath    ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg3:PR2_rfa3"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_d2"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_d1"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_LS7"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_SE6"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_SE9"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_pc"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "stage2:stage2_2"   ;
++-------------+-------+----------+--------------+
+; Port        ; Type  ; Severity ; Details      ;
++-------------+-------+----------+--------------+
+; p_reg1_ctrl ; Input ; Info     ; Stuck at GND ;
++-------------+-------+----------+--------------+
+
+
++-----------------------------------------+
+; Port Connectivity Checks: "reg3:PR1_pe" ;
++------+-------+----------+---------------+
+; Port ; Type  ; Severity ; Details       ;
++------+-------+----------+---------------+
+; wr   ; Input ; Info     ; Stuck at VCC  ;
++------+-------+----------+---------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "reg16:PR1_instr" ;
++------+-------+----------+-------------------+
+; Port ; Type  ; Severity ; Details           ;
++------+-------+----------+-------------------+
+; wr   ; Input ; Info     ; Stuck at VCC      ;
++------+-------+----------+-------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR1_pc" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg8:PR0_mux" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "reg16:PR0_instr" ;
++------+-------+----------+-------------------+
+; Port ; Type  ; Severity ; Details           ;
++------+-------+----------+-------------------+
+; wr   ; Input ; Info     ; Stuck at GND      ;
++------+-------+----------+-------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR0_pc" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "stage0:stage0_1|memory:InstrMem" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; en   ; Input ; Info     ; Stuck at VCC                      ;
+; wr   ; Input ; Info     ; Stuck at GND                      ;
+; din  ; Input ; Info     ; Stuck at GND                      ;
++------+-------+----------+-----------------------------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "stage0:stage0_1"      ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; control_signal ; Input ; Info     ; Stuck at GND ;
++----------------+-------+----------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+    Info: Processing started: Tue Nov 27 16:35:36 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline_risc -c pipeline_risc
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file stage0.vhd
+    Info (12022): Found design unit 1: stage0-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd Line: 16
+    Info (12023): Found entity 1: stage0 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file rf_Updated.vhd
+    Info (12022): Found design unit 1: rf-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/rf_Updated.vhd Line: 13
+    Info (12023): Found entity 1: rf File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/rf_Updated.vhd Line: 6
+Info (12021): Found 8 design units, including 4 entities, in source file reg16.vhd
+    Info (12022): Found design unit 1: reg16-WhatDoYouCare File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 10
+    Info (12022): Found design unit 2: reg8-WhatDoYouCare8 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 38
+    Info (12022): Found design unit 3: reg3-WhatDoYouCare3 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 65
+    Info (12022): Found design unit 4: reg1-WhatDoYouCare1 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 93
+    Info (12023): Found entity 1: reg16 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 4
+    Info (12023): Found entity 2: reg8 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 32
+    Info (12023): Found entity 3: reg3 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 59
+    Info (12023): Found entity 4: reg1 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 87
+Info (12021): Found 2 design units, including 1 entities, in source file nand16.vhd
+    Info (12022): Found design unit 1: NAND16-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/nand16.vhd Line: 10
+    Info (12023): Found entity 1: NAND16 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/nand16.vhd Line: 6
+Info (12021): Found 6 design units, including 3 entities, in source file mux8.vhd
+    Info (12022): Found design unit 1: mux8-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 11
+    Info (12022): Found design unit 2: mux4-rtl File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 32
+    Info (12022): Found design unit 3: mux2-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 52
+    Info (12023): Found entity 1: mux8 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 6
+    Info (12023): Found entity 2: mux4 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 26
+    Info (12023): Found entity 3: mux2 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/mux8.vhd Line: 47
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: memory-behav File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/memory.vhd Line: 34
+    Info (12023): Found entity 1: memory File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/memory.vhd Line: 18
+Info (12021): Found 6 design units, including 3 entities, in source file extenders.vhd
+    Info (12022): Found design unit 1: SE9-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 10
+    Info (12022): Found design unit 2: SE6-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 27
+    Info (12022): Found design unit 3: LS7-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 45
+    Info (12023): Found entity 1: SE9 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 6
+    Info (12023): Found entity 2: SE6 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 23
+    Info (12023): Found entity 3: LS7 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/extenders.vhd Line: 41
+Info (12021): Found 2 design units, including 1 entities, in source file encoder.vhd
+    Info (12022): Found design unit 1: encoder-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 10
+    Info (12023): Found entity 1: encoder File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file decoder.vhd
+    Info (12022): Found design unit 1: decoder-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/decoder.vhd Line: 11
+    Info (12023): Found entity 1: decoder File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/decoder.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/alu.vhd Line: 12
+    Info (12023): Found entity 1: alu File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/alu.vhd Line: 6
+Info (12021): Found 6 design units, including 3 entities, in source file adder16.vhd
+    Info (12022): Found design unit 1: fulladder-Behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 10
+    Info (12022): Found design unit 2: eightbitadder-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 27
+    Info (12022): Found design unit 3: adder16-struct File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 57
+    Info (12023): Found entity 1: fulladder File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 6
+    Info (12023): Found entity 2: eightbitadder File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 21
+    Info (12023): Found entity 3: adder16 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/adder16.vhd Line: 51
+Info (12021): Found 0 design units, including 0 entities, in source file pipeline_risc.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: datapath-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 11
+    Info (12023): Found entity 1: datapath File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file stage1.vhd
+    Info (12022): Found design unit 1: stage1-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage1.vhd Line: 15
+    Info (12023): Found entity 1: stage1 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage1.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file stage2.vhd
+    Info (12022): Found design unit 1: stage2-behave File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 17
+    Info (12023): Found entity 1: stage2 File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 6
+Info (12127): Elaborating entity "datapath" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(56): used implicit default value for signal "output_m50" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(56): used implicit default value for signal "input_pc" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_pc" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_SE9" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_SE6" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_LS7" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_d1" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(56): object "p_reg2_d2" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 56
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(57): used implicit default value for signal "rf_write" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 57
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(61): used implicit default value for signal "p_reg4_rfa3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 61
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(61): object "p_reg2_rfa3" assigned a value but never read File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 61
+Info (12128): Elaborating entity "stage0" for hierarchy "stage0:stage0_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 63
+Info (12128): Elaborating entity "reg16" for hierarchy "stage0:stage0_1|reg16:PC" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at reg16.vhd(15): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 15
+Info (12128): Elaborating entity "memory" for hierarchy "stage0:stage0_1|memory:InstrMem" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at memory.vhd(61): signal "mem_a" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/memory.vhd Line: 61
+Info (12128): Elaborating entity "mux2" for hierarchy "stage0:stage0_1|mux2:M10" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage0.vhd Line: 50
+Info (12128): Elaborating entity "reg8" for hierarchy "reg8:PR0_mux" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 66
+Warning (10492): VHDL Process Statement warning at reg16.vhd(43): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 43
+Info (12128): Elaborating entity "stage1" for hierarchy "stage1:stage1_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 68
+Info (12128): Elaborating entity "encoder" for hierarchy "stage1:stage1_1|encoder:PE" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage1.vhd Line: 28
+Warning (10631): VHDL Process Statement warning at encoder.vhd(13): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[0]" at encoder.vhd(13) File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[1]" at encoder.vhd(13) File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[2]" at encoder.vhd(13) File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/encoder.vhd Line: 13
+Info (12128): Elaborating entity "decoder" for hierarchy "stage1:stage1_1|decoder:DE" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage1.vhd Line: 29
+Info (12128): Elaborating entity "reg3" for hierarchy "reg3:PR1_pe" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 71
+Warning (10492): VHDL Process Statement warning at reg16.vhd(70): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/reg16.vhd Line: 70
+Info (12128): Elaborating entity "stage2" for hierarchy "stage2:stage2_2" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 76
+Info (12128): Elaborating entity "LS7" for hierarchy "stage2:stage2_2|LS7:LS7_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 65
+Info (12128): Elaborating entity "SE9" for hierarchy "stage2:stage2_2|SE9:SE9_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 66
+Info (12128): Elaborating entity "SE6" for hierarchy "stage2:stage2_2|SE6:SE6_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 67
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_20" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 68
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_21" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 69
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_22" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 70
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_23" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 71
+Info (12128): Elaborating entity "rf" for hierarchy "stage2:stage2_2|rf:rf_1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/stage2.vhd Line: 72
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|rf:rf_1|mux2:M1_2" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/rf_Updated.vhd Line: 46
+Info (12128): Elaborating entity "mux8" for hierarchy "stage2:stage2_2|rf:rf_1|mux8:M1" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/rf_Updated.vhd Line: 56
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 8
+    Warning (15610): No output dependent on input pin "rst" File: /home/sanidhya/Sem5/Microprocessor-309/Project/Pipeline-RISC/datapath.vhd Line: 8
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 1220 megabytes
+    Info: Processing ended: Tue Nov 27 16:35:52 2018
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:38
+
+
