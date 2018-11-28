@@ -1,5 +1,5 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 library std;
 use std.standard.all;
 use ieee.numeric_std.all;
@@ -79,21 +79,30 @@ component stage5 is
 			);
 end component;
 
-	component reg16 is
+component reg16 is
 	port (D : in std_logic_vector(15 downto 0);
 			clk, WR, reset: in std_logic; 
 			Q : out std_logic_vector(15 downto 0));
 end component;
+
+entity reg1 is
+	port (D : in std_logic;
+			clk, WR, reset: in std_logic; 
+			Q : out std_logic);
+end entity;
+
 component reg3 is
 	port (D : in std_logic_vector(2 downto 0);
 			clk, WR, reset: in std_logic; 
 			Q : out std_logic_vector(2 downto 0));
 end component;
+
 component reg8 is
 	port (D : in std_logic_vector(7 downto 0);
 			clk, WR, reset: in std_logic; 
 			Q : out std_logic_vector(7 downto 0));
 end component;
+
 component control is
 	port (instruction : in std_logic_vector(15 downto 0);
 			carry,zero : in std_logic;
@@ -132,18 +141,24 @@ signal zero,zero_out,carry,carry_out,cout,m51_select : std_logic;
 
 begin 
 	
+	--Stall pipeline for LM and SM instructions 	
 	pause <= (not(done) and control_signal(15)) or stall_DH;
 	
+	--IF: Stage 0
 	stage0_0: stage0 port map(input_pc=>input_pc,control_signal=> control_signal,r7_wr=>r7_wr,clk=>clk,rst=>rst,pause=>pause,
 									output_decoder=>output_decoder,output_pc=>output_pc,output_mem=>output_mem,output_m10=>output_m10);
+	--Pipeline registers for interface 0--1	
 	PR0_pc : reg16 port map(D => output_pc ,clk => clk, WR => not(pause), reset=>rst, Q => p_reg0_pc );
 	PR0_instr: reg16 port map(D => output_mem ,clk => clk, WR => not(pause), reset=>rst, Q => p_reg0_instr);
 	PR0_mux: reg8 port map(D => output_m10 ,clk => clk, WR => '1', reset=>rst, Q => p_reg0_m10);
 	
+	--ID: Stage 1
 	stage1_1: stage1 port map(instruction=>p_reg0_instr,p_reg0_m10=>p_reg0_m10,clk=>clk,rst=>rst,
 										output_SE9=>output_SE9, output_SE6=>output_SE6, output_LS7=>output_LS7, 
 										done=>done,output_pe=>output_pe,output_decoder=>output_decoder);
+	--Generate control signals, Decode instruction 
 	ctrl: control port map(instruction=> p_reg0_instr,carry=>carry_sig,zero=>zero_sig,output=>control_signal);
+	--Interface registers for the 1
 	PR1_SE9 : reg16 port map(D => output_SE9 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_SE9 );
 	PR1_SE6 : reg16 port map(D => output_SE6 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_SE6 );
 	PR1_LS7 : reg16 port map(D => output_LS7 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_LS7 );
@@ -153,9 +168,9 @@ begin
 	PR1_ctrl : reg16 port map(D =>control_signal,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_ctrl );
 	
 	stage2_2: stage2 port map( p_reg1_pc=>p_reg1_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg1_instr=>p_reg1_instr,input_d3=>output_m50,
-										clk=>clk, rst=>rst, p_reg4_wr=>p_reg4_ctrl(2),input_a3=>p_reg4_rfa3, p_reg1_pe=>p_reg1_pe,
-										stage3mem_rd=>p_reg2_ctrl(6),stage3_a3=>p_reg2_rfa3,
-										output_d1=>output_d1, output_d2=>output_d2, rfa3=>output_rfa3, rfa1=>output_rfa1, rfa2=>output_rfa2, r7_wr=>r7_wr, stall_DH => stall_DH);
+								clk=>clk, rst=>rst, p_reg4_wr=>p_reg4_ctrl(2),input_a3=>p_reg4_rfa3, p_reg1_pe=>p_reg1_pe,
+								stage3mem_rd=>p_reg2_ctrl(6),stage3_a3=>p_reg2_rfa3,
+								output_d1=>output_d1, output_d2=>output_d2, rfa3=>output_rfa3, rfa1=>output_rfa1, rfa2=>output_rfa2, r7_wr=>r7_wr, 									stall_DH => stall_DH);
 	PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_pc );
 	PR2_SE9 : reg16 port map(D => p_reg1_SE9 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE9 );
 	PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE6 );
@@ -184,13 +199,12 @@ PR3_pc : reg16 port map(D => p_reg2_pc ,clk => clk, WR => '1', reset=>rst, Q => 
 PR3_ctrl : reg16 port map(D=>p_reg2_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg3_ctrl);
 PR3_LS7 : reg16 port map(D => p_reg2_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_LS7 );
 PR3_rfa3 : reg3 port map(D => p_reg2_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_rfa3 );
-PR3_aluout : reg3 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout );
-PR3_newd1 : reg3 port map(D => new_d1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd1 );
-PR3_newd2 : reg3 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2 );
-PR3_zero : reg3 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out );
-PR3_carry : reg3 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out );
-PR3_adderout : reg3 port map(D => p_reg2_adderout ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_adderout );
-
+PR3_aluout : reg16 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout );
+PR3_newd1 : reg16 port map(D => new_d1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd1 );
+PR3_newd2 : reg16 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2 );
+PR3_zero : reg1 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out );
+PR3_carry : reg1 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out );
+PR3_adderout : reg16 port map(D => p_reg2_adderout ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_adderout );
 
 stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_out=> p_reg3_aluout,
 			control_signal=> p_reg3_ctrl,
@@ -202,8 +216,8 @@ PR4_pc : reg16 port map(D => p_reg3_pc ,clk => clk, WR => '1', reset=>rst, Q => 
 PR4_ctrl : reg16 port map(D=>p_reg3_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg4_ctrl);
 PR4_LS7 : reg16 port map(D => p_reg3_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_LS7 );
 PR4_rfa3 : reg3 port map(D => p_reg3_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_rfa3 );
-PR4_memdout : reg3 port map(D => mem_dout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_memdout );
-PR4_aluout : reg3 port map(D => p_reg3_aluout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_aluout );
+PR4_memdout : reg16 port map(D => mem_dout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_memdout );
+PR4_aluout : reg16 port map(D => p_reg3_aluout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_aluout );
 
 
 stage5_1: stage5 port map(input_d3_out=> output_m50,
