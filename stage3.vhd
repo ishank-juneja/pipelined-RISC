@@ -65,3 +65,32 @@ forwarding : forwarding_unit port map(rf_d1=> rf_d1,rf_d2=> rf_d2,stage4_rf_wr=>
 --zero : reg1 port map(D => zero, clk => clk, WR => control_signal(7), reset=>rst, Q => zero_out);
 
 end behave;
+	
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library std;
+use std.standard.all;
+
+entity wrb_edit is
+	port (instr,ctrl : in std_logic_vector(15 downto 0);
+			carry,zero : in std_logic;
+			new_ctrl : out std_logic_vector(15 downto 0));
+end entity;
+architecture struct of wrb_edit is
+	signal x : std_logic;
+	signal opcode : std_logic_vector(3 downto 0);
+begin
+	
+opcode<=instr(15 downto 12);
+x <= '1' 	when (instr(1 downto 0)="00") else
+		carry when (instr(1 downto 0)="10") else
+		zero 	when (instr(1 downto 0)="01");
+
+new_ctrl(2) <= '1' when ((opcode = "0000" or opcode = "0010") and x = '1') else
+					'0';
+new_ctrl(15 downto 3)<=ctrl(15 downto 3);
+new_ctrl(1 downto 0) <=ctrl(1 downto 0);
+
+end struct;
+

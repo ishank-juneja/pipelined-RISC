@@ -5,9 +5,13 @@ use ieee.std_logic_unsigned.all;
 
 
 entity control is
+<<<<<<< HEAD
 	port (	instruction : in std_logic_vector(15 downto 0);
 			carry,zero : in std_logic;
 			----------------------------------------			
+=======
+	port (instruction : in std_logic_vector(15 downto 0);
+>>>>>>> aaaffe15b3d0cc7d81cdbcfe545ed099ad4dd3a3
 			output : out std_logic_vector(15 downto 0)
 			);
 end entity;
@@ -16,19 +20,14 @@ end entity;
 architecture behave of control is
 
 signal opcode : std_logic_vector(3 downto 0);
-signal x : std_logic;
 
 begin
 
 opcode <= instruction(15 downto 12);
---For the 3 cases of arithmetic instructions
-x <= '1' 	when (instruction(1 downto 0)="00") else
-		carry when (instruction(1 downto 0)="10") else
-		zero 	when (instruction(1 downto 0)="01");
 
-output <= 	"0100000110000110" when (opcode = "0000" and x = '1') else
+output <= 	"0100000110000010" when (opcode = "0000") else
 			"0100001110000110" when (opcode = "0001") else
-			"0100100010000110" when (opcode = "0010" and x = '1') else
+			"0100100010000010" when (opcode = "0010") else
 			"0000000000000111" when (opcode = "0011") else
 			"0100001011000101" when (opcode = "0100") else
 			"0101001000100000" when (opcode = "0101") else
