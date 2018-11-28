@@ -6,12 +6,13 @@ use ieee.numeric_std.all;
 
 entity stage3 is
 	port ( output_SE6,rf_d1,rf_d2, PC_4, aluout_4, LS7_4,input1_m34, input_d3 : in std_logic_vector(15 downto 0);
+			rf_a1,rf_a2,stage4rf_a3,stage5rf_a3 : in std_logic_vector(2 downto 0)			
 			control_signal : in std_logic_vector(15 downto 0);			
 			clk,rst,rf_wr_4, rf_wr_5: in std_logic;
 			M50_4 : in std_logic_vector(1 downto 0);
+			------------------------------------------
 			carry,zero : out std_logic;
 			alu_out,output_m31, new_d1_out, new_d2_out : out std_logic_vector(15 downto 0);
-			rf_a1,rf_a2,stage4rf_a3,stage5rf_a3 : in std_logic_vector(2 downto 0)
 			);
 end entity;
 
