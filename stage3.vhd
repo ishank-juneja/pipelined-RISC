@@ -2,13 +2,15 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library std;
 use std.standard.all;
+use ieee.numeric_std.all;
 
 entity stage3 is
-	port ( input_d3_in, PC_in, stage0_PC_in, output_SE9,output_SE6,output_LS7_in,rf_d1,rf_d2, PC_4, alu_out_4, LS7_4, input_d3 : 					in std_logic_vector(15 downto 0);
+	port ( input_d3_in, PC_in, stage0_PC_in, output_SE9,output_SE6,output_LS7_in,rf_d1,rf_d2, PC_4, alu_out_4, LS7_4,input1_m34, input_d3 : 					in std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);			
-			clk,rst,rf_wr_4, rf_wr_5,M50_4: in std_logic;
+			clk,rst,rf_wr_4, rf_wr_5: in std_logic;
+			M50_4 : in std_logic_vector(1 downto 0);
 			carry,zero : out std_logic;
-			input_d3_out,output_LS7_out,alu_out,output_m31,input1_m34, PC_out, incPC_out, output_adder, new_d1_out, 				new_d2_out : out std_logic_vector(15 downto 0);
+			input_d3_out,output_LS7_out,alu_out,output_m31, PC_out, incPC_out, output_adder, new_d1_out, 				new_d2_out : out std_logic_vector(15 downto 0);
 			rfa3_in, rf_a1,rf_a2,stage4rf_a3,stage5rf_a3 : in std_logic_vector(2 downto 0);
 			rfa3_out: out std_logic_vector(2 downto 0)
 			);
@@ -51,6 +53,7 @@ component forwarding_unit is
 end component;
 
 signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1: std_logic_vector(15 downto 0);
+signal cout: std_logic;
 
 begin
 
@@ -70,7 +73,7 @@ m_32 : mux2 port map(a1 => cpl_new_d1, a0 => new_d1, s => control_signal(10), o 
 m_33 : mux2 port map(a1 => output_SE6, a0 => new_d2, s => control_signal(9), o => output_m33); 
 m_34 : mux2 port map(a1 => input1_m34, a0 => output_m33, s => control_signal(15), o => output_m34); 
 
-adder16_1 : adder_16 port map(a => output_m30,b=> PC_in, cin=> '0',cout=> ,o=> output_adder); 
+adder16_1 : adder_16 port map(a => output_m30,b=> PC_in, cin=> '0',cout=> cout,o=> output_adder); 
 
 alu_1: alu port map(alu_a => output_m32,alu_b => output_m34,op => control_signal(11),cin => control_signal(10),carry => carry,zero => zero, alu_out => alu_out); 
 

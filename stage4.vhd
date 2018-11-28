@@ -7,7 +7,8 @@ entity stage4 is
 	port ( input_d3_out, PC_out,output_m40,output_LS7_out, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst : in std_logic;
-			rf_wr_4, M50_4 : out std_logic;
+			rf_wr_4: out std_logic;
+			M50_4 : out std_logic_vector(1 downto 0);
 			input_d3_in,alu_out_in, PC_in, incPC_in, output_adder, new_d1_in, new_d2_in,output_LS7_in : in 				std_logic_vector(15 downto 0);
 			rfa3_in: in std_logic_vector(2 downto 0);
 			rfa3_out: out std_logic_vector(2 downto 0)
