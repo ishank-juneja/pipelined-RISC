@@ -11,9 +11,9 @@ entity stage2 is
 			stage3mem_rd : in std_logic;--Control signal for inst currently in stage 3			
 			stage3_a3 : in std_logic_vector(2 downto 0);--WB add. for inst in stage 3
 			------------------------------			
-			output_SE9, output_SE6, output_LS7,output_d1, output_d2 : out std_logic_vector(15 downto 0);
+			output_d1, output_d2 : out std_logic_vector(15 downto 0);
 			rfa3, rfa1, rfa2: out std_logic_vector(2 downto 0);
-			r7_wr : out std_logic
+			r7_wr : out std_logic;
 			stall_DH : out std_logic--Bit to stop PC updation
 									--and stage 0,1,2 progress
 									--for 1 cycle									 
@@ -43,20 +43,6 @@ component rf is
 				R7_WR : out std_logic);
 end component;
 
-component LS7 is
-	port (input : std_logic_vector(8 downto 0);
-			output : out std_logic_vector(15 downto 0));
-end component;
-
-component SE6 is
-	port (input : std_logic_vector(5 downto 0);
-			output : out std_logic_vector(15 downto 0));
-end component;
-
-component SE9 is
-	port (input : std_logic_vector(8 downto 0);
-			output : out std_logic_vector(15 downto 0));
-end component;
 component mux2 is
 		port (a1,a0 : in std_logic_vector;
 				s : in std_logic;
@@ -71,9 +57,6 @@ component mux2 is
 signal output_m21,output_m20,output_m22: std_logic_vector(2 downto 0);
 
 begin
-LS7_1 : LS7 port map(input => p_reg1_instr(8 downto 0), output => output_LS7);
-SE9_1 : SE9 port map(input =>p_reg1_instr(8 downto 0), output => output_SE9);
-SE6_1 : SE6 port map(input => p_reg1_instr(5 downto 0), output => output_SE6);
 m_20 : mux2 port map(a1 => p_reg1_instr(8 downto 6), a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(5), o => output_m20);
 m_21 : mux2 port map(a1 => p_reg1_instr(5 downto 3), a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(6), o => output_m21);
 m_22 : mux2 port map(a1 => output_m21, a0 => p_reg1_pe, s => p_reg1_ctrl(7), o => output_m22);
@@ -86,7 +69,7 @@ rfa1 <= output_m20;
 DH : DH_stall port map(stage3mem_rd => stage3mem_rd, rf_a1 => output_m20, rf_a2 => output_m22,
 						stage3_a3 => stage3_a3, kill_bit => stall_DH); 
 		--------------------------------- 	
-		kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		)
+		--kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		)
 
 
 end behave;
