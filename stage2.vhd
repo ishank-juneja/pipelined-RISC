@@ -1,9 +1,10 @@
-library ieee;
-use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 library std;
 use std.standard.all;
 
 entity stage2 is
+<<<<<<< HEAD
 	port ( 	p_reg1_pc, p_reg1_instr, input_d3 : in std_logic_vector(15 downto 0);
 			p_reg1_ctrl : in std_logic_vector(19 downto 0);
 			clk, rst, p_reg4_wr : in std_logic;
@@ -36,47 +37,45 @@ component DH_stall is
 end component;
 
 component rf is
-	port (	WR, clk, PC_WR, rst : in std_logic;
-			a1, a2, a3 : in std_logic_vector(2 downto 0);
-			d3, PC_in : in std_logic_vector(15 downto 0);
-			d1, d2 : out std_logic_vector(15 downto 0);
-			R7_WR : out std_logic);
+	port (WR,clk,PC_WR, rst : in std_logic;
+			a1,a2,a3 : in std_logic_vector(2 downto 0);
+			d3,PC_in : in std_logic_vector(15 downto 0);
+			d1,d2 : out std_logic_vector(15 downto 0);
+				R7_WR : out std_logic);
 end component;
 
 component LS7 is
-	port (	input : std_logic_vector(8 downto 0);
+	port (input : std_logic_vector(8 downto 0);
 			output : out std_logic_vector(15 downto 0));
 end component;
 
 component SE6 is
-	port (	input : std_logic_vector(5 downto 0);
+	port (input : std_logic_vector(5 downto 0);
 			output : out std_logic_vector(15 downto 0));
 end component;
 
 component SE9 is
-	port (	input : std_logic_vector(8 downto 0);
+	port (input : std_logic_vector(8 downto 0);
 			output : out std_logic_vector(15 downto 0));
 end component;
-
 component mux2 is
-	port (	a1, a0 : in std_logic_vector;
-			s : in std_logic;
-			o : out std_logic_vector);
-end component;
+		port (a1,a0 : in std_logic_vector;
+				s : in std_logic;
+				o : out std_logic_vector);
+	end component;
 
-component mux4 is
-		port (	a3, a2, a1, a0 : in std_logic_vector;
+	component mux4 is
+		port (a3,a2,a1,a0 : in std_logic_vector;
 				sel : in std_logic_vector(1 downto 0);
 				o : out std_logic_vector);
-end component;
-
-signal output_m21, output_m20, output_m22: std_logic_vector(2 downto 0);
+	end component;
+signal output_m21,output_m20,output_m22: std_logic_vector(2 downto 0);
 
 begin
-
 LS7_1 : LS7 port map(input => p_reg1_instr(8 downto 0), output => output_LS7);
 SE9_1 : SE9 port map(input =>p_reg1_instr(8 downto 0), output => output_SE9);
 SE6_1 : SE6 port map(input => p_reg1_instr(5 downto 0), output => output_SE6);
+<<<<<<< HEAD
 m_20 : mux2 port map(a1 => p_reg1_instr(8 downto 6), a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(5), o => output_m20);
 m_21 : mux2 port map(a1 => p_reg1_instr(5 downto 3), a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(6), o => output_m21);
 m_22 : mux2 port map(a1 => output_m21, a0 => p_reg1_pe, s => p_reg1_ctrl(7), o => output_m22);
@@ -89,5 +88,14 @@ DH : DH_stall port map(stage3mem_rd => stage3mem_rd, rf_a1 =>, rf_a2 =>
 						stage3_a3 =>
 		--------------------------------- 	
 		kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		)
+=======
+m_20 : mux2 port map(a1 => p_reg1_instr(11 downto 9), a0 => p_reg1_instr(8 downto 6), s => p_reg1_ctrl(13), o => output_m20);
+m_21 : mux2 port map(a1 => p_reg1_instr(11 downto 9), a0 => p_reg1_instr(5 downto 3), s => p_reg1_ctrl(12), o => output_m21);
+m_22 : mux2 port map(a1 => p_reg1_pe, a0 => output_m21, s => p_reg1_ctrl(15), o => output_m22);
+m_23 : mux2 port map(a1 => p_reg1_pe, a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(15), o => rfa3);
+rf_1 : rf port map(WR => p_reg4_wr, clk => clk, PC_WR => p_reg1_ctrl(0), rst=>rst, a1 => output_m20, a2 => output_m22, a3 => input_a3, d3 => input_d3, PC_in => p_reg1_pc, d1 => output_d1, d2 => output_d2, R7_WR => r7_wr);
+rfa2<=output_m22;
+rfa1<=output_m20;
+>>>>>>> 5ffae33f27b836f652980a45e35e2475041ea996
 
 end behave;
