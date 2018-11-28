@@ -57,7 +57,6 @@ new_d1_out <= new_d1;
 new_d2_out <= new_d2;
 cpl_new_d1 <= not new_d1;
 
-m_30 : mux2 port map(a1 => output_SE6, a0 => output_SE9, s => control_signal(10), o => output_m30); -
 m_31 : mux2 port map(a1 => std_logic_vector(unsigned(input1_m34)+1), a0 => "0000000000000000", s => control_signal(15), o => output_m31); 
 m_32 : mux2 port map(a1 => cpl_new_d1, a0 => new_d1, s => control_signal(10), o => output_m32); 
 m_33 : mux2 port map(a1 => output_SE6, a0 => new_d2, s => control_signal(9), o => output_m33); 
