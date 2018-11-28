@@ -5,7 +5,7 @@ use std.standard.all;
 use ieee.numeric_std.all;
 
 entity stage3 is
-	port ( input_d3_in, PC_in, stage0_PC_in, output_SE9,output_SE6,output_LS7_in,rf_d1,rf_d2, PC_4, alu_out_4, LS7_4,input1_m34, input_d3 : 					in std_logic_vector(15 downto 0);
+	port ( input_d3_in, PC_in, stage0_PC_in, output_SE9,output_SE6,output_LS7_in,rf_d1,rf_d2, PC_4, aluout_4, LS7_4,input1_m34, input_d3 : 					in std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);			
 			clk,rst,rf_wr_4, rf_wr_5: in std_logic;
 			M50_4 : in std_logic_vector(1 downto 0);

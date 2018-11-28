@@ -40,6 +40,7 @@ component mux2 is
 end component;
 
 signal m40_select: std_logic;
+signal output_m41;
 
 begin
 
