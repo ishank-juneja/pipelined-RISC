@@ -10,7 +10,7 @@ entity stage3 is
 			clk,rst,rf_wr_4, rf_wr_5: in std_logic;
 			M50_4 : in std_logic_vector(1 downto 0);
 			carry,zero : out std_logic;
-			alu_out,output_m31, output_adder, new_d1_out, new_d2_out : out std_logic_vector(15 downto 0);
+			alu_out,output_m31, new_d1_out, new_d2_out : out std_logic_vector(15 downto 0);
 			rf_a1,rf_a2,stage4rf_a3,stage5rf_a3 : in std_logic_vector(2 downto 0)
 			);
 end entity;

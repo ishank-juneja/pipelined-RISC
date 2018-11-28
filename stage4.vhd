@@ -9,7 +9,7 @@ entity stage4 is
 			clk,rst,zero : in std_logic;
 			rf_wr_4: out std_logic;
 			M50_4 : out std_logic_vector(1 downto 0);
-			alu_out_in, incPC_in, output_adder, new_d1_in, new_d2_in: in 				std_logic_vector(15 downto 0)
+			alu_out_in, incPC_in, output_adder, new_d1_in, new_d2_in: in std_logic_vector(15 downto 0)
 			);
 end entity;
 
