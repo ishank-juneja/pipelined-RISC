@@ -27,7 +27,7 @@ begin
 rfa3_out <= rfa3_in;
 rf_wr_5 <= control_signal(2);
 
-m_50 : mux4 port map(a3=> PC_in, a2=> mem_dout, a1 => alu_out_in, a0 => output_LS7_in, sel => control_signal(1 downto 0), o => input_d3_out); 
+m_50 : mux4 port map(a0=> PC_in, a1=> mem_dout, a2 => alu_out_in, a3 => output_LS7_in, sel => control_signal(1 downto 0), o => input_d3_out); 
 
 
 end behave;
