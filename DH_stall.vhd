@@ -12,7 +12,7 @@ use ieee.std_logic_1164.all;
 
 entity DH_stall is
 	port (
-		stage3_mem_rd : in std_logic;	--Determines if stall occurs		
+		stage3mem_rd : in std_logic;	--Determines if stall occurs		
 		rf_a1, rf_a2 : in std_logic_vector(2 downto 0);
 		stage3_a3 : in std_logic_vector(2 downto 0);
 		--------------------------------- 	
@@ -32,7 +32,7 @@ begin
 	--if processor is not rst
 	--and there is a load type instruction
 	--ie a possibility of a data hazard
-	if(stage3_mem_rd = '1')					
+	if(stage3mem_rd = '1')					
 		if(rf_a1 = stage3_a3)
 			kill_bit <= '1';
 		

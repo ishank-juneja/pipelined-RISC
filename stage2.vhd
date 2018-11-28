@@ -7,8 +7,9 @@ entity stage2 is
 	port ( 	p_reg1_pc, p_reg1_instr, input_d3 : in std_logic_vector(15 downto 0);
 			p_reg1_ctrl : in std_logic_vector(19 downto 0);
 			clk, rst, p_reg4_wr : in std_logic;
-			input_a3, p_reg1_pe: in std_logic_vector(2 downto 0);
-			stage3mem_rd: in std_logic			
+			input_a3, p_reg1_pe : in std_logic_vector(2 downto 0);
+			stage3mem_rd : in std_logic			
+			stage3_a3 : in std_logic_vector(2 downto 0); 
 			------------------------------			
 			output_SE9, output_SE6, output_LS7,output_d1, output_d2 : out std_logic_vector(15 downto 0);
 			rfa3 : out std_logic_vector(2 downto 0);
@@ -26,7 +27,7 @@ architecture behave of stage2 is
 
 component DH_stall is
 	port (	
-		stage3_mem_rd : in std_logic;	--Determines if stall occurs		
+		stage3mem_rd : in std_logic;	--Determines if stall occurs		
 		rf_a1, rf_a2 : in std_logic_vector(2 downto 0);
 		stage3_a3 : in std_logic_vector(2 downto 0);
 		--------------------------------- 	
@@ -84,7 +85,7 @@ rf_1 : rf 	port map(WR => p_reg4_wr, clk => not(clk), PC_WR => p_reg1_ctrl(0), r
 					a2 => output_m22, a3 => input_a3, d3 => input_d3, PC_in => p_reg1_pc, 
 					d1 => output_d1, d2 => output_d2, R7_WR => r7_wr);
 --incomplete
-DH : DH_stall port map(stage3_mem_rd => rf_a1, rf_a2 =>
+DH : DH_stall port map(stage3mem_rd => stage3mem_rd, rf_a1 =>, rf_a2 =>
 						stage3_a3 =>
 		--------------------------------- 	
 		kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		)
