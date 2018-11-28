@@ -8,7 +8,7 @@ entity stage3 is
 			control_signal : in std_logic_vector(15 downto 0);			
 			clk,rst,rf_wr_4, rf_wr_5,M50_4: in std_logic;
 			carry,zero : out std_logic;
-			input_d3_out,output_LS7_out,alu_out,output_m31,input1_m34, PC_out, PC+1_out, output_adder, new_d1_out, 				new_d2_out : out std_logic_vector(15 downto 0);
+			input_d3_out,output_LS7_out,alu_out,output_m31,input1_m34, PC_out, incPC_out, output_adder, new_d1_out, 				new_d2_out : out std_logic_vector(15 downto 0);
 			rfa3_in, rf_a1,rf_a2,stage4rf_a3,stage5rf_a3 : in std_logic_vector(2 downto 0);
 			rfa3_out: out std_logic_vector(2 downto 0)
 			);
@@ -55,7 +55,7 @@ signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1: std
 begin
 
 PC_out <= PC_in;
-PC+1_out <= std_logic_vector(unsigned(stage0_PC_in)+1);
+incPC_out <= std_logic_vector(unsigned(stage0_PC_in)+1);
 rfa3_out <= rfa3_in;
 input_d3_out <= input_d3_in;
 output_LS7_out <= output_LS7_in;
