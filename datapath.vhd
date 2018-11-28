@@ -11,7 +11,7 @@ end entity;
 architecture behave of datapath is 
  
 component stage0 is
-	port ( input_pc : in std_logic_vector(15 downto 0);
+port ( input_pc : in std_logic_vector(15 downto 0);
 		control_signal : in std_logic_vector(19 downto 0);
 		r7_wr,clk,rst,pause : in std_logic;
 		output_decoder: in std_logic_vector(7 downto 0);
@@ -21,7 +21,7 @@ component stage0 is
 end component;
 	
 component stage1 is
-	port ( p_reg0_pc : in std_logic_vector(15 downto 0);
+port ( p_reg0_pc : in std_logic_vector(15 downto 0);
 		p_reg0_m10 :in std_logic_vector(7 downto 0);
 		clk,rst : in std_logic;
 		output_pe : out std_logic_vector(2 downto 0);
@@ -63,7 +63,7 @@ component control is
 end component;
 	
 signal output_m50,input_pc,output_pc,output_mem,p_reg0_instr,p_reg1_instr,p_reg0_pc,p_reg1_pc,p_reg2_pc,p_reg3_pc,p_reg2_SE9,p_reg2_SE6,p_reg2_LS7,p_reg2_d1,p_reg2_d2,output_SE9,output_SE6,output_LS7,output_d1,output_d2: std_logic_vector(15 downto 0);
-signal r7_wr,rf_write,done,pause,carry_sig,zero_sig: std_logic;
+signal r7_wr,rf_write,done,pause,carry_sig,zero_sig, stall_DH: std_logic;
 signal output_m10,p_reg0_m10,p_reg1_m10,output_decoder: std_logic_vector(7 downto 0);
 signal control_signal,p_reg1_ctrl : std_logic_vector(19 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
@@ -87,10 +87,11 @@ begin
 	PR1_pe: reg3 port map(D => output_pe ,clk => clk, WR => '1', reset=>rst, Q => p_reg1_pe);
 	PR1_ctrl : reg20 port map(D =>control_signal,clk => clk, WR => '1', reset=>rst, Q => p_reg1_ctrl );
 	
-	stage2_2: stage2 port map( p_reg1_pc=>p_reg1_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg1_instr=>p_reg1_instr,input_d3=>output_m50,
-										clk=>clk, rst=>rst, p_reg4_wr=>p_reg4_ctrl(2),input_a3=>p_reg4_rfa3, p_reg1_pe=>p_reg1_pe,
-										output_SE9=>output_SE9, output_SE6=>output_SE6, output_LS7=>output_LS7, output_d1=>output_d1,
-										output_d2=>output_d2, rfa3=>output_rfa3, rfa1=>output_rfa1, rfa2=>output_rfa2, r7_wr=>r7_wr);
+	stage2_2: stage2 port map( 	p_reg1_pc => p_reg1_pc, p_reg1_ctrl => p_reg1_ctrl, p_reg1_instr => p_reg1_instr, input_d3 => output_m50,
+								clk => clk, rst => rst, p_reg4_wr => p_reg4_ctrl(2), input_a3 => p_reg4_rfa3, p_reg1_pe => p_reg1_pe, stage3mem_rd => p_reg2_ctrl(6), stage3_a3 => p_reg2_rfa3,  
+								output_SE9 => output_SE9, output_SE6 => output_SE6, output_LS7 => output_LS7, output_d1 => output_d1,
+								output_d2 => output_d2, rfa3 => output_rfa3, rfa1 => output_rfa1, rfa2 => output_rfa2, r7_wr => r7_wr, stall_DH => stall_DH);
+	
 	PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_pc );
 	PR2_SE9 : reg16 port map(D => output_SE9 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE9 );
 	PR2_SE6 : reg16 port map(D => output_SE6 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE6 );
