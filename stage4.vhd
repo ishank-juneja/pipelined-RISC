@@ -46,6 +46,7 @@ alu_out_out <= alu_out_in;
 M50_4 <= control_signal(1 downto 0);
 rf_wr_4 <= control_signal(2);
 
+--control_signal(10) is like an indicator for the BEQ instruction
 m40_select <= (zero and control_signal(10)) or control_signal(4);
 m_40 : mux2 port map(a1 => output_m41, a0 => incPC_in, s => m40_select, o => output_m40); 
 m_41 : mux2 port map(a1 => new_d1_in, a0 => output_adder, s => control_signal(3), o => output_m41); 
