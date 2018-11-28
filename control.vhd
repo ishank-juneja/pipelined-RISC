@@ -5,13 +5,7 @@ use ieee.std_logic_unsigned.all;
 
 
 entity control is
-<<<<<<< HEAD
-	port (	instruction : in std_logic_vector(15 downto 0);
-			carry,zero : in std_logic;
-			----------------------------------------			
-=======
 	port (instruction : in std_logic_vector(15 downto 0);
->>>>>>> aaaffe15b3d0cc7d81cdbcfe545ed099ad4dd3a3
 			output : out std_logic_vector(15 downto 0)
 			);
 end entity;
