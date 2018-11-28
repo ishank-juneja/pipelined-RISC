@@ -20,32 +20,15 @@ entity DH_stall is
 		);  
 end entity;
 
-architecture behav of stall_logic is
+architecture behav of DH_stall is
 
 ------------- Architechture Begins------------------
 begin
 
---Sequential logic
-data_hazard_stall: process() 
-
-begin
-	--if processor is not rst
-	--and there is a load type instruction
-	--ie a possibility of a data hazard
-	if(stage3mem_rd = '1')					
-		if(rf_a1 = stage3_a3)
-			kill_bit <= '1';
+--When there is a load type instruction
+--ie a possibility of a data hazard
+kill_bit <= '1' when (stage3mem_rd = '1' and (rf_a1 = stage3_a3 or rf_a2 = stage3_a3))					
+else 
+'0';
 		
-		elsif(rf_a2 = stage3_a3)
-			kill_bit <= '1';
-		
-		else
-			kill_bit <= '0';
-		end if
-	--Don't kill if	there is no unresolvable data dependence 	
-	else
-		kill_bit <= '0';
-	end if
-
-end process
 end behav;

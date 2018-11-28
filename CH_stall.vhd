@@ -1,8 +1,5 @@
---VHDL Module for Stalling pipeline 
---in case of control hazards
---There are multiple control hazards 
---These blocks will go into 
---different stages staring stage 1
+--VHDL Module for Control Stall/Flush implementation
+--3 different branch instructions 
 
 library std;
 use std.standard.all;
@@ -10,44 +7,31 @@ use std.standard.all;
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity DH_stall is
+--This enity handles both these cases
+--BEQ: Static not taken prediction
+--resolved at the end of EX stage
+--3 instructions flushed
+--JLR: Unconditional jump to address in register
+--address resolved at the end of EX stage
+--to handle cases of immediate data dependency
+--necessary that BEQ be resolved only in EX stage
+--3 instructions flushed 
+entity BEQ_JLR_stall is
 	port (
-		rst	: in std_logic;	--Global reset, active high	
-		clk	:	in std_logic;	--on board clock
-		stage3_mem_rd : in std_logic;	--Determines if stall occurs		
-		rf_a1, rf_a2 : std_logic_vector(2 downto 0);
-		stage3_a3 : std_logic_vector(2 downto 0);
+		branch_taken : in std_logic;	--Whether branch taken		
+		beq_ins : in std_logic	--whether current instruction in EX stage 3 is beq
+		jlr_ins : in std_logic	--whether current instruction in EX stage 3 is JLR
 		--------------------------------- 	
-		kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		
+		flush_first3	: out std_logic	--kill bit to flush the pipeline stages 0, 1 and 2		
 		);  
 end entity;
 
-architecture behav of stall_logic is
-
+architecture behav of BEQ_JLR_stall is
 ------------- Architechture Begins------------------
 begin
 
---Sequential logic
-data_hazard_stall: process(clk) 
-
-begin
-	--if processor is not rst
-	--and there is a load type instruction
-	--ie a possibility of a data hazard
-	if(rst = '0' and stage3_mem_rd = '1')					
-		if(rf_a1 = stage3_a3)
-			kill_bit <= '1';
+flush_first3 <= '1' when ((branch_taken and beq_ins) or jlr_ins)					
+else 
+'0';
 		
-		elsif(rf_a2 = stage3_a3)
-			kill_bit <= '1';
-		
-		else
-			kill_bit <= '0';
-		end if
-	--Don't kill if processor is in rst state	
-	--or if there is no unresolvable data dependence 	
-	else
-		kill_bit <= '0';
-	end if
-
 end behav;
