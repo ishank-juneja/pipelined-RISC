@@ -10,24 +10,26 @@ end entity;
 
 architecture behave of datapath is 
  
-	component stage0 is
+component stage0 is
 	port ( input_pc : in std_logic_vector(15 downto 0);
-			control_signal : in std_logic_vector(19 downto 0);
-			r7_wr,clk,rst,pause : in std_logic;
-			output_decoder: in std_logic_vector(7 downto 0);
-			output_pc,output_mem : out std_logic_vector(15 downto 0);
-			output_m10 : out std_logic_vector(7 downto 0)
-			);
-	end component;
-	component stage1 is
-	port ( p_reg0_pc : in std_logic_vector(15 downto 0);
-			p_reg0_m10 :in std_logic_vector(7 downto 0);
-			clk,rst : in std_logic;
-			output_pe : out std_logic_vector(2 downto 0);
-			output_decoder : out std_logic_vector(7 downto 0);
-			done : out std_logic
-			);
+		control_signal : in std_logic_vector(19 downto 0);
+		r7_wr,clk,rst,pause : in std_logic;
+		output_decoder: in std_logic_vector(7 downto 0);
+		output_pc,output_mem : out std_logic_vector(15 downto 0);
+		output_m10 : out std_logic_vector(7 downto 0)
+		);
 end component;
+	
+component stage1 is
+	port ( p_reg0_pc : in std_logic_vector(15 downto 0);
+		p_reg0_m10 :in std_logic_vector(7 downto 0);
+		clk,rst : in std_logic;
+		output_pe : out std_logic_vector(2 downto 0);
+		output_decoder : out std_logic_vector(7 downto 0);
+		done : out std_logic
+		);
+end component;
+
 component stage2 is
 	port ( p_reg1_pc,p_reg1_instr,input_d3 : in std_logic_vector(15 downto 0);
 			p_reg1_ctrl : in std_logic_vector(19 downto 0);
