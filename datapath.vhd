@@ -136,7 +136,7 @@ signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
 
 signal mem_dout,p_reg4_memdout ,alu_out,p_reg4_aluout,p_reg3_aluout,new_d2,new_d1,p_reg3_newd1,p_reg3_newd2,incPC,p_reg3_adderout,adder_out,
-output_m30,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx  : std_logic_vector(15 downto 0);
+output_m_2x,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx  : std_logic_vector(15 downto 0);
 signal zero,zero_out,carry,carry_out,cout,m51_select,m3b_select,m3a_select,m2xx_select : std_logic;
 
 begin 
@@ -158,7 +158,7 @@ begin
 										done=>done,output_pe=>output_pe,output_decoder=>output_decoder);
 	--Generate control signals, Decode instruction 
 	ctrl: control port map(instruction=> p_reg0_instr,carry=>carry_sig,zero=>zero_sig,output=>control_signal);
-	--Interface registers for the 1
+	--Interface registers for the 1--2 interface
 	PR1_SE9 : reg16 port map(D => output_SE9 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_SE9 );
 	PR1_SE6 : reg16 port map(D => output_SE6 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_SE6 );
 	PR1_LS7 : reg16 port map(D => output_LS7 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_LS7 );
@@ -167,10 +167,12 @@ begin
 	PR1_pe: reg3 port map(D => output_pe ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_pe);
 	PR1_ctrl : reg16 port map(D =>control_signal,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_ctrl );
 	
+	--RF: Stage 2
 	stage2_2: stage2 port map( p_reg1_pc=>p_reg1_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg1_instr=>p_reg1_instr,input_d3=>output_m50,
 								clk=>clk, rst=>rst, p_reg4_wr=>p_reg4_ctrl(2),input_a3=>p_reg4_rfa3, p_reg1_pe=>p_reg1_pe,
 								stage3mem_rd=>p_reg2_ctrl(6),stage3_a3=>p_reg2_rfa3,
 								output_d1=>output_d1, output_d2=>output_d2, rfa3=>output_rfa3, rfa1=>output_rfa1, rfa2=>output_rfa2, r7_wr=>r7_wr, 									stall_DH => stall_DH);
+	--Interface registers for the 2--3 interface
 	PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_pc );
 	PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE6 );
 	PR2_LS7 : reg16 port map(D => p_reg1_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_LS7 );
@@ -179,12 +181,15 @@ begin
 	PR2_rfa1 : reg3 port map(D => output_rfa1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa1 );
 	PR2_rfa2 : reg3 port map(D => output_rfa2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa2 );
 	PR2_rfa3 : reg3 port map(D => output_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa3 );
-	PR2_ctrl : reg16 port map(D=>p_reg1_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_ctrl);
-	PR2_adderout : reg16 port map(D=>adder_out, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_adderout);
-	PR2_lmloop : reg16 port map(D=>output_m31, clk=>clk, WR=>'1',reset=>rst, Q=>input_lmloop);
+	PR2_ctrl : reg16 port map(D => p_reg1_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_ctrl);
+	PR2_adderout : reg16 port map(D =>adder_out, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_adderout);
+	--Loop to increment LM	
+	PR2_lmloop : reg16 port map(D => output_m31, clk=>clk, WR=>'1',reset=>rst, Q=>input_lmloop);
 
-m_2x : mux2 port map(a1 => p_reg1_SE6, a0 => p_reg1_SE9, s => p_reg1_ctrl(10), o => output_m30);
-adder16_1 : adder_16 port map(a => output_m30,b=> p_reg1_pc, cin=> '0',cout=> cout,o=> adder_out); 
+--MUX for PC relative shift, if at all
+m_2x : mux2 port map(a1 => p_reg1_SE6, a0 => p_reg1_SE9, s => p_reg1_ctrl(10), o => output_m_2x);
+--Dedicated 16 bit Adder for pc computation
+adder16_1 : adder_16 port map(a => output_m_2x, b=> p_reg1_pc, cin=> '0', cout => cout, o=> adder_out); 
 incPC <= std_logic_vector(unsigned(output_pc)+1);
 
 
