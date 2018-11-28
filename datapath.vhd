@@ -13,7 +13,7 @@ architecture behave of datapath is
 	component stage0 is
 	port ( input_pc : in std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(19 downto 0);
-			r7_wr,clk,rst : in std_logic;
+			r7_wr,clk,rst,pause : in std_logic;
 			output_decoder: in std_logic_vector(7 downto 0);
 			output_pc,output_mem : out std_logic_vector(15 downto 0);
 			output_m10 : out std_logic_vector(7 downto 0)
@@ -24,7 +24,8 @@ architecture behave of datapath is
 			p_reg0_m10 :in std_logic_vector(7 downto 0);
 			clk,rst : in std_logic;
 			output_pe : out std_logic_vector(2 downto 0);
-			output_decoder : out std_logic_vector(7 downto 0)
+			output_decoder : out std_logic_vector(7 downto 0);
+			done : out std_logic
 			);
 end component;
 component stage2 is
@@ -33,7 +34,7 @@ component stage2 is
 			clk,rst,p_reg4_wr : in std_logic;
 			input_a3,p_reg1_pe: in std_logic_vector(2 downto 0);
 			output_SE9,output_SE6,output_LS7,output_d1,output_d2 : out std_logic_vector(15 downto 0);
-			rfa3: out std_logic_vector(2 downto 0);
+			rfa3,rfa1,rfa2: out std_logic_vector(2 downto 0);
 			r7_wr: out std_logic
 			);
 end component; 

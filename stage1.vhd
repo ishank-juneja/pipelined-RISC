@@ -8,7 +8,8 @@ entity stage1 is
 			p_reg0_m10 : in std_logic_vector(7 downto 0);
 			clk,rst : in std_logic;
 			output_pe : out std_logic_vector(2 downto 0);
-			output_decoder : out std_logic_vector(7 downto 0)
+			output_decoder : out std_logic_vector(7 downto 0);
+			done : out std_logic
 			);
 end entity;
 
@@ -26,7 +27,7 @@ end component;
 signal out_pe: std_logic_vector(2 downto 0);
 begin
 PE : encoder port map(input => p_reg0_m10, output => out_pe);
-DE : decoder port map(t3 => p_reg0_m10, input => out_pe, next_t3 => output_decoder);
+DE : decoder port map(t3 => p_reg0_m10, input => out_pe, next_t3 => output_decoder, done=>done);
 output_pe<=out_pe;
 
 end behave;
