@@ -96,8 +96,7 @@ component reg8 is
 end component;
 component control is
 	port (instruction : in std_logic_vector(15 downto 0);
-			carry,zero : in std_logic;
-			output : out std_logic_vector(15 downto 0)
+		output : out std_logic_vector(15 downto 0)
 			);
 end component;
 
@@ -114,6 +113,12 @@ component mux2 is
 				o : out std_logic_vector);
 end component;
 	
+component wrb_edit is
+	port (instr,ctrl : in std_logic_vector(15 downto 0);
+			carry,zero : in std_logic;
+			new_ctrl : out std_logic_vector(15 downto 0));
+end component;
+	
 signal output_m50,input_pc,output_pc,output_mem,p_reg0_instr,p_reg0_pc : std_logic_vector(15 downto 0);
 signal p_reg1_instr,p_reg1_pc,output_SE9,output_SE6,output_LS7,p_reg1_SE9,p_reg1_SE6,p_reg1_LS7: std_logic_vector(15 downto 0);
 signal p_reg2_pc,p_reg2_SE9,p_reg2_SE6,p_reg2_LS7,p_reg2_d1,p_reg2_d2: std_logic_vector(15 downto 0);
@@ -121,7 +126,7 @@ signal p_reg3_pc,output_d1,output_d2 : std_logic_vector(15 downto 0);
 
 signal r7_wr,rf_write,done,pause,carry_sig,zero_sig,stall_DH: std_logic;
 signal output_m10,p_reg0_m10,p_reg1_m10,output_decoder: std_logic_vector(7 downto 0);
-signal control_signal,p_reg1_ctrl,p_reg2_ctrl,p_reg3_ctrl,p_reg4_ctrl: std_logic_vector(15 downto 0);
+signal control_signal,p_reg1_ctrl,p_reg2_ctrl,p_reg3_ctrl,p_reg4_ctrl,temp_ctrl: std_logic_vector(15 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
 signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_reg3_rfa3 : std_logic_vector(2 downto 0);
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
@@ -164,13 +169,15 @@ begin
 	PR2_rfa1 : reg3 port map(D => output_rfa1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa1 );
 	PR2_rfa2 : reg3 port map(D => output_rfa2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa2 );
 	PR2_rfa3 : reg3 port map(D => output_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_rfa3 );
-	PR2_ctrl : reg16 port map(D=>p_reg1_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_ctrl);
+	PR2_ctrl : reg16 port map(D=>p_reg1_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>temp_ctrl);
 	PR2_adderout : reg16 port map(D=>adder_out, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg2_adderout);
 	PR2_lmloop : reg16 port map(D=>output_m31, clk=>clk, WR=>'1',reset=>rst, Q=>input_lmloop);
 
 m_2x : mux2 port map(a1 => p_reg1_SE6, a0 => p_reg1_SE9, s => p_reg1_ctrl(10), o => output_m30);
 adder16_1 : adder_16 port map(a => output_m30,b=> p_reg1_pc, cin=> '0',cout=> cout,o=> adder_out); 
 incPC <= std_logic_vector(unsigned(output_pc)+1);
+
+ctrl_edit : wrb_edit port map (instr=> p_reg2_instr,ctrl=>temp_ctrl,carry=>carry_out,zero=>zero_out,new_ctrl=>p_reg2_ctrl);
 
 
 stage3_1: stage3 port map(output_SE6=> p_reg2_SE6 , rf_d1=> p_reg2_d1, rf_d2=> p_reg2_d2,PC_4=> p_reg3_pc, aluout_4=> p_reg3_aluout,LS7_4=> p_reg3_LS7,input1_m34=> input_lmloop,input_d3 => output_m50,control_signal=> p_reg2_ctrl,			
