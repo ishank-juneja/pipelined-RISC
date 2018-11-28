@@ -9,7 +9,7 @@ entity stage5 is
 			alu_out_in, PC_in, output_LS7_in, mem_dout : in std_logic_vector(15 downto 0);
 			rf_wr_5 : out std_logic;
 			rfa3_in: in std_logic_vector(2 downto 0);
-			rfa3_out: out std_logic_vector(2 downto 0)
+			rfa3_out: out std_logic_vector(2 downto 0);
 			);
 end entity;
 
@@ -24,7 +24,6 @@ end component;
 
 begin
 
-rfa3_out <= rfa3_in;
 rf_wr_5 <= control_signal(2);
 
 m_50 : mux4 port map(a0=> PC_in, a1=> mem_dout, a2 => alu_out_in, a3 => output_LS7_in, sel => control_signal(1 downto 0), o => input_d3_out); 
