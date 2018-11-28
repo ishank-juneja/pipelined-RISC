@@ -8,8 +8,6 @@ entity stage5 is
 			control_signal : in std_logic_vector(15 downto 0);			
 			alu_out_in, PC_in, output_LS7_in, mem_dout : in std_logic_vector(15 downto 0);
 			rf_wr_5 : out std_logic;
-			rfa3_in: in std_logic_vector(2 downto 0);
-			rfa3_out: out std_logic_vector(2 downto 0);
 			);
 end entity;
 
