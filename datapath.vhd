@@ -59,8 +59,9 @@ signal output_m10,p_reg0_m10,p_reg1_m10,output_decoder: std_logic_vector(7 downt
 signal control_signal,p_reg1_ctrl : std_logic_vector(19 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
 signal p_reg1_pe,output_rfa3,p_reg4_rfa3,p_reg2_rfa3 ,p_reg3_rfa3 : std_logic_vector(2 downto 0);
-	begin 
-	stage0_1: stage0 port map(input_pc=>input_pc,control_signal=> control_signal,r7_wr=>r7_wr,clk=>clk,rst=>rst,output_decoder=>output_decoder,output_pc=>output_pc,output_mem=>output_mem,output_m10=>output_m10);
+
+begin 
+	stage0_1: stage0 port map(input_pc=>input_pc, control_signal=> 	control_signal,r7_wr=>r7_wr,clk=>clk,rst=>rst,output_decoder=>output_decoder,output_pc=>output_pc,output_mem=>output_mem,output_m10=>output_m10);
 	PR0_pc : reg16 port map(D => output_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg0_pc );
 	PR0_instr: reg16 port map(D => output_mem ,clk => clk, WR => control_signal(3), reset=>rst, Q => p_reg0_instr);
 	PR0_mux: reg8 port map(D => output_m10 ,clk => clk, WR => '1', reset=>rst, Q => p_reg0_m10);
