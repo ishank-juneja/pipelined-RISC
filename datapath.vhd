@@ -127,8 +127,8 @@ signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
 
 signal mem_dout,p_reg4_memdout ,alu_out,p_reg4_aluout,p_reg3_aluout,new_d2,new_d1,p_reg3_newd1,p_reg3_newd2,incPC,p_reg3_adderout,adder_out,
-output_m30,output_m31,input_lmloop,output_m40  : std_logic_vector(15 downto 0);
-signal zero,zero_out,carry,carry_out,cout,m51_select : std_logic;
+output_m30,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx  : std_logic_vector(15 downto 0);
+signal zero,zero_out,carry,carry_out,cout,m51_select,m3b_select,m3a_select,m2xx_select : std_logic;
 
 begin 
 	
@@ -157,7 +157,6 @@ begin
 										stage3mem_rd=>p_reg2_ctrl(6),stage3_a3=>p_reg2_rfa3,
 										output_d1=>output_d1, output_d2=>output_d2, rfa3=>output_rfa3, rfa1=>output_rfa1, rfa2=>output_rfa2, r7_wr=>r7_wr, stall_DH => stall_DH);
 	PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_pc );
-	PR2_SE9 : reg16 port map(D => p_reg1_SE9 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE9 );
 	PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_SE6 );
 	PR2_LS7 : reg16 port map(D => p_reg1_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_LS7 );
 	PR2_d1 : reg16 port map(D => output_d1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg2_d1 );
@@ -184,12 +183,12 @@ PR3_pc : reg16 port map(D => p_reg2_pc ,clk => clk, WR => '1', reset=>rst, Q => 
 PR3_ctrl : reg16 port map(D=>p_reg2_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg3_ctrl);
 PR3_LS7 : reg16 port map(D => p_reg2_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_LS7 );
 PR3_rfa3 : reg3 port map(D => p_reg2_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_rfa3 );
-PR3_aluout : reg3 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout );
-PR3_newd1 : reg3 port map(D => new_d1 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd1 );
-PR3_newd2 : reg3 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2 );
-PR3_zero : reg3 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out );
-PR3_carry : reg3 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out );
-PR3_adderout : reg3 port map(D => p_reg2_adderout ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_adderout );
+PR3_aluout : reg16 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout );
+PR3_newd2 : reg16 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2 );
+
+zero_flag : reg1 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out );
+carry_flag : reg1 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out );
+
 
 
 stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_out=> p_reg3_aluout,
@@ -197,13 +196,13 @@ stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_
 			clk=> clk,rst => rst,
 			rf_wr_4=> rf_wr4,
 			M50_4 => p_reg4_ctrl(1 downto 0),
-			alu_out_in=> p_reg3_aluout, incPC_in=> incPC, output_adder=> p_reg3_adderout, new_d1_in=> p_reg3_newd1,new_d2_in=> p_reg3_newd2);
+			alu_out_in=> p_reg3_aluout, new_d2_in=> p_reg3_newd2);
 PR4_pc : reg16 port map(D => p_reg3_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_pc );
 PR4_ctrl : reg16 port map(D=>p_reg3_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg4_ctrl);
 PR4_LS7 : reg16 port map(D => p_reg3_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_LS7 );
 PR4_rfa3 : reg3 port map(D => p_reg3_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_rfa3 );
-PR4_memdout : reg3 port map(D => mem_dout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_memdout );
-PR4_aluout : reg3 port map(D => p_reg3_aluout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_aluout );
+PR4_memdout : reg16 port map(D => mem_dout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_memdout );
+PR4_aluout : reg16 port map(D => p_reg3_aluout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_aluout );
 
 
 stage5_1: stage5 port map(input_d3_out=> output_m50,
@@ -212,6 +211,14 @@ stage5_1: stage5 port map(input_d3_out=> output_m50,
 			rf_wr_5=> rf_wr5
 			);
 m51_select <= p_reg4_rfa3(2) and p_reg4_rfa3(1) and p_reg4_rfa3(0);
-m_51 : mux2 port map(a1 => output_m50, a0 => output_m40, s => m51_select, o =>input_pc);	
+m_51 : mux2 port map(a1 => output_m50, a0 => output_m3x, s => m51_select, o =>input_pc);
+
+
+m3b_select <= zero and p_reg2_ctrl(10);
+m3a_select <= p_reg2_ctrl(4) and p_reg2_ctrl(3);
+m2xx_select <= p_reg1_ctrl(4) and (not p_reg1_ctrl(3));
+m_3a : mux2 port map(a1 => new_d1, a0 => output_m2xx, s => m3a_select, o => output_m3a); 
+m_3b : mux2 port map(a1 => p_reg2_adderout, a0 => output_m3a, s => m3b_select, o => output_m3b); 
+m_2xx:	mux2 port map(a1 => adder_out, a0 => incPC, s => m2xx_select, o => output_m2xx); 
 	
 end behave;
