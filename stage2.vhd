@@ -8,7 +8,7 @@ entity stage2 is
 			p_reg1_ctrl : in std_logic_vector(19 downto 0);
 			clk, rst, p_reg4_wr : in std_logic;
 			input_a3, p_reg1_pe : in std_logic_vector(2 downto 0);
-			stage3mem_rd : in std_logic			
+			stage3mem_rd : in std_logic;			
 			stage3_a3 : in std_logic_vector(2 downto 0); 
 			------------------------------			
 			output_SE9, output_SE6, output_LS7,output_d1, output_d2 : out std_logic_vector(15 downto 0);
