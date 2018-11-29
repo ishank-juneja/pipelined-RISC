@@ -1,14 +1,14 @@
-Fitter Status : Successful - Thu Nov 29 18:01:17 2018
+Fitter Status : Successful - Thu Nov 29 18:15:51 2018
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 Revision Name : pipeline_risc
 Top-level Entity Name : datapath
 Family : Cyclone IV E
 Device : EP4CE22F17C6
 Timing Models : Final
-Total logic elements : 703 / 22,320 ( 3 % )
-    Total combinational functions : 585 / 22,320 ( 3 % )
-    Dedicated logic registers : 510 / 22,320 ( 2 % )
-Total registers : 510
+Total logic elements : 702 / 22,320 ( 3 % )
+    Total combinational functions : 589 / 22,320 ( 3 % )
+    Dedicated logic registers : 512 / 22,320 ( 2 % )
+Total registers : 512
 Total pins : 3 / 154 ( 2 % )
 Total virtual pins : 0
 Total memory bits : 256 / 608,256 ( < 1 % )

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pipeline_risc
-Thu Nov 29 18:01:07 2018
+Thu Nov 29 18:15:39 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -49,11 +49,12 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
  41. Port Connectivity Checks: "reg16:PR2_LS7"
  42. Port Connectivity Checks: "reg16:PR2_SE6"
  43. Port Connectivity Checks: "reg16:PR2_pc"
- 44. Port Connectivity Checks: "reg8:PR0_mux"
- 45. Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem"
- 46. Post-Synthesis Netlist Statistics for Top Partition
- 47. Elapsed Time Per Partition
- 48. Analysis & Synthesis Messages
+ 44. Port Connectivity Checks: "stage2:stage2_2|rf:rf_1"
+ 45. Port Connectivity Checks: "reg8:PR0_mux"
+ 46. Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem"
+ 47. Post-Synthesis Netlist Statistics for Top Partition
+ 48. Elapsed Time Per Partition
+ 49. Analysis & Synthesis Messages
 
 
 
@@ -80,15 +81,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 29 18:01:06 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 29 18:15:39 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pipeline_risc                               ;
 ; Top-level Entity Name              ; datapath                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Total logic elements               ; 878                                         ;
-;     Total combinational functions  ; 568                                         ;
-;     Dedicated logic registers      ; 510                                         ;
-; Total registers                    ; 510                                         ;
+;     Total combinational functions  ; 572                                         ;
+;     Dedicated logic registers      ; 512                                         ;
+; Total registers                    ; 512                                         ;
 ; Total pins                         ; 3                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 256                                         ;
@@ -241,18 +242,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Estimated Total logic elements              ; 878       ;
 ;                                             ;           ;
-; Total combinational functions               ; 568       ;
+; Total combinational functions               ; 572       ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 340       ;
-;     -- 3 input functions                    ; 162       ;
-;     -- <=2 input functions                  ; 66        ;
+;     -- 3 input functions                    ; 163       ;
+;     -- <=2 input functions                  ; 69        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 507       ;
+;     -- normal mode                          ; 511       ;
 ;     -- arithmetic mode                      ; 61        ;
 ;                                             ;           ;
-; Total registers                             ; 510       ;
-;     -- Dedicated logic registers            ; 510       ;
+; Total registers                             ; 512       ;
+;     -- Dedicated logic registers            ; 512       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 3         ;
@@ -261,9 +262,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 526       ;
-; Total fan-out                               ; 3877      ;
-; Average fan-out                             ; 3.52      ;
+; Maximum fan-out                             ; 528       ;
+; Total fan-out                               ; 3874      ;
+; Average fan-out                             ; 3.50      ;
 +---------------------------------------------+-----------+
 
 
@@ -272,18 +273,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                           ; Entity Name     ; Library Name ;
 +----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
-; |datapath                                    ; 568 (35)          ; 510 (0)      ; 256         ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                                     ; datapath        ; work         ;
+; |datapath                                    ; 572 (33)          ; 512 (0)      ; 256         ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                                     ; datapath        ; work         ;
 ;    |adder16:adder16_1|                       ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1                                                                   ; adder16         ; work         ;
 ;       |eightbitadder:a0|                     ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0                                                  ; eightbitadder   ; work         ;
 ;          |fulladder:fa0|                     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa0                                    ; fulladder       ; work         ;
 ;          |fulladder:fa1|                     ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa1                                    ; fulladder       ; work         ;
-;    |control:ctrl|                            ; 13 (13)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|control:ctrl                                                                        ; control         ; work         ;
+;    |control:ctrl|                            ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|control:ctrl                                                                        ; control         ; work         ;
 ;    |mux2:m_2x|                               ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|mux2:m_2x                                                                           ; mux2            ; work         ;
 ;    |mux2:m_51|                               ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|mux2:m_51                                                                           ; mux2            ; work         ;
-;    |reg16:PR0_instr|                         ; 0 (0)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_instr                                                                     ; reg16           ; work         ;
+;    |reg16:PR0_instr|                         ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_instr                                                                     ; reg16           ; work         ;
 ;    |reg16:PR0_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_pc                                                                        ; reg16           ; work         ;
 ;    |reg16:PR1_LS7|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_LS7                                                                       ; reg16           ; work         ;
-;    |reg16:PR1_ctrl|                          ; 0 (0)             ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_ctrl                                                                      ; reg16           ; work         ;
+;    |reg16:PR1_ctrl|                          ; 0 (0)             ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_ctrl                                                                      ; reg16           ; work         ;
 ;    |reg16:PR1_instr|                         ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_instr                                                                     ; reg16           ; work         ;
 ;    |reg16:PR1_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_pc                                                                        ; reg16           ; work         ;
 ;    |reg16:PR2_LS7|                           ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_LS7                                                                       ; reg16           ; work         ;
@@ -311,19 +312,19 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;    |reg3:PR3_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR3_rfa3                                                                       ; reg3            ; work         ;
 ;    |reg3:PR4_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR4_rfa3                                                                       ; reg3            ; work         ;
 ;    |reg8:PR0_mux|                            ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg8:PR0_mux                                                                        ; reg8            ; work         ;
-;    |stage0:stage0_0|                         ; 32 (1)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                                     ; stage0          ; work         ;
-;       |memory:InstrMem|                      ; 19 (19)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|memory:InstrMem                                                     ; memory          ; work         ;
-;       |mux2:M10|                             ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|mux2:M10                                                            ; mux2            ; work         ;
+;    |stage0:stage0_0|                         ; 35 (1)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                                     ; stage0          ; work         ;
+;       |memory:InstrMem|                      ; 20 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|memory:InstrMem                                                     ; memory          ; work         ;
+;       |mux2:M10|                             ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|mux2:M10                                                            ; mux2            ; work         ;
 ;       |reg16:PC|                             ; 4 (4)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|reg16:PC                                                            ; reg16           ; work         ;
 ;    |stage1:stage1_1|                         ; 11 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1                                                                     ; stage1          ; work         ;
 ;       |decoder:DE|                           ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|decoder:DE                                                          ; decoder         ; work         ;
 ;       |encoder:PE|                           ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|encoder:PE                                                          ; encoder         ; work         ;
-;    |stage2:stage2_2|                         ; 122 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                                     ; stage2          ; work         ;
+;    |stage2:stage2_2|                         ; 121 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                                     ; stage2          ; work         ;
 ;       |DH_stall:DH|                          ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|DH_stall:DH                                                         ; DH_stall        ; work         ;
 ;       |mux2:m_20|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_20                                                           ; mux2            ; work         ;
 ;       |mux2:m_22|                            ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_22                                                           ; mux2            ; work         ;
 ;       |mux2:m_23|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_23                                                           ; mux2            ; work         ;
-;       |rf:rf_1|                              ; 105 (9)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                                             ; rf              ; work         ;
+;       |rf:rf_1|                              ; 104 (8)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                                             ; rf              ; work         ;
 ;          |mux2:M1_2|                         ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux2:M1_2                                                   ; mux2            ; work         ;
 ;          |mux8:M1|                           ; 80 (80)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux8:M1                                                     ; mux8            ; work         ;
 ;          |reg16:r0|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r0                                                    ; reg16           ; work         ;
@@ -334,7 +335,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;          |reg16:r5|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r5                                                    ; reg16           ; work         ;
 ;          |reg16:r6|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r6                                                    ; reg16           ; work         ;
 ;          |reg16:r7|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r7                                                    ; reg16           ; work         ;
-;    |stage3:stage3_1|                         ; 190 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1                                                                     ; stage3          ; work         ;
+;    |stage3:stage3_1|                         ; 189 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1                                                                     ; stage3          ; work         ;
 ;       |alu:alu_1|                            ; 39 (5)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1                                                           ; alu             ; work         ;
 ;          |adder16:A|                         ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A                                                 ; adder16         ; work         ;
 ;             |eightbitadder:a0|               ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0                                ; eightbitadder   ; work         ;
@@ -343,9 +344,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;          |mux2:M|                            ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|mux2:M                                                    ; mux2            ; work         ;
 ;       |forwarding_unit:forwarding|           ; 102 (102)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|forwarding_unit:forwarding                                          ; forwarding_unit ; work         ;
 ;       |mux2:m_32|                            ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_32                                                           ; mux2            ; work         ;
-;       |mux2:m_34|                            ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_34                                                           ; mux2            ; work         ;
-;    |stage4:stage4_1|                         ; 42 (0)            ; 58 (0)       ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1                                                                     ; stage4          ; work         ;
-;       |memory:data_mem|                      ; 42 (42)           ; 58 (58)      ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem                                                     ; memory          ; work         ;
+;       |mux2:m_34|                            ; 33 (33)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_34                                                           ; mux2            ; work         ;
+;    |stage4:stage4_1|                         ; 46 (0)            ; 58 (0)       ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1                                                                     ; stage4          ; work         ;
+;       |memory:data_mem|                      ; 46 (46)           ; 58 (58)      ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem                                                     ; memory          ; work         ;
 ;          |altsyncram:RAM_rtl_0|              ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0                                ; altsyncram      ; work         ;
 ;             |altsyncram_2ih1:auto_generated| ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_2ih1:auto_generated ; altsyncram_2ih1 ; work         ;
 ;    |stage5:stage5_1|                         ; 32 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage5:stage5_1                                                                     ; stage5          ; work         ;
@@ -400,8 +401,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; reg16:PR2_SE6|Q[2]                     ; Merged with reg16:PR2_LS7|Q[9]         ;
 ; reg16:PR2_SE6|Q[1]                     ; Merged with reg16:PR2_LS7|Q[8]         ;
 ; reg16:PR2_SE6|Q[0]                     ; Merged with reg16:PR2_LS7|Q[7]         ;
-; reg16:PR0_instr|Q[8]                   ; Merged with reg16:PR0_instr|Q[12]      ;
-; Total Number of Removed Registers = 83 ;                                        ;
+; Total Number of Removed Registers = 82 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -432,12 +432,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 510   ;
+; Total registers                              ; 512   ;
 ; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 457   ;
+; Number of registers using Asynchronous Clear ; 459   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 235   ;
+; Number of registers using Clock Enable       ; 221   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -447,10 +447,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------+---------+
 ; Inverted Register                                    ; Fan out ;
 +------------------------------------------------------+---------+
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[40] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[38] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM~35               ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[36] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[35] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM~34               ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[34] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[33] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[32] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[30] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[28] ; 1       ;
@@ -460,14 +464,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[20] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[18] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[16] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM~24               ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[14] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[13] ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[12] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM~22               ; 1       ;
 ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[10] ; 1       ;
-; stage4:stage4_1|memory:data_mem|RAM~36               ; 1       ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[38] ; 1       ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[37] ; 1       ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[40] ; 1       ;
-; Total number of inverted registers = 20              ;         ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[9]  ; 1       ;
+; Total number of inverted registers = 24              ;         ;
 +------------------------------------------------------+---------+
 
 
@@ -525,15 +529,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[11]                                       ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |datapath|stage0:stage0_0|reg16:PC|Q[4]                            ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[3]                           ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[8]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d1[6]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d2[6]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|mux2:m_34|o[0]                           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|stage2:stage2_2|mux2:m_22|o[0]                           ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[6]  ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[6]                                        ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |datapath|stage0:stage0_0|reg16:PC|Q[1]                            ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[1]                           ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[15]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d1[14]    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d2[14]    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|mux2:m_34|o[5]                           ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|stage2:stage2_2|mux2:m_22|o[1]                           ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[3]  ;
 ; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[15] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 
@@ -863,6 +867,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+----------------+
 
 
++-----------------------------------------------------+
+; Port Connectivity Checks: "stage2:stage2_2|rf:rf_1" ;
++-------+-------+----------+--------------------------+
+; Port  ; Type  ; Severity ; Details                  ;
++-------+-------+----------+--------------------------+
+; pc_wr ; Input ; Info     ; Stuck at VCC             ;
++-------+-------+----------+--------------------------+
+
+
 +------------------------------------------+
 ; Port Connectivity Checks: "reg8:PR0_mux" ;
 +------+-------+----------+----------------+
@@ -890,26 +903,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 3                           ;
-; cycloneiii_ff         ; 510                         ;
-;     CLR               ; 206                         ;
+; cycloneiii_ff         ; 512                         ;
+;     CLR               ; 222                         ;
 ;     CLR SCLR          ; 32                          ;
 ;     ENA               ; 16                          ;
-;     ENA CLR           ; 219                         ;
+;     ENA CLR           ; 205                         ;
 ;     plain             ; 37                          ;
-; cycloneiii_lcell_comb ; 568                         ;
+; cycloneiii_lcell_comb ; 572                         ;
 ;     arith             ; 61                          ;
 ;         2 data inputs ; 32                          ;
 ;         3 data inputs ; 29                          ;
-;     normal            ; 507                         ;
+;     normal            ; 511                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 27                          ;
-;         3 data inputs ; 133                         ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 26                          ;
+;         3 data inputs ; 134                         ;
 ;         4 data inputs ; 340                         ;
 ; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 16.20                       ;
-; Average LUT depth     ; 7.17                        ;
+; Max LUT depth         ; 15.60                       ;
+; Average LUT depth     ; 7.05                        ;
 +-----------------------+-----------------------------+
 
 
@@ -928,7 +941,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 29 18:00:53 2018
+    Info: Processing started: Thu Nov 29 18:15:26 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline_risc -c pipeline_risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_unit.vhd
@@ -1046,11 +1059,11 @@ Info (12128): Elaborating entity "NAND16" for hierarchy "stage3:stage3_1|alu:alu
 Info (12128): Elaborating entity "forwarding_unit" for hierarchy "stage3:stage3_1|forwarding_unit:forwarding" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 66
 Info (12128): Elaborating entity "reg1" for hierarchy "reg1:zero_flag" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 275
 Info (12128): Elaborating entity "stage4" for hierarchy "stage4:stage4_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 287
-Info (12128): Elaborating entity "stage5" for hierarchy "stage5:stage5_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 303
+Info (12128): Elaborating entity "stage5" for hierarchy "stage5:stage5_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 302
 Info (12128): Elaborating entity "mux4" for hierarchy "stage5:stage5_1|mux4:m_50" File: /home/ishank/Desktop/pipelined_RISC/stage5.vhd Line: 33
 Warning (276020): Inferred RAM node "stage4:stage4_1|memory:data_mem|RAM_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "stage0:stage0_0|memory:InstrMem|RAM" is uninferred due to inappropriate RAM size File: /home/ishank/Desktop/pipelined_RISC/memory.vhd Line: 45
+    Info (276004): RAM logic "stage0:stage0_0|memory:InstrMem|RAM" is uninferred due to inappropriate RAM size File: /home/ishank/Desktop/pipelined_RISC/memory.vhd Line: 46
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "stage4:stage4_1|memory:data_mem|RAM_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -1090,15 +1103,15 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 970 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 972 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 951 logic cells
+    Info (21061): Implemented 953 logic cells
     Info (21064): Implemented 16 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 1290 megabytes
-    Info: Processing ended: Thu Nov 29 18:01:07 2018
-    Info: Elapsed time: 00:00:14
+    Info: Peak virtual memory: 1282 megabytes
+    Info: Processing ended: Thu Nov 29 18:15:39 2018
+    Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:30
 
 

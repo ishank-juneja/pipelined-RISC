@@ -1,5 +1,5 @@
 Flow report for pipeline_risc
-Thu Nov 29 18:01:23 2018
+Thu Nov 29 18:15:57 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Nov 29 18:01:23 2018       ;
+; Flow Status                        ; Successful - Thu Nov 29 18:15:57 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pipeline_risc                               ;
 ; Top-level Entity Name              ; datapath                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 703 / 22,320 ( 3 % )                        ;
-;     Total combinational functions  ; 585 / 22,320 ( 3 % )                        ;
-;     Dedicated logic registers      ; 510 / 22,320 ( 2 % )                        ;
-; Total registers                    ; 510                                         ;
+; Total logic elements               ; 702 / 22,320 ( 3 % )                        ;
+;     Total combinational functions  ; 589 / 22,320 ( 3 % )                        ;
+;     Dedicated logic registers      ; 512 / 22,320 ( 2 % )                        ;
+; Total registers                    ; 512                                         ;
 ; Total pins                         ; 3 / 154 ( 2 % )                             ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 256 / 608,256 ( < 1 % )                     ;
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/29/2018 18:00:53 ;
+; Start date & time ; 11/29/2018 18:15:26 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; pipeline_risc       ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 0.154349465331730                     ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 0.154349552632037                     ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                  ; --            ; --          ; eda_simulation ;
@@ -97,12 +97,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 1284 MB             ; 00:00:30                           ;
-; Fitter                    ; 00:00:10     ; 1.0                     ; 1401 MB             ; 00:00:10                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 1066 MB             ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 1106 MB             ; 00:00:02                           ;
+; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 1280 MB             ; 00:00:29                           ;
+; Fitter                    ; 00:00:11     ; 1.0                     ; 1401 MB             ; 00:00:11                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 1063 MB             ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 1105 MB             ; 00:00:02                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 1319 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:26     ; --                      ; --                  ; 00:00:44                           ;
+; Total                     ; 00:00:28     ; --                      ; --                  ; 00:00:44                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

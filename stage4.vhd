@@ -8,8 +8,8 @@ entity stage4 is
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
-			rf_wr_4: out std_logic
-			mem_dout: out std_logic_vector(15 downto 0);
+			rf_wr_4: out std_logic;
+			mem_dout: out std_logic_vector(15 downto 0)
 			);
 end entity;
 
