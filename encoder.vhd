@@ -4,10 +4,10 @@
 --If none of the bits are high, FSM controller handles 
 --transition to next state, and o/p is don't care 
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
 
 entity encoder is
 	port (	input : in std_logic_vector(7 downto 0);
@@ -35,9 +35,8 @@ begin
 		output  <= "110";
 	elsif(input(7) = '1') then
 		output  <= "111";
-	else 
-		output  <= "XXX";
-end if;
-
+	else
+		output <= "XXX";
+	end if;
 end process;
 end behave;
