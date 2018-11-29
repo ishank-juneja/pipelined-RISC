@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition"
 
--- DATE "11/29/2018 11:13:02"
+-- DATE "11/29/2018 13:54:36"
 
 -- 
 -- Device: Altera EP4CE22F17C6 Package FBGA256
@@ -35,13 +35,15 @@ USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY 	datapath IS
     PORT (
 	clk : IN std_logic;
-	rst : IN std_logic
+	rst : IN std_logic;
+	output : BUFFER std_logic
 	);
 END datapath;
 
 -- Design Ports Information
 -- clk	=>  Location: PIN_L13,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- rst	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- rst	=>  Location: PIN_B13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- output	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 ARCHITECTURE structure OF datapath IS
@@ -56,16 +58,31 @@ SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
 SIGNAL ww_clk : std_logic;
 SIGNAL ww_rst : std_logic;
+SIGNAL ww_output : std_logic;
 SIGNAL \clk~input_o\ : std_logic;
 SIGNAL \rst~input_o\ : std_logic;
+SIGNAL \output~output_o\ : std_logic;
 
 BEGIN
 
 ww_clk <= clk;
 ww_rst <= rst;
+output <= ww_output;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
+
+-- Location: IOOBUF_X40_Y34_N9
+\output~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \output~output_o\);
 
 -- Location: IOIBUF_X53_Y10_N15
 \clk~input\ : cycloneive_io_ibuf
@@ -78,7 +95,7 @@ PORT MAP (
 	i => ww_clk,
 	o => \clk~input_o\);
 
--- Location: IOIBUF_X40_Y34_N8
+-- Location: IOIBUF_X49_Y34_N8
 \rst~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -88,6 +105,8 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_rst,
 	o => \rst~input_o\);
+
+ww_output <= \output~output_o\;
 END structure;
 
 

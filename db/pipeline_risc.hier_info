@@ -41,6 +41,7 @@ clk => reg16:PR4_memdout.clk
 clk => reg16:PR4_aluout.clk
 rst => create_bubble2.IN1
 rst => create_bubble3.IN1
+rst => create_bubble5.IN1
 rst => stage0:stage0_0.rst
 rst => stage1:stage1_1.rst
 rst => reg16:PR1_SE9.reset
@@ -62,7 +63,6 @@ rst => reg16:PR2_adderout.reset
 rst => reg16:PR2_lmloop.reset
 rst => stage3:stage3_1.rst
 rst => reg16:PR3_pc.reset
-rst => reg16:PR3_ctrl.reset
 rst => reg16:PR3_LS7.reset
 rst => reg3:PR3_rfa3.reset
 rst => reg16:PR3_aluout.reset
@@ -71,11 +71,11 @@ rst => reg1:zero_flag.reset
 rst => reg1:carry_flag.reset
 rst => stage4:stage4_1.rst
 rst => reg16:PR4_pc.reset
-rst => reg16:PR4_ctrl.reset
 rst => reg16:PR4_LS7.reset
 rst => reg3:PR4_rfa3.reset
 rst => reg16:PR4_memdout.reset
 rst => reg16:PR4_aluout.reset
+output << comb.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |datapath|stage0:stage0_0
@@ -836,34 +836,27 @@ output[15] <= input[5].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |datapath|stage1:stage1_1|encoder:PE
-input[0] => output[0].OUTPUTSELECT
-input[0] => output[1].OUTPUTSELECT
-input[0] => output[2].IN1
-input[0] => output[2].OUTPUTSELECT
-input[1] => output[0].OUTPUTSELECT
-input[1] => output[1].OUTPUTSELECT
-input[1] => output[2].IN1
-input[1] => output[2].OUTPUTSELECT
-input[2] => output[0].OUTPUTSELECT
-input[2] => output[1].OUTPUTSELECT
-input[2] => output[2].IN1
-input[2] => output[2].OUTPUTSELECT
-input[3] => output[0].OUTPUTSELECT
-input[3] => output[1].OUTPUTSELECT
-input[3] => output[2].IN1
-input[3] => output[2].DATAA
-input[4] => output[0].OUTPUTSELECT
-input[4] => output[1].OUTPUTSELECT
-input[4] => output[2].IN1
-input[5] => output[0].OUTPUTSELECT
-input[5] => output[2].IN1
-input[5] => output[1].DATAA
-input[6] => output[2].IN0
-input[6] => output[0].DATAA
-input[7] => output[2].IN1
-output[0] <= output[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
-output[1] <= output[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
-output[2] <= output[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+input[0] => output.OUTPUTSELECT
+input[0] => output.OUTPUTSELECT
+input[0] => output.OUTPUTSELECT
+input[1] => output.OUTPUTSELECT
+input[1] => output.OUTPUTSELECT
+input[1] => output.OUTPUTSELECT
+input[2] => output.OUTPUTSELECT
+input[2] => output.OUTPUTSELECT
+input[2] => output.OUTPUTSELECT
+input[3] => output.OUTPUTSELECT
+input[3] => output.OUTPUTSELECT
+input[3] => output.DATAA
+input[4] => output.OUTPUTSELECT
+input[4] => output.OUTPUTSELECT
+input[5] => output.OUTPUTSELECT
+input[5] => output.DATAA
+input[6] => output.DATAA
+input[7] => ~NO_FANOUT~
+output[0] <= output.DB_MAX_OUTPUT_PORT_TYPE
+output[1] <= output.DB_MAX_OUTPUT_PORT_TYPE
+output[2] <= output.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |datapath|stage1:stage1_1|decoder:DE
@@ -6110,13 +6103,6 @@ clk => Q~reg0.CLK
 WR => Q~reg0.ENA
 reset => Q~reg0.ACLR
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|datapath|BEQ_JLR_stall:flush_3
-branch_taken => flush_first3.IN0
-beq_ins => flush_first3.IN1
-jlr_ins => flush_first3.IN1
-flush_first3 <= flush_first3.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |datapath|stage4:stage4_1
