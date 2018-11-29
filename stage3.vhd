@@ -47,15 +47,16 @@ component forwarding_unit is
 			new_d1,new_d2 : out std_logic_vector(15 downto 0));		 
 end component;
 
-signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1: std_logic_vector(15 downto 0);
+signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1,m31_a1: std_logic_vector(15 downto 0);
 
 begin
 
 new_d1_out <= new_d1;
 new_d2_out <= new_d2;
 cpl_new_d1 <= not new_d1;
+m31_a1 <= std_logic_vector(unsigned(input1_m34)+1);
 
-m_31 : mux2 port map(a1 => std_logic_vector(unsigned(input1_m34)+1), a0 => "0000000000000000", s => control_signal(15), o => output_m31); 
+m_31 : mux2 port map(a1 => m31_a1, a0 => "0000000000000000", s => control_signal(15), o => output_m31); 
 m_32 : mux2 port map(a1 => cpl_new_d1, a0 => new_d1, s => control_signal(10), o => output_m32); 
 m_33 : mux2 port map(a1 => output_SE6, a0 => new_d2, s => control_signal(9), o => output_m33); 
 m_34 : mux2 port map(a1 => input1_m34, a0 => output_m33, s => control_signal(15), o => output_m34); 
@@ -107,4 +108,3 @@ new_ctrl(6 downto 3)<=ctrl(6 downto 3);
 new_ctrl(1 downto 0) <=ctrl(1 downto 0);
 
 end struct;
-
