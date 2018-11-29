@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pipeline_risc
-Thu Nov 29 16:25:25 2018
+Thu Nov 29 18:01:07 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -13,46 +13,47 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Registers Added for RAM Pass-Through Logic
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated
- 14. Parameter Settings for Inferred Entity Instance: stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0
- 15. altsyncram Parameter Settings by Entity Instance
- 16. Port Connectivity Checks: "reg16:PR4_aluout"
- 17. Port Connectivity Checks: "reg16:PR4_memdout"
- 18. Port Connectivity Checks: "reg3:PR4_rfa3"
- 19. Port Connectivity Checks: "reg16:PR4_LS7"
- 20. Port Connectivity Checks: "reg16:PR4_ctrl"
- 21. Port Connectivity Checks: "reg16:PR4_pc"
- 22. Port Connectivity Checks: "stage4:stage4_1|memory:data_mem"
- 23. Port Connectivity Checks: "stage4:stage4_1"
- 24. Port Connectivity Checks: "reg16:PR3_newd2"
- 25. Port Connectivity Checks: "reg16:PR3_aluout"
- 26. Port Connectivity Checks: "reg3:PR3_rfa3"
- 27. Port Connectivity Checks: "reg16:PR3_LS7"
- 28. Port Connectivity Checks: "reg16:PR3_ctrl"
- 29. Port Connectivity Checks: "reg16:PR3_pc"
- 30. Port Connectivity Checks: "stage3:stage3_1|mux2:m_31"
- 31. Port Connectivity Checks: "adder16:adder16_1"
- 32. Port Connectivity Checks: "reg16:PR2_lmloop"
- 33. Port Connectivity Checks: "reg16:PR2_adderout"
- 34. Port Connectivity Checks: "reg16:PR2_ctrl"
- 35. Port Connectivity Checks: "reg3:PR2_rfa3"
- 36. Port Connectivity Checks: "reg3:PR2_rfa2"
- 37. Port Connectivity Checks: "reg3:PR2_rfa1"
- 38. Port Connectivity Checks: "reg16:PR2_d2"
- 39. Port Connectivity Checks: "reg16:PR2_d1"
- 40. Port Connectivity Checks: "reg16:PR2_LS7"
- 41. Port Connectivity Checks: "reg16:PR2_SE6"
- 42. Port Connectivity Checks: "reg16:PR2_pc"
- 43. Port Connectivity Checks: "reg8:PR0_mux"
- 44. Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem"
- 45. Post-Synthesis Netlist Statistics for Top Partition
- 46. Elapsed Time Per Partition
- 47. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Added for RAM Pass-Through Logic
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_2ih1:auto_generated
+ 16. Parameter Settings for Inferred Entity Instance: stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0
+ 17. altsyncram Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "reg16:PR4_aluout"
+ 19. Port Connectivity Checks: "reg16:PR4_memdout"
+ 20. Port Connectivity Checks: "reg3:PR4_rfa3"
+ 21. Port Connectivity Checks: "reg16:PR4_LS7"
+ 22. Port Connectivity Checks: "reg16:PR4_ctrl"
+ 23. Port Connectivity Checks: "reg16:PR4_pc"
+ 24. Port Connectivity Checks: "stage4:stage4_1|memory:data_mem"
+ 25. Port Connectivity Checks: "reg16:PR3_newd2"
+ 26. Port Connectivity Checks: "reg16:PR3_aluout"
+ 27. Port Connectivity Checks: "reg3:PR3_rfa3"
+ 28. Port Connectivity Checks: "reg16:PR3_LS7"
+ 29. Port Connectivity Checks: "reg16:PR3_ctrl"
+ 30. Port Connectivity Checks: "reg16:PR3_pc"
+ 31. Port Connectivity Checks: "stage3:stage3_1|mux2:m_31"
+ 32. Port Connectivity Checks: "adder16:adder16_1"
+ 33. Port Connectivity Checks: "reg16:PR2_lmloop"
+ 34. Port Connectivity Checks: "reg16:PR2_adderout"
+ 35. Port Connectivity Checks: "reg16:PR2_ctrl"
+ 36. Port Connectivity Checks: "reg3:PR2_rfa3"
+ 37. Port Connectivity Checks: "reg3:PR2_rfa2"
+ 38. Port Connectivity Checks: "reg3:PR2_rfa1"
+ 39. Port Connectivity Checks: "reg16:PR2_d2"
+ 40. Port Connectivity Checks: "reg16:PR2_d1"
+ 41. Port Connectivity Checks: "reg16:PR2_LS7"
+ 42. Port Connectivity Checks: "reg16:PR2_SE6"
+ 43. Port Connectivity Checks: "reg16:PR2_pc"
+ 44. Port Connectivity Checks: "reg8:PR0_mux"
+ 45. Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem"
+ 46. Post-Synthesis Netlist Statistics for Top Partition
+ 47. Elapsed Time Per Partition
+ 48. Analysis & Synthesis Messages
 
 
 
@@ -79,18 +80,18 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 29 16:25:25 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 29 18:01:06 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pipeline_risc                               ;
 ; Top-level Entity Name              ; datapath                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 514                                         ;
-;     Total combinational functions  ; 330                                         ;
-;     Dedicated logic registers      ; 317                                         ;
-; Total registers                    ; 317                                         ;
+; Total logic elements               ; 878                                         ;
+;     Total combinational functions  ; 568                                         ;
+;     Dedicated logic registers      ; 510                                         ;
+; Total registers                    ; 510                                         ;
 ; Total pins                         ; 3                                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
+; Total memory bits                  ; 256                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
@@ -228,7 +229,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; altrom.inc                                    ; yes             ; Megafunction                                          ; /home/ishank/altera_lite/16.0/quartus/libraries/megafunctions/altrom.inc            ;         ;
 ; altram.inc                                    ; yes             ; Megafunction                                          ; /home/ishank/altera_lite/16.0/quartus/libraries/megafunctions/altram.inc            ;         ;
 ; altdpram.inc                                  ; yes             ; Megafunction                                          ; /home/ishank/altera_lite/16.0/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_kig1.tdf                        ; yes             ; Auto-Generated Megafunction                           ; /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf                          ;         ;
+; db/altsyncram_2ih1.tdf                        ; yes             ; Auto-Generated Megafunction                           ; /home/ishank/Desktop/pipelined_RISC/db/altsyncram_2ih1.tdf                          ;         ;
 ; db/pipeline_risc.ram0_memory_e411fb78.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; /home/ishank/Desktop/pipelined_RISC/db/pipeline_risc.ram0_memory_e411fb78.hdl.mif   ;         ;
 +-----------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------+---------+
 
@@ -238,386 +239,192 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 514       ;
+; Estimated Total logic elements              ; 878       ;
 ;                                             ;           ;
-; Total combinational functions               ; 330       ;
+; Total combinational functions               ; 568       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 189       ;
-;     -- 3 input functions                    ; 98        ;
-;     -- <=2 input functions                  ; 43        ;
+;     -- 4 input functions                    ; 340       ;
+;     -- 3 input functions                    ; 162       ;
+;     -- <=2 input functions                  ; 66        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 284       ;
-;     -- arithmetic mode                      ; 46        ;
+;     -- normal mode                          ; 507       ;
+;     -- arithmetic mode                      ; 61        ;
 ;                                             ;           ;
-; Total registers                             ; 317       ;
-;     -- Dedicated logic registers            ; 317       ;
+; Total registers                             ; 510       ;
+;     -- Dedicated logic registers            ; 510       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 3         ;
+; Total memory bits                           ; 256       ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 317       ;
-; Total fan-out                               ; 2183      ;
-; Average fan-out                             ; 3.34      ;
+; Maximum fan-out                             ; 526       ;
+; Total fan-out                               ; 3877      ;
+; Average fan-out                             ; 3.52      ;
 +---------------------------------------------+-----------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                            ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Entity Name     ; Library Name ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-----------------+--------------+
-; |datapath                          ; 330 (28)          ; 317 (0)      ; 0           ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                    ; datapath        ; work         ;
-;    |adder16:adder16_1|             ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1                                                  ; adder16         ; work         ;
-;       |eightbitadder:a0|           ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0                                 ; eightbitadder   ; work         ;
-;          |fulladder:fa0|           ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa0                   ; fulladder       ; work         ;
-;    |control:ctrl|                  ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|control:ctrl                                                       ; control         ; work         ;
-;    |mux2:m_2x|                     ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|mux2:m_2x                                                          ; mux2            ; work         ;
-;    |reg16:PR0_instr|               ; 0 (0)             ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_instr                                                    ; reg16           ; work         ;
-;    |reg16:PR0_pc|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_pc                                                       ; reg16           ; work         ;
-;    |reg16:PR1_LS7|                 ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_LS7                                                      ; reg16           ; work         ;
-;    |reg16:PR1_ctrl|                ; 1 (1)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_ctrl                                                     ; reg16           ; work         ;
-;    |reg16:PR1_instr|               ; 0 (0)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_instr                                                    ; reg16           ; work         ;
-;    |reg16:PR1_pc|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_pc                                                       ; reg16           ; work         ;
-;    |reg16:PR2_LS7|                 ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_LS7                                                      ; reg16           ; work         ;
-;    |reg16:PR2_adderout|            ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_adderout                                                 ; reg16           ; work         ;
-;    |reg16:PR2_ctrl|                ; 0 (0)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_ctrl                                                     ; reg16           ; work         ;
-;    |reg16:PR2_d1|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_d1                                                       ; reg16           ; work         ;
-;    |reg16:PR2_pc|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_pc                                                       ; reg16           ; work         ;
-;    |reg16:PR3_LS7|                 ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_LS7                                                      ; reg16           ; work         ;
-;    |reg16:PR3_aluout|              ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_aluout                                                   ; reg16           ; work         ;
-;    |reg16:PR3_ctrl|                ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_ctrl                                                     ; reg16           ; work         ;
-;    |reg16:PR3_pc|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_pc                                                       ; reg16           ; work         ;
-;    |reg16:PR4_LS7|                 ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_LS7                                                      ; reg16           ; work         ;
-;    |reg16:PR4_aluout|              ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_aluout                                                   ; reg16           ; work         ;
-;    |reg16:PR4_ctrl|                ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_ctrl                                                     ; reg16           ; work         ;
-;    |reg16:PR4_pc|                  ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_pc                                                       ; reg16           ; work         ;
-;    |reg1:carry_flag|               ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg1:carry_flag                                                    ; reg1            ; work         ;
-;    |reg1:zero_flag|                ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg1:zero_flag                                                     ; reg1            ; work         ;
-;    |reg3:PR1_pe|                   ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR1_pe                                                        ; reg3            ; work         ;
-;    |reg3:PR2_rfa1|                 ; 0 (0)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa1                                                      ; reg3            ; work         ;
-;    |reg3:PR2_rfa2|                 ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa2                                                      ; reg3            ; work         ;
-;    |reg3:PR2_rfa3|                 ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa3                                                      ; reg3            ; work         ;
-;    |reg3:PR3_rfa3|                 ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR3_rfa3                                                      ; reg3            ; work         ;
-;    |reg3:PR4_rfa3|                 ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR4_rfa3                                                      ; reg3            ; work         ;
-;    |reg8:PR0_mux|                  ; 0 (0)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg8:PR0_mux                                                       ; reg8            ; work         ;
-;    |stage0:stage0_0|               ; 30 (0)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                    ; stage0          ; work         ;
-;       |memory:InstrMem|            ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|memory:InstrMem                                    ; memory          ; work         ;
-;       |reg16:PC|                   ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|reg16:PC                                           ; reg16           ; work         ;
-;    |stage1:stage1_1|               ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1                                                    ; stage1          ; work         ;
-;       |encoder:PE|                 ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|encoder:PE                                         ; encoder         ; work         ;
-;    |stage2:stage2_2|               ; 59 (0)            ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                    ; stage2          ; work         ;
-;       |mux2:m_22|                  ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_22                                          ; mux2            ; work         ;
-;       |mux2:m_23|                  ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_23                                          ; mux2            ; work         ;
-;       |rf:rf_1|                    ; 53 (5)            ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                            ; rf              ; work         ;
-;          |mux2:M1_2|               ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux2:M1_2                                  ; mux2            ; work         ;
-;          |mux8:M1|                 ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux8:M1                                    ; mux8            ; work         ;
-;          |reg16:r0|                ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r0                                   ; reg16           ; work         ;
-;          |reg16:r1|                ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r1                                   ; reg16           ; work         ;
-;          |reg16:r6|                ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r6                                   ; reg16           ; work         ;
-;          |reg16:r7|                ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r7                                   ; reg16           ; work         ;
-;    |stage3:stage3_1|               ; 149 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1                                                    ; stage3          ; work         ;
-;       |alu:alu_1|                  ; 39 (5)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1                                          ; alu             ; work         ;
-;          |adder16:A|               ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A                                ; adder16         ; work         ;
-;             |eightbitadder:a0|     ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0               ; eightbitadder   ; work         ;
-;                |fulladder:fa0|     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0|fulladder:fa0 ; fulladder       ; work         ;
-;                |fulladder:fa1|     ; 17 (17)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0|fulladder:fa1 ; fulladder       ; work         ;
-;          |mux2:M|                  ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|mux2:M                                   ; mux2            ; work         ;
-;       |forwarding_unit:forwarding| ; 45 (45)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|forwarding_unit:forwarding                         ; forwarding_unit ; work         ;
-;       |mux2:m_32|                  ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_32                                          ; mux2            ; work         ;
-;       |mux2:m_34|                  ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_34                                          ; mux2            ; work         ;
-;    |stage5:stage5_1|               ; 25 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage5:stage5_1                                                    ; stage5          ; work         ;
-;       |mux4:m_50|                  ; 25 (25)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage5:stage5_1|mux4:m_50                                          ; mux4            ; work         ;
-;    |wrb_edit:ctrl_edit|            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|wrb_edit:ctrl_edit                                                 ; wrb_edit        ; work         ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+-----------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                       ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                           ; Entity Name     ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
+; |datapath                                    ; 568 (35)          ; 510 (0)      ; 256         ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                                     ; datapath        ; work         ;
+;    |adder16:adder16_1|                       ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1                                                                   ; adder16         ; work         ;
+;       |eightbitadder:a0|                     ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0                                                  ; eightbitadder   ; work         ;
+;          |fulladder:fa0|                     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa0                                    ; fulladder       ; work         ;
+;          |fulladder:fa1|                     ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa1                                    ; fulladder       ; work         ;
+;    |control:ctrl|                            ; 13 (13)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|control:ctrl                                                                        ; control         ; work         ;
+;    |mux2:m_2x|                               ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|mux2:m_2x                                                                           ; mux2            ; work         ;
+;    |mux2:m_51|                               ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|mux2:m_51                                                                           ; mux2            ; work         ;
+;    |reg16:PR0_instr|                         ; 0 (0)             ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_instr                                                                     ; reg16           ; work         ;
+;    |reg16:PR0_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR0_pc                                                                        ; reg16           ; work         ;
+;    |reg16:PR1_LS7|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_LS7                                                                       ; reg16           ; work         ;
+;    |reg16:PR1_ctrl|                          ; 0 (0)             ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_ctrl                                                                      ; reg16           ; work         ;
+;    |reg16:PR1_instr|                         ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_instr                                                                     ; reg16           ; work         ;
+;    |reg16:PR1_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR1_pc                                                                        ; reg16           ; work         ;
+;    |reg16:PR2_LS7|                           ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_LS7                                                                       ; reg16           ; work         ;
+;    |reg16:PR2_adderout|                      ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_adderout                                                                  ; reg16           ; work         ;
+;    |reg16:PR2_ctrl|                          ; 0 (0)             ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_ctrl                                                                      ; reg16           ; work         ;
+;    |reg16:PR2_d1|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_d1                                                                        ; reg16           ; work         ;
+;    |reg16:PR2_lmloop|                        ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_lmloop                                                                    ; reg16           ; work         ;
+;    |reg16:PR2_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR2_pc                                                                        ; reg16           ; work         ;
+;    |reg16:PR3_LS7|                           ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_LS7                                                                       ; reg16           ; work         ;
+;    |reg16:PR3_aluout|                        ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_aluout                                                                    ; reg16           ; work         ;
+;    |reg16:PR3_ctrl|                          ; 0 (0)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_ctrl                                                                      ; reg16           ; work         ;
+;    |reg16:PR3_newd2|                         ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_newd2                                                                     ; reg16           ; work         ;
+;    |reg16:PR3_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR3_pc                                                                        ; reg16           ; work         ;
+;    |reg16:PR4_LS7|                           ; 0 (0)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_LS7                                                                       ; reg16           ; work         ;
+;    |reg16:PR4_aluout|                        ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_aluout                                                                    ; reg16           ; work         ;
+;    |reg16:PR4_ctrl|                          ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_ctrl                                                                      ; reg16           ; work         ;
+;    |reg16:PR4_memdout|                       ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_memdout                                                                   ; reg16           ; work         ;
+;    |reg16:PR4_pc|                            ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg16:PR4_pc                                                                        ; reg16           ; work         ;
+;    |reg1:carry_flag|                         ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg1:carry_flag                                                                     ; reg1            ; work         ;
+;    |reg1:zero_flag|                          ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg1:zero_flag                                                                      ; reg1            ; work         ;
+;    |reg3:PR1_pe|                             ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR1_pe                                                                         ; reg3            ; work         ;
+;    |reg3:PR2_rfa1|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa1                                                                       ; reg3            ; work         ;
+;    |reg3:PR2_rfa2|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa2                                                                       ; reg3            ; work         ;
+;    |reg3:PR2_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR2_rfa3                                                                       ; reg3            ; work         ;
+;    |reg3:PR3_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR3_rfa3                                                                       ; reg3            ; work         ;
+;    |reg3:PR4_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR4_rfa3                                                                       ; reg3            ; work         ;
+;    |reg8:PR0_mux|                            ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg8:PR0_mux                                                                        ; reg8            ; work         ;
+;    |stage0:stage0_0|                         ; 32 (1)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                                     ; stage0          ; work         ;
+;       |memory:InstrMem|                      ; 19 (19)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|memory:InstrMem                                                     ; memory          ; work         ;
+;       |mux2:M10|                             ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|mux2:M10                                                            ; mux2            ; work         ;
+;       |reg16:PC|                             ; 4 (4)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|reg16:PC                                                            ; reg16           ; work         ;
+;    |stage1:stage1_1|                         ; 11 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1                                                                     ; stage1          ; work         ;
+;       |decoder:DE|                           ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|decoder:DE                                                          ; decoder         ; work         ;
+;       |encoder:PE|                           ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|encoder:PE                                                          ; encoder         ; work         ;
+;    |stage2:stage2_2|                         ; 122 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                                     ; stage2          ; work         ;
+;       |DH_stall:DH|                          ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|DH_stall:DH                                                         ; DH_stall        ; work         ;
+;       |mux2:m_20|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_20                                                           ; mux2            ; work         ;
+;       |mux2:m_22|                            ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_22                                                           ; mux2            ; work         ;
+;       |mux2:m_23|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_23                                                           ; mux2            ; work         ;
+;       |rf:rf_1|                              ; 105 (9)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                                             ; rf              ; work         ;
+;          |mux2:M1_2|                         ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux2:M1_2                                                   ; mux2            ; work         ;
+;          |mux8:M1|                           ; 80 (80)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux8:M1                                                     ; mux8            ; work         ;
+;          |reg16:r0|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r0                                                    ; reg16           ; work         ;
+;          |reg16:r1|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r1                                                    ; reg16           ; work         ;
+;          |reg16:r2|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r2                                                    ; reg16           ; work         ;
+;          |reg16:r3|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r3                                                    ; reg16           ; work         ;
+;          |reg16:r4|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r4                                                    ; reg16           ; work         ;
+;          |reg16:r5|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r5                                                    ; reg16           ; work         ;
+;          |reg16:r6|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r6                                                    ; reg16           ; work         ;
+;          |reg16:r7|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r7                                                    ; reg16           ; work         ;
+;    |stage3:stage3_1|                         ; 190 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1                                                                     ; stage3          ; work         ;
+;       |alu:alu_1|                            ; 39 (5)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1                                                           ; alu             ; work         ;
+;          |adder16:A|                         ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A                                                 ; adder16         ; work         ;
+;             |eightbitadder:a0|               ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0                                ; eightbitadder   ; work         ;
+;                |fulladder:fa0|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0|fulladder:fa0                  ; fulladder       ; work         ;
+;                |fulladder:fa1|               ; 17 (17)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|adder16:A|eightbitadder:a0|fulladder:fa1                  ; fulladder       ; work         ;
+;          |mux2:M|                            ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|alu:alu_1|mux2:M                                                    ; mux2            ; work         ;
+;       |forwarding_unit:forwarding|           ; 102 (102)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|forwarding_unit:forwarding                                          ; forwarding_unit ; work         ;
+;       |mux2:m_32|                            ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_32                                                           ; mux2            ; work         ;
+;       |mux2:m_34|                            ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage3:stage3_1|mux2:m_34                                                           ; mux2            ; work         ;
+;    |stage4:stage4_1|                         ; 42 (0)            ; 58 (0)       ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1                                                                     ; stage4          ; work         ;
+;       |memory:data_mem|                      ; 42 (42)           ; 58 (58)      ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem                                                     ; memory          ; work         ;
+;          |altsyncram:RAM_rtl_0|              ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0                                ; altsyncram      ; work         ;
+;             |altsyncram_2ih1:auto_generated| ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_2ih1:auto_generated ; altsyncram_2ih1 ; work         ;
+;    |stage5:stage5_1|                         ; 32 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage5:stage5_1                                                                     ; stage5          ; work         ;
+;       |mux4:m_50|                            ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage5:stage5_1|mux4:m_50                                                           ; mux4            ; work         ;
+;    |wrb_edit:ctrl_edit|                      ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|wrb_edit:ctrl_edit                                                                  ; wrb_edit        ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                 ;
-+-----------------------------------------------------------+----------------------------------------+
-; Register name                                             ; Reason for Removal                     ;
-+-----------------------------------------------------------+----------------------------------------+
-; reg16:PR1_LS7|Q[0..6]                                     ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_LS7|Q[0..6]                                     ; Stuck at GND due to stuck port data_in ;
-; reg16:PR3_LS7|Q[0..6]                                     ; Stuck at GND due to stuck port data_in ;
-; reg16:PR4_LS7|Q[0..6]                                     ; Stuck at GND due to stuck port data_in ;
-; reg16:PR1_SE9|Q[8..15]                                    ; Merged with reg16:PR1_instr|Q[8]       ;
-; reg16:PR1_LS7|Q[15]                                       ; Merged with reg16:PR1_instr|Q[8]       ;
-; reg16:PR1_SE9|Q[7]                                        ; Merged with reg16:PR1_instr|Q[7]       ;
-; reg16:PR1_LS7|Q[14]                                       ; Merged with reg16:PR1_instr|Q[7]       ;
-; reg16:PR1_SE9|Q[6]                                        ; Merged with reg16:PR1_instr|Q[6]       ;
-; reg16:PR1_LS7|Q[13]                                       ; Merged with reg16:PR1_instr|Q[6]       ;
-; reg16:PR1_SE9|Q[5]                                        ; Merged with reg16:PR1_instr|Q[5]       ;
-; reg16:PR1_SE6|Q[5..15]                                    ; Merged with reg16:PR1_instr|Q[5]       ;
-; reg16:PR1_LS7|Q[12]                                       ; Merged with reg16:PR1_instr|Q[5]       ;
-; reg16:PR1_SE9|Q[4]                                        ; Merged with reg16:PR1_instr|Q[4]       ;
-; reg16:PR1_SE6|Q[4]                                        ; Merged with reg16:PR1_instr|Q[4]       ;
-; reg16:PR1_LS7|Q[11]                                       ; Merged with reg16:PR1_instr|Q[4]       ;
-; reg16:PR1_SE9|Q[3]                                        ; Merged with reg16:PR1_instr|Q[3]       ;
-; reg16:PR1_SE6|Q[3]                                        ; Merged with reg16:PR1_instr|Q[3]       ;
-; reg16:PR1_LS7|Q[10]                                       ; Merged with reg16:PR1_instr|Q[3]       ;
-; reg16:PR1_SE9|Q[2]                                        ; Merged with reg16:PR1_LS7|Q[9]         ;
-; reg16:PR1_SE6|Q[2]                                        ; Merged with reg16:PR1_LS7|Q[9]         ;
-; reg16:PR1_SE9|Q[1]                                        ; Merged with reg16:PR1_LS7|Q[8]         ;
-; reg16:PR1_SE6|Q[1]                                        ; Merged with reg16:PR1_LS7|Q[8]         ;
-; reg16:PR1_SE9|Q[0]                                        ; Merged with reg16:PR1_LS7|Q[7]         ;
-; reg16:PR1_SE6|Q[0]                                        ; Merged with reg16:PR1_LS7|Q[7]         ;
-; reg16:PR2_SE6|Q[5..15]                                    ; Merged with reg16:PR2_LS7|Q[12]        ;
-; reg16:PR2_SE6|Q[4]                                        ; Merged with reg16:PR2_LS7|Q[11]        ;
-; reg16:PR2_SE6|Q[3]                                        ; Merged with reg16:PR2_LS7|Q[10]        ;
-; reg16:PR2_SE6|Q[2]                                        ; Merged with reg16:PR2_LS7|Q[9]         ;
-; reg16:PR2_SE6|Q[1]                                        ; Merged with reg16:PR2_LS7|Q[8]         ;
-; reg16:PR2_SE6|Q[0]                                        ; Merged with reg16:PR2_LS7|Q[7]         ;
-; reg16:PR0_instr|Q[7,11,14,15]                             ; Merged with reg16:PR0_instr|Q[10]      ;
-; reg16:PR0_instr|Q[2]                                      ; Merged with reg16:PR0_instr|Q[13]      ;
-; reg16:PR1_instr|Q[7,11]                                   ; Merged with reg16:PR1_instr|Q[10]      ;
-; reg16:PR1_ctrl|Q[6]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_ctrl|Q[6]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR3_ctrl|Q[6]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR4_memdout|Q[0]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[9]       ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~22                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[10]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[1]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[11]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~23                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[12]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[2]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[13]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~24                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[14]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[3]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[15]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~25                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[16]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[4]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[17]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~26                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[18]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[5]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[19]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~27                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[20]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[6]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[21]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~28                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[22]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[7]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[23]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~29                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[24]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[8]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[25]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~30                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[26]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[9]                                    ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[27]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~31                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[28]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[10]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[29]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~32                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[30]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[11]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[31]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~33                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[32]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[12]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[33]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~34                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[34]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[13]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[35]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~35                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[36]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[14]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[37]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~36                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[38]      ; Lost fanout                            ;
-; reg16:PR4_memdout|Q[15]                                   ; Stuck at GND due to stuck port sclear  ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[39]      ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~37                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM~21                    ; Lost fanout                            ;
-; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[0..8,40] ; Lost fanout                            ;
-; reg16:PR1_ctrl|Q[4]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_ctrl|Q[4]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_LS7|Q[14]                                       ; Merged with reg3:PR2_rfa1|Q[1]         ;
-; reg16:PR1_ctrl|Q[3]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_ctrl|Q[3]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR1_ctrl|Q[5]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_ctrl|Q[5]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR1_ctrl|Q[15]                                      ; Stuck at GND due to stuck port data_in ;
-; reg16:PR3_ctrl|Q[5]                                       ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_ctrl|Q[15]                                      ; Stuck at GND due to stuck port data_in ;
-; reg16:PR2_lmloop|Q[0..15]                                 ; Stuck at GND due to stuck port data_in ;
-; reg3:PR2_rfa1|Q[2]                                        ; Merged with reg3:PR2_rfa1|Q[1]         ;
-; reg8:PR0_mux|Q[7]                                         ; Lost fanout                            ;
-; reg16:PR3_newd2|Q[0..15]                                  ; Lost fanout                            ;
-; reg16:PR1_ctrl|Q[2]                                       ; Merged with reg16:PR1_ctrl|Q[1]        ;
-; reg16:PR2_ctrl|Q[2]                                       ; Merged with reg16:PR2_ctrl|Q[1]        ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[14]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[14]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[14]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[14]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[13]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[13]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[13]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[13]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[12]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[12]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[12]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[12]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[11]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[11]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[11]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[11]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[10]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[10]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[10]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[10]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[9]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[9]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[9]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[9]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[8]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[8]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[8]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[8]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[7]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[7]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[7]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[7]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[6]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[6]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[6]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[6]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[5]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[5]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[5]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[5]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[4]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[4]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[4]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[4]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[3]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[3]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[3]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[3]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[2]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[2]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[2]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[2]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[1]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[1]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[1]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[1]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[0]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[0]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[0]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[0]                     ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r5|Q[15]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r4|Q[15]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r2|Q[15]                    ; Lost fanout                            ;
-; stage2:stage2_2|rf:rf_1|reg16:r3|Q[15]                    ; Lost fanout                            ;
-; Total Number of Removed Registers = 276                   ;                                        ;
-+-----------------------------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                            ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-----------------------------------------------+
+; Name                                                                                           ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                           ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-----------------------------------------------+
+; stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_2ih1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16           ; 16           ; 16           ; 16           ; 256  ; db/pipeline_risc.ram0_memory_e411fb78.hdl.mif ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-----------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                               ;
-+---------------------+---------------------------+-----------------------------------------------------------------------------------------+
-; Register name       ; Reason for Removal        ; Registers Removed due to This Register                                                  ;
-+---------------------+---------------------------+-----------------------------------------------------------------------------------------+
-; reg16:PR2_ctrl|Q[6] ; Stuck at GND              ; reg16:PR3_ctrl|Q[6], reg16:PR4_memdout|Q[0],                                            ;
-;                     ; due to stuck port data_in ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[9],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~22,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[10], reg16:PR4_memdout|Q[1],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[11],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~23,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[12], reg16:PR4_memdout|Q[2],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[13],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~24,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[14], reg16:PR4_memdout|Q[3],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[15],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~25,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[16], reg16:PR4_memdout|Q[4],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[17],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~26,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[18], reg16:PR4_memdout|Q[5],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[19],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~27,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[20], reg16:PR4_memdout|Q[6],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[21],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~28,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[22], reg16:PR4_memdout|Q[7],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[23],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~29,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[24], reg16:PR4_memdout|Q[8],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[25],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~30,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[26], reg16:PR4_memdout|Q[9],           ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[27],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~31,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[28], reg16:PR4_memdout|Q[10],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[29],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~32,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[30], reg16:PR4_memdout|Q[11],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[31],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~33,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[32], reg16:PR4_memdout|Q[12],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[33],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~34,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[34], reg16:PR4_memdout|Q[13],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[35],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~35,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[36], reg16:PR4_memdout|Q[14],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[37],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~36,                                                 ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[38], reg16:PR4_memdout|Q[15],          ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[39],                                   ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM~37, stage4:stage4_1|memory:data_mem|RAM~21,         ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[0],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[1],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[2],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[3],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[4],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[5],                                    ;
-;                     ;                           ; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[40], reg16:PR1_ctrl|Q[4],              ;
-;                     ;                           ; reg16:PR2_ctrl|Q[4], reg16:PR1_ctrl|Q[3], reg16:PR1_ctrl|Q[5], reg16:PR2_ctrl|Q[5],     ;
-;                     ;                           ; reg16:PR1_ctrl|Q[15], reg16:PR3_ctrl|Q[5], reg16:PR2_ctrl|Q[15],                        ;
-;                     ;                           ; reg16:PR2_lmloop|Q[10], reg16:PR2_lmloop|Q[15], reg16:PR2_lmloop|Q[1],                  ;
-;                     ;                           ; reg16:PR3_newd2|Q[0], reg16:PR3_newd2|Q[1], reg16:PR3_newd2|Q[2], reg16:PR3_newd2|Q[3], ;
-;                     ;                           ; reg16:PR3_newd2|Q[4], reg16:PR3_newd2|Q[5], reg16:PR3_newd2|Q[6], reg16:PR3_newd2|Q[7], ;
-;                     ;                           ; reg16:PR3_newd2|Q[8], reg16:PR3_newd2|Q[9], reg16:PR3_newd2|Q[10],                      ;
-;                     ;                           ; reg16:PR3_newd2|Q[11], reg16:PR3_newd2|Q[12], reg16:PR3_newd2|Q[13],                    ;
-;                     ;                           ; reg16:PR3_newd2|Q[14], reg16:PR3_newd2|Q[15], stage2:stage2_2|rf:rf_1|reg16:r2|Q[14],   ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[13], stage2:stage2_2|rf:rf_1|reg16:r2|Q[12],         ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[11], stage2:stage2_2|rf:rf_1|reg16:r2|Q[10],         ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[9], stage2:stage2_2|rf:rf_1|reg16:r2|Q[8],           ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[7], stage2:stage2_2|rf:rf_1|reg16:r2|Q[6],           ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[5], stage2:stage2_2|rf:rf_1|reg16:r2|Q[4],           ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[3], stage2:stage2_2|rf:rf_1|reg16:r2|Q[2],           ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[1], stage2:stage2_2|rf:rf_1|reg16:r2|Q[0],           ;
-;                     ;                           ; stage2:stage2_2|rf:rf_1|reg16:r2|Q[15]                                                  ;
-; reg16:PR1_LS7|Q[6]  ; Stuck at GND              ; reg16:PR2_LS7|Q[6], reg16:PR3_LS7|Q[6], reg16:PR4_LS7|Q[6]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[5]  ; Stuck at GND              ; reg16:PR2_LS7|Q[5], reg16:PR3_LS7|Q[5], reg16:PR4_LS7|Q[5]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[4]  ; Stuck at GND              ; reg16:PR2_LS7|Q[4], reg16:PR3_LS7|Q[4], reg16:PR4_LS7|Q[4]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[3]  ; Stuck at GND              ; reg16:PR2_LS7|Q[3], reg16:PR3_LS7|Q[3], reg16:PR4_LS7|Q[3]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[2]  ; Stuck at GND              ; reg16:PR2_LS7|Q[2], reg16:PR3_LS7|Q[2], reg16:PR4_LS7|Q[2]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[1]  ; Stuck at GND              ; reg16:PR2_LS7|Q[1], reg16:PR3_LS7|Q[1], reg16:PR4_LS7|Q[1]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-; reg16:PR1_LS7|Q[0]  ; Stuck at GND              ; reg16:PR2_LS7|Q[0], reg16:PR3_LS7|Q[0], reg16:PR4_LS7|Q[0]                              ;
-;                     ; due to stuck port data_in ;                                                                                         ;
-+---------------------+---------------------------+-----------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; reg16:PR1_LS7|Q[0..6]                  ; Stuck at GND due to stuck port data_in ;
+; reg16:PR2_LS7|Q[0..6]                  ; Stuck at GND due to stuck port data_in ;
+; reg16:PR3_LS7|Q[0..6]                  ; Stuck at GND due to stuck port data_in ;
+; reg16:PR4_LS7|Q[0..6]                  ; Stuck at GND due to stuck port data_in ;
+; reg16:PR1_SE9|Q[8..15]                 ; Merged with reg16:PR1_instr|Q[8]       ;
+; reg16:PR1_LS7|Q[15]                    ; Merged with reg16:PR1_instr|Q[8]       ;
+; reg16:PR1_SE9|Q[7]                     ; Merged with reg16:PR1_instr|Q[7]       ;
+; reg16:PR1_LS7|Q[14]                    ; Merged with reg16:PR1_instr|Q[7]       ;
+; reg16:PR1_SE9|Q[6]                     ; Merged with reg16:PR1_instr|Q[6]       ;
+; reg16:PR1_LS7|Q[13]                    ; Merged with reg16:PR1_instr|Q[6]       ;
+; reg16:PR1_SE9|Q[5]                     ; Merged with reg16:PR1_instr|Q[5]       ;
+; reg16:PR1_SE6|Q[5..15]                 ; Merged with reg16:PR1_instr|Q[5]       ;
+; reg16:PR1_LS7|Q[12]                    ; Merged with reg16:PR1_instr|Q[5]       ;
+; reg16:PR1_SE9|Q[4]                     ; Merged with reg16:PR1_instr|Q[4]       ;
+; reg16:PR1_SE6|Q[4]                     ; Merged with reg16:PR1_instr|Q[4]       ;
+; reg16:PR1_LS7|Q[11]                    ; Merged with reg16:PR1_instr|Q[4]       ;
+; reg16:PR1_SE9|Q[3]                     ; Merged with reg16:PR1_instr|Q[3]       ;
+; reg16:PR1_SE6|Q[3]                     ; Merged with reg16:PR1_instr|Q[3]       ;
+; reg16:PR1_LS7|Q[10]                    ; Merged with reg16:PR1_instr|Q[3]       ;
+; reg16:PR1_SE9|Q[2]                     ; Merged with reg16:PR1_LS7|Q[9]         ;
+; reg16:PR1_SE6|Q[2]                     ; Merged with reg16:PR1_LS7|Q[9]         ;
+; reg16:PR1_SE9|Q[1]                     ; Merged with reg16:PR1_LS7|Q[8]         ;
+; reg16:PR1_SE6|Q[1]                     ; Merged with reg16:PR1_LS7|Q[8]         ;
+; reg16:PR1_SE9|Q[0]                     ; Merged with reg16:PR1_LS7|Q[7]         ;
+; reg16:PR1_SE6|Q[0]                     ; Merged with reg16:PR1_LS7|Q[7]         ;
+; reg16:PR2_SE6|Q[5..15]                 ; Merged with reg16:PR2_LS7|Q[12]        ;
+; reg16:PR2_SE6|Q[4]                     ; Merged with reg16:PR2_LS7|Q[11]        ;
+; reg16:PR2_SE6|Q[3]                     ; Merged with reg16:PR2_LS7|Q[10]        ;
+; reg16:PR2_SE6|Q[2]                     ; Merged with reg16:PR2_LS7|Q[9]         ;
+; reg16:PR2_SE6|Q[1]                     ; Merged with reg16:PR2_LS7|Q[8]         ;
+; reg16:PR2_SE6|Q[0]                     ; Merged with reg16:PR2_LS7|Q[7]         ;
+; reg16:PR0_instr|Q[8]                   ; Merged with reg16:PR0_instr|Q[12]      ;
+; Total Number of Removed Registers = 83 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                 ;
++--------------------+---------------------------+------------------------------------------------------------+
+; Register name      ; Reason for Removal        ; Registers Removed due to This Register                     ;
++--------------------+---------------------------+------------------------------------------------------------+
+; reg16:PR1_LS7|Q[6] ; Stuck at GND              ; reg16:PR2_LS7|Q[6], reg16:PR3_LS7|Q[6], reg16:PR4_LS7|Q[6] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[5] ; Stuck at GND              ; reg16:PR2_LS7|Q[5], reg16:PR3_LS7|Q[5], reg16:PR4_LS7|Q[5] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[4] ; Stuck at GND              ; reg16:PR2_LS7|Q[4], reg16:PR3_LS7|Q[4], reg16:PR4_LS7|Q[4] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[3] ; Stuck at GND              ; reg16:PR2_LS7|Q[3], reg16:PR3_LS7|Q[3], reg16:PR4_LS7|Q[3] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[2] ; Stuck at GND              ; reg16:PR2_LS7|Q[2], reg16:PR3_LS7|Q[2], reg16:PR4_LS7|Q[2] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[1] ; Stuck at GND              ; reg16:PR2_LS7|Q[1], reg16:PR3_LS7|Q[1], reg16:PR4_LS7|Q[1] ;
+;                    ; due to stuck port data_in ;                                                            ;
+; reg16:PR1_LS7|Q[0] ; Stuck at GND              ; reg16:PR2_LS7|Q[0], reg16:PR3_LS7|Q[0], reg16:PR4_LS7|Q[0] ;
+;                    ; due to stuck port data_in ;                                                            ;
++--------------------+---------------------------+------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -625,14 +432,43 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 317   ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 16    ;
-; Number of registers using Asynchronous Clear ; 317   ;
+; Total registers                              ; 510   ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 457   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 64    ;
+; Number of registers using Clock Enable       ; 235   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++----------------------------------------------------------------+
+; Inverted Register Statistics                                   ;
++------------------------------------------------------+---------+
+; Inverted Register                                    ; Fan out ;
++------------------------------------------------------+---------+
+; stage4:stage4_1|memory:data_mem|RAM~35               ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[36] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[35] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[34] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[32] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[30] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[28] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[26] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[24] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[22] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[20] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[18] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[16] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[14] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[12] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[10] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM~36               ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[38] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[37] ; 1       ;
+; stage4:stage4_1|memory:data_mem|RAM_rtl_0_bypass[40] ; 1       ;
+; Total number of inverted registers = 20              ;         ;
++------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -689,8 +525,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[8]                                        ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |datapath|stage0:stage0_0|reg16:PC|Q[5]                            ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[11]                                       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |datapath|stage0:stage0_0|reg16:PC|Q[4]                            ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[3]                           ;
 ; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[8]                           ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d1[6]     ;
@@ -703,7 +539,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +------------------------------------------------------------------------------------------------------------+
-; Source assignments for stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated ;
+; Source assignments for stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_2ih1:auto_generated ;
 +---------------------------------+--------------------+------+----------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                           ;
 +---------------------------------+--------------------+------+----------------------------------------------+
@@ -767,7 +603,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                         ; Untyped          ;
 ; WIDTH_ECCSTATUS                    ; 3                                             ; Untyped          ;
 ; DEVICE_FAMILY                      ; Cyclone IV E                                  ; Untyped          ;
-; CBXI_PARAMETER                     ; altsyncram_kig1                               ; Untyped          ;
+; CBXI_PARAMETER                     ; altsyncram_2ih1                               ; Untyped          ;
 +------------------------------------+-----------------------------------------------+------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -853,15 +689,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+-----------------------------------+
 ; en   ; Input ; Info     ; Stuck at VCC                      ;
 +------+-------+----------+-----------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "stage4:stage4_1"                                                                          ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; output_m40 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------+
@@ -1063,23 +890,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 3                           ;
-; cycloneiii_ff         ; 317                         ;
-;     CLR               ; 237                         ;
-;     CLR SLD           ; 16                          ;
-;     ENA CLR           ; 64                          ;
-; cycloneiii_lcell_comb ; 330                         ;
-;     arith             ; 46                          ;
-;         2 data inputs ; 17                          ;
+; cycloneiii_ff         ; 510                         ;
+;     CLR               ; 206                         ;
+;     CLR SCLR          ; 32                          ;
+;     ENA               ; 16                          ;
+;     ENA CLR           ; 219                         ;
+;     plain             ; 37                          ;
+; cycloneiii_lcell_comb ; 568                         ;
+;     arith             ; 61                          ;
+;         2 data inputs ; 32                          ;
 ;         3 data inputs ; 29                          ;
-;     normal            ; 284                         ;
+;     normal            ; 507                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 23                          ;
-;         3 data inputs ; 69                          ;
-;         4 data inputs ; 189                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 27                          ;
+;         3 data inputs ; 133                         ;
+;         4 data inputs ; 340                         ;
+; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 13.20                       ;
-; Average LUT depth     ; 6.39                        ;
+; Max LUT depth         ; 16.20                       ;
+; Average LUT depth     ; 7.17                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1098,7 +928,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 29 16:25:13 2018
+    Info: Processing started: Thu Nov 29 18:00:53 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline_risc -c pipeline_risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_unit.vhd
@@ -1182,7 +1012,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file stage2.
     Info (12022): Found design unit 1: stage2-behave File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 23
     Info (12023): Found entity 1: stage2 File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 6
 Info (12127): Elaborating entity "datapath" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(167): object "output_m40" assigned a value but never read File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 167
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(170): object "cout" assigned a value but never read File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 170
 Info (12128): Elaborating entity "stage0" for hierarchy "stage0:stage0_0" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 181
 Info (12128): Elaborating entity "reg16" for hierarchy "stage0:stage0_0|reg16:PC" File: /home/ishank/Desktop/pipelined_RISC/stage0.vhd Line: 54
@@ -1206,19 +1035,18 @@ Info (12128): Elaborating entity "rf" for hierarchy "stage2:stage2_2|rf:rf_1" Fi
 Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|rf:rf_1|mux2:M1_2" File: /home/ishank/Desktop/pipelined_RISC/rf_Updated.vhd Line: 46
 Info (12128): Elaborating entity "mux8" for hierarchy "stage2:stage2_2|rf:rf_1|mux8:M1" File: /home/ishank/Desktop/pipelined_RISC/rf_Updated.vhd Line: 56
 Info (12128): Elaborating entity "DH_stall" for hierarchy "stage2:stage2_2|DH_stall:DH" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 70
-Info (12128): Elaborating entity "wrb_edit" for hierarchy "wrb_edit:ctrl_edit" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 238
-Info (12128): Elaborating entity "adder16" for hierarchy "adder16:adder16_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 248
+Info (12128): Elaborating entity "wrb_edit" for hierarchy "wrb_edit:ctrl_edit" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 239
+Info (12128): Elaborating entity "adder16" for hierarchy "adder16:adder16_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 249
 Info (12128): Elaborating entity "eightbitadder" for hierarchy "adder16:adder16_1|eightbitadder:a0" File: /home/ishank/Desktop/pipelined_RISC/adder16.vhd Line: 66
 Info (12128): Elaborating entity "fulladder" for hierarchy "adder16:adder16_1|eightbitadder:a0|fulladder:fa0" File: /home/ishank/Desktop/pipelined_RISC/adder16.vhd Line: 35
-Info (12128): Elaborating entity "stage3" for hierarchy "stage3:stage3_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 257
+Info (12128): Elaborating entity "stage3" for hierarchy "stage3:stage3_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 258
 Info (12128): Elaborating entity "mux2" for hierarchy "stage3:stage3_1|mux2:m_31" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 59
 Info (12128): Elaborating entity "alu" for hierarchy "stage3:stage3_1|alu:alu_1" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 64
 Info (12128): Elaborating entity "NAND16" for hierarchy "stage3:stage3_1|alu:alu_1|NAND16:N" File: /home/ishank/Desktop/pipelined_RISC/alu.vhd Line: 31
 Info (12128): Elaborating entity "forwarding_unit" for hierarchy "stage3:stage3_1|forwarding_unit:forwarding" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 66
-Info (12128): Elaborating entity "reg1" for hierarchy "reg1:zero_flag" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 274
-Info (12128): Elaborating entity "stage4" for hierarchy "stage4:stage4_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 286
-Warning (10541): VHDL Signal Declaration warning at stage4.vhd(8): used implicit default value for signal "output_m40" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ishank/Desktop/pipelined_RISC/stage4.vhd Line: 8
-Info (12128): Elaborating entity "stage5" for hierarchy "stage5:stage5_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 302
+Info (12128): Elaborating entity "reg1" for hierarchy "reg1:zero_flag" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 275
+Info (12128): Elaborating entity "stage4" for hierarchy "stage4:stage4_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 287
+Info (12128): Elaborating entity "stage5" for hierarchy "stage5:stage5_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 303
 Info (12128): Elaborating entity "mux4" for hierarchy "stage5:stage5_1|mux4:m_50" File: /home/ishank/Desktop/pipelined_RISC/stage5.vhd Line: 33
 Warning (276020): Inferred RAM node "stage4:stage4_1|memory:data_mem|RAM_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Info (276014): Found 1 instances of uninferred RAM logic
@@ -1257,38 +1085,20 @@ Info (12133): Instantiated megafunction "stage4:stage4_1|memory:data_mem|altsync
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/pipeline_risc.ram0_memory_e411fb78.hdl.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kig1.tdf
-    Info (12023): Found entity 1: altsyncram_kig1 File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 28
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a0" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 37
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a1" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 67
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a2" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 97
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a3" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 127
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a4" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 157
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a5" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 187
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a6" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 217
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a7" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 247
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a8" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 277
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a9" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 307
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a10" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 337
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a11" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 367
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a12" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 397
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a13" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 427
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a14" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 457
-        Warning (14320): Synthesized away node "stage4:stage4_1|memory:data_mem|altsyncram:RAM_rtl_0|altsyncram_kig1:auto_generated|ram_block1a15" File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_kig1.tdf Line: 487
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2ih1.tdf
+    Info (12023): Found entity 1: altsyncram_2ih1 File: /home/ishank/Desktop/pipelined_RISC/db/altsyncram_2ih1.tdf Line: 28
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 139 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 557 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 970 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 554 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 1284 megabytes
-    Info: Processing ended: Thu Nov 29 16:25:25 2018
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:25
+    Info (21061): Implemented 951 logic cells
+    Info (21064): Implemented 16 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 1290 megabytes
+    Info: Processing ended: Thu Nov 29 18:01:07 2018
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:30
 
 

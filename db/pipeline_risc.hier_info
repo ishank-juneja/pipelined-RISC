@@ -40,6 +40,7 @@ clk => reg3:PR4_rfa3.clk
 clk => reg16:PR4_memdout.clk
 clk => reg16:PR4_aluout.clk
 rst => create_bubble2.IN1
+rst => NOP_DH.IN1
 rst => create_bubble3.IN1
 rst => create_bubble5.IN1
 rst => stage0:stage0_0.rst
@@ -78,7 +79,7 @@ rst => reg16:PR4_LS7.reset
 rst => reg3:PR4_rfa3.reset
 rst => reg16:PR4_memdout.reset
 rst => reg16:PR4_aluout.reset
-output << control:ctrl.output[0]
+output <= control:ctrl.output[0]
 
 
 |datapath|stage0:stage0_0
@@ -6140,22 +6141,6 @@ new_d2_in[12] => memory:data_mem.din[12]
 new_d2_in[13] => memory:data_mem.din[13]
 new_d2_in[14] => memory:data_mem.din[14]
 new_d2_in[15] => memory:data_mem.din[15]
-output_m40[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-output_m40[1] <= output_m40[1].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[2] <= output_m40[2].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[3] <= output_m40[3].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[4] <= output_m40[4].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[5] <= output_m40[5].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[6] <= output_m40[6].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[7] <= output_m40[7].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[8] <= output_m40[8].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[9] <= output_m40[9].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[10] <= output_m40[10].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[11] <= output_m40[11].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[12] <= output_m40[12].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[13] <= output_m40[13].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[14] <= output_m40[14].DB_MAX_OUTPUT_PORT_TYPE
-output_m40[15] <= output_m40[15].DB_MAX_OUTPUT_PORT_TYPE
 mem_dout[0] <= memory:data_mem.dout[0]
 mem_dout[1] <= memory:data_mem.dout[1]
 mem_dout[2] <= memory:data_mem.dout[2]

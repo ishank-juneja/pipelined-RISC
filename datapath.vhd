@@ -65,10 +65,10 @@ end component;
 
 component stage4 is
 	port (	alu_out_in, new_d2_in: in std_logic_vector(15 downto 0);
-			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
+			mem_dout, alu_out_out: out std_logic_vector(15 downto 0);			
 			rf_wr_4: out std_logic
 			);
 end component;
@@ -169,7 +169,7 @@ signal mem_dout, p_reg4_memdout, alu_out, p_reg4_aluout, p_reg3_aluout,
 
 signal 	sanidhya, zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
 		flush_first2, flush_first3, flush_first5, create_bubble2, create_bubble3, create_bubble5, rf_wr4, rf_wr5, 
-		branch_taken, not_stallDH, not_pause, jlr_ins : std_logic; 
+		branch_taken, not_stallDH, not_pause, jlr_ins, NOP_DH : std_logic; 
 begin 
 sanidhya <= control_signal(0) and '1';
 
@@ -223,6 +223,7 @@ stage2_2: stage2 port map( p_reg1_pc=>p_reg1_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg
 
 --Interface registers for the 2--3 interface
 --If a buuble/NOP is required to be introduced, then reset regs
+NOP_DH <= stall_DH or rst;
 PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset => rst, Q => p_reg2_pc );
 PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_SE6 );
 PR2_LS7 : reg16 port map(D => p_reg1_LS7 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_LS7 );
@@ -233,7 +234,7 @@ PR2_rfa2 : reg3 port map(D => output_rfa2 ,clk => clk, WR => '1', reset => rst, 
 PR2_rfa3 : reg3 port map(D => output_rfa3 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa3 );
 
 --Creating a bubble in just control signals should be enough
-create_bubble3 <= rst or flush_first3 or flush_first5;
+create_bubble3 <= rst or flush_first3 or flush_first5 or NOP_DH;
 PR2_ctrl : reg16 port map(D => p_reg1_ctrl, clk=>clk, WR=>'1', reset => create_bubble3, Q => temp_ctrl);
 ctrl_edit : wrb_edit port map(bits => p_reg2_SE6(1 downto 0), ctrl => temp_ctrl, carry => carry_out,
 								zero => zero_out, new_ctrl => p_reg2_ctrl);
@@ -283,7 +284,7 @@ flush_first3 <= '1' when (branch_taken = '1' or jlr_ins = '1') else
 		
 ------------------Data Memory Access-----------------
 --MEM: Stage 4
-stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_out=> p_reg3_aluout,
+stage4_1: stage4 port map(mem_dout=> mem_dout, alu_out_out=> p_reg3_aluout,
 			control_signal=> p_reg3_ctrl,
 			clk=> clk,rst => rst,
 			rf_wr_4=> rf_wr4,
