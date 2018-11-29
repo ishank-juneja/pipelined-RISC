@@ -171,7 +171,7 @@ signal 	sanidhya, zero, zero_out, carry, carry_out, cout, m51_select, m3b_select
 		flush_first2, flush_first3, flush_first5, create_bubble2, create_bubble3, create_bubble5, rf_wr4, rf_wr5, 
 		branch_taken, not_stallDH, not_pause, jlr_ins : std_logic; 
 begin 
-sanidhya <= control_signal(0) or '1';
+sanidhya <= control_signal(0) and '1';
 
 -------------Instruction Fetch--------------------	
 --Stall pipeline for LM and SM instructions 	
