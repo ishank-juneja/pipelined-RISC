@@ -43,7 +43,7 @@ begin
 	if(reset = '1') then
 			Q<="00000000";
 	else
-		if rising_edge(clk) then
+		if falling_edge(clk) then
 			if(WR = '1') then
 				Q <= D;
 			end if;
@@ -70,7 +70,7 @@ begin
 	if(reset = '1') then
 			Q<="000";
 	else
-		if rising_edge(clk) then
+		if falling_edge(clk) then
 			if(WR = '1') then
 				Q <= D;
 			end if;
@@ -98,7 +98,7 @@ begin
 	if(reset = '1') then
 			Q<='0';
 	else
-		if rising_edge(clk) then
+		if falling_edge(clk) then
 			if(WR = '1') then
 				Q <= D;
 			end if;
