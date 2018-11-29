@@ -19,8 +19,8 @@ use ieee.std_logic_1164.all;
 entity BEQ_JLR_stall is
 	port (
 		branch_taken : in std_logic;	--Whether branch taken		
-		beq_ins : in std_logic	--whether current instruction in EX stage 3 is beq
-		jlr_ins : in std_logic	--whether current instruction in EX stage 3 is JLR
+		beq_ins : in std_logic;	--whether current instruction in EX stage 3 is beq
+		jlr_ins : in std_logic;	--whether current instruction in EX stage 3 is JLR
 		--------------------------------- 	
 		flush_first3	: out std_logic	--kill bit to flush the pipeline stages 0, 1 and 2		
 		);  
@@ -30,7 +30,8 @@ architecture behav of BEQ_JLR_stall is
 ------------- Architechture Begins------------------
 begin
 
-flush_first3 <= '1' when ((branch_taken and beq_ins) or jlr_ins)					
+flush_first3 <= '1' when ((branch_taken = '1' and beq_ins = '1') 
+									or jlr_ins = '1')					
 else 
 '0';
 		

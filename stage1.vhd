@@ -24,7 +24,9 @@ component encoder is
 	port (input : in std_logic_vector(7 downto 0);
 			output : out std_logic_vector(2 downto 0));
 end component;
+
 signal out_pe: std_logic_vector(2 downto 0);
+
 begin
 PE : encoder port map(input => p_reg0_m10, output => out_pe);
 DE : decoder port map(t3 => p_reg0_m10, input => out_pe, next_t3 => output_decoder, done=>done);

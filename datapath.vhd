@@ -44,7 +44,7 @@ component stage2 is
 			output_d1, output_d2 : out std_logic_vector(15 downto 0);
 			rfa3, rfa1, rfa2: out std_logic_vector(2 downto 0);
 			r7_wr : out std_logic;
-			stall_DH : out std_logic-								 
+			stall_DH : out std_logic								 
 		);
 end component;
 
@@ -60,12 +60,13 @@ component stage3 is
 end component;
 
 component stage4 is
-	port (output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
+	port (	alu_out_in, output_adder, new_d2_in: in std_logic_vector(15 downto 0);
+			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
-			clk,rst,zero : in std_logic;
+			clk,rst: in std_logic;
+			----------------------------------------------------
 			rf_wr_4: out std_logic;
-			M50_4 : out std_logic_vector(1 downto 0);
-			alu_out_in, incPC_in, output_adder, new_d1_in, new_d2_in: in std_logic_vector(15 downto 0)
+			M50_4 : out std_logic_vector(1 downto 0)
 			);
 end component;
 
@@ -75,7 +76,7 @@ component stage5 is
 			alu_out_in, PC_in, output_LS7_in, mem_dout : in std_logic_vector(15 downto 0);
 			rf_wr_5 : out std_logic;
 			rfa3_in: in std_logic_vector(2 downto 0);
-			rfa3_out: out std_logic_vector(2 downto 0);
+			rfa3_out: out std_logic_vector(2 downto 0)
 			);
 end component;
 
@@ -86,11 +87,11 @@ component reg16 is
 			Q : out std_logic_vector(15 downto 0));
 end component;
 
-entity reg1 is
+component reg1 is
 	port (D : in std_logic;
 			clk, WR, reset: in std_logic; 
 			Q : out std_logic);
-end entity;
+end component;
 
 component reg3 is
 	port (D : in std_logic_vector(2 downto 0);
@@ -107,7 +108,7 @@ end component;
 --------------------Generates all control signals as per op code---------------
 component control is
 	port (instruction : in std_logic_vector(15 downto 0);
-		output : out std_logic_vector(15 downto 0)
+			output : out std_logic_vector(15 downto 0)
 			);
 end component;
 
@@ -134,8 +135,8 @@ end component;
 component BEQ_JLR_stall is
 	port (
 		branch_taken : in std_logic;	--Whether branch taken		
-		beq_ins : in std_logic	--whether current instruction in EX stage 3 is beq
-		jlr_ins : in std_logic	--whether current instruction in EX stage 3 is JLR
+		beq_ins : in std_logic;	--whether current instruction in EX stage 3 is beq
+		jlr_ins : in std_logic;	--whether current instruction in EX stage 3 is JLR
 		--------------------------------- 	
 		flush_first3	: out std_logic	--kill bit to flush the pipeline stages 0, 1 and 2		
 		);  
@@ -153,15 +154,15 @@ signal p_reg3_pc,output_d1,output_d2 : std_logic_vector(15 downto 0);
 
 signal r7_wr,rf_write,done,pause,carry_sig,zero_sig,stall_DH: std_logic;
 signal output_m10,p_reg0_m10,p_reg1_m10,output_decoder: std_logic_vector(7 downto 0);
-signal control_signal,p_reg1_ctrl,p_reg2_ctrl,p_reg3_ctrl,p_reg4_ctrl,temp_ctrl: std_logic_vector(15 downto 0);
+signal control_signal,p_reg1_ctrl,p_reg2_ctrl,p_reg3_ctrl,p_reg4_ctrl,temp_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
 signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_reg3_rfa3 : std_logic_vector(2 downto 0);
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
 
 signal mem_dout,p_reg4_memdout ,alu_out,p_reg4_aluout,p_reg3_aluout,new_d2,new_d1,p_reg3_newd1,p_reg3_newd2,incPC,p_reg3_adderout,adder_out,
-output_m_2x,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx  : std_logic_vector(15 downto 0);
+output_m_2x,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx, p_reg2_adderout : std_logic_vector(15 downto 0);
 signal zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
-		flush_first2, flush_first3, create_bubble2, create_bubble3: std_logic;
+		flush_first2, flush_first3, create_bubble2, create_bubble3, rf_wr4, rf_wr5, beq_taken: std_logic;
 
 begin 
 
@@ -188,7 +189,7 @@ stage1_1: stage1 port map(instruction => p_reg0_instr, p_reg0_m10 => p_reg0_m10,
 						output_SE9 => output_SE9, output_SE6 => output_SE6, output_LS7 => output_LS7, 
 						done => done, output_pe => output_pe, output_decoder => output_decoder);
 --Generate control signals, Decode instruction 
-ctrl: control port map(instruction=> p_reg0_instr,carry=>carry_sig,zero=>zero_sig,output=>control_signal);
+ctrl: control port map(instruction=> p_reg0_instr, output=>control_signal);
 
 --Interface registers for the 1--2 interface
 PR1_SE9 : reg16 port map(D => output_SE9 ,clk => clk, WR => not(stall_DH), reset=>rst, Q => p_reg1_SE9 );
@@ -227,10 +228,12 @@ PR2_lmloop : reg16 port map(D => output_m31, clk=>clk, WR=>'1',reset=>rst, Q=>in
 --MUX for PC relative shift, if at all
 m_2x : mux2 port map(a1 => p_reg1_SE6, a0 => p_reg1_SE9, s => p_reg1_ctrl(10), o => output_m_2x);
 --Dedicated 16 bit Adder for pc computation
-adder16_1 : adder_16 port map(a => output_m_2x, b=> p_reg1_pc, cin=> '0', cout => cout, o => adder_out); 
+adder16_1 : adder16 port map(a => output_m_2x, b=> p_reg1_pc, cin=> '0', cout => cout, o => adder_out); 
 incPC <= std_logic_vector(unsigned(output_pc)+1);
 
-ctrl_edit : wrb_edit port map(instr => p_reg2_instr, ctrl => temp_ctrl, carry => carry_out,
+--instr was mapped to p_reg2_instr 
+--Have replaced with p_reg1_instr
+ctrl_edit : wrb_edit port map(instr => p_reg1_instr, ctrl => temp_ctrl, carry => carry_out,
 								zero => zero_out, new_ctrl => p_reg2_ctrl);
 --For Flushing pipeline in case of JAL instruction
 --These 2 bits form a signature for JAL
@@ -239,26 +242,26 @@ flush_first2 <= p_reg1_ctrl(2) and p_reg1_ctrl(4);
 -------------------Execute Stage-----------------------
 --EX: Stage 3
 stage3_1: stage3 port map(output_SE6 => p_reg2_SE6 , rf_d1 => p_reg2_d1, rf_d2 => p_reg2_d2, PC_4 => p_reg3_pc, 
-						aluout_4 => p_reg3_aluout, LS7_4=> p_reg3_LS7, input1_m34=> input_lmloop, input_d3 => output_m50,
-						control_signal => p_reg2_ctrl, clk => clk, rst => rst,rf_wr_4=> rf_wr4,rf_wr_5=> rf_wr5,
+						aluout_4 => p_reg3_aluout, LS7_4 => p_reg3_LS7, input1_m34=> input_lmloop, input_d3 => output_m50,
+						control_signal => p_reg2_ctrl, clk => clk, rst => rst, rf_wr_4 => rf_wr4, rf_wr_5=> rf_wr5,
 						M50_4 => p_reg4_ctrl(1 downto 0), carry => carry, zero => zero, alu_out => alu_out, output_m31 => output_m31,
 						new_d1_out => new_d1,new_d2_out => new_d2, rf_a1 => p_reg2_rfa1,rf_a2 => p_reg2_rfa2,
 						stage4rf_a3 => p_reg3_rfa3,stage5rf_a3=> p_reg4_rfa3);
 
 --Interface Registers for 3--4
-PR3_pc : reg16 port map(D => p_reg2_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_pc );
+PR3_pc : reg16 port map(D => p_reg2_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_pc);
 PR3_ctrl : reg16 port map(D=>p_reg2_ctrl, clk=>clk, WR=>'1',reset=>rst, Q=>p_reg3_ctrl);
-PR3_LS7 : reg16 port map(D => p_reg2_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_LS7 );
-PR3_rfa3 : reg3 port map(D => p_reg2_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_rfa3 );
-PR3_aluout : reg16 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout );
-PR3_newd2 : reg16 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2 );
-zero_flag : reg1 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out );
-carry_flag : reg1 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out );
+PR3_LS7 : reg16 port map(D => p_reg2_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_LS7);
+PR3_rfa3 : reg3 port map(D => p_reg2_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_rfa3);
+PR3_aluout : reg16 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout);
+PR3_newd2 : reg16 port map(D => new_d2 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_newd2);
+zero_flag : reg1 port map(D => zero ,clk => clk, WR => p_reg2_ctrl(7), reset=>rst, Q => zero_out);
+carry_flag : reg1 port map(D => carry ,clk => clk, WR => p_reg2_ctrl(8), reset=>rst, Q => carry_out);
 --A bit to decide whether branch will be taken, based on 
 --control signals across the DP in current cycle at various MUX
-beq_taken <= m3b_select and not(m51_select)
+beq_taken <= m3b_select and not(m51_select);
 flush_3 : BEQ_JLR_stall port map(branch_taken => beq_taken, beq_ins => p_reg2_ctrl(10), 
-									jlr_ins => p_reg2_ctrl(3), flush_first3 => flush_first3)
+									jlr_ins => p_reg2_ctrl(3), flush_first3 => flush_first3);
 
 ------------------Data Memory Access-----------------
 --MEM: Stage 4

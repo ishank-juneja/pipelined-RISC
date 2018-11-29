@@ -4,12 +4,13 @@ library std;
 use std.standard.all;
 
 entity stage4 is
-	port (output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
+	port (	alu_out_in, output_adder, new_d2_in: in std_logic_vector(15 downto 0);
+			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
+			----------------------------------------------------
 			rf_wr_4: out std_logic;
-			M50_4 : out std_logic_vector(1 downto 0);
-			alu_out_in, output_adder, new_d2_in: in std_logic_vector(15 downto 0)
+			M50_4 : out std_logic_vector(1 downto 0)
 			);
 end entity;
 
@@ -38,7 +39,7 @@ component mux2 is
 end component;
 
 signal m40_select: std_logic;
-signal output_m41;
+--signal output_m41;
 
 begin
 

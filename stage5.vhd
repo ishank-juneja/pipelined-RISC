@@ -8,7 +8,7 @@ entity stage5 is
 			alu_out_in, PC_in, output_LS7_in, mem_dout : in std_logic_vector(15 downto 0);
 			---------------------------------------------			
 			rf_wr_5 : out std_logic;
-			input_d3_out: out std_logic_vector(15 downto 0);
+			input_d3_out: out std_logic_vector(15 downto 0)
 			);
 end entity;
 

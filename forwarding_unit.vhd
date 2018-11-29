@@ -19,18 +19,18 @@ signal stage4_d3 : std_logic_vector(15 downto 0); 										--computes new outpu
 
 begin
 stage4_d3<= pc_4 when (M50_4="00") else
-			--	don't care when (M50_4="01") else		this case will be avoided using 1 cycle stall by hazard detection unit
+			--	don't care when (M50_4="01") else this case will be avoided using 1 cycle stall by hazard detection unit
 				aluout_4 when (M50_4="10") else
 				LS7_4 when (M50_4="11");
 
 --for new_d1:
-	new_d1<= stage4_d3 when (stage4_rf_wr='1' and rf_a1=stage4_a3) else
+new_d1<= stage4_d3 when (stage4_rf_wr='1' and rf_a1=stage4_a3) else
 				stage5_d3 when (stage5_rf_wr='1' and rf_a1=stage5_a3) else			--stage4 clash gets higher priority as necessary
 				rf_d1;
 				
 	
 --for new_d2:
-	new_d2<= stage4_d3 when (stage4_rf_wr='1' and rf_a2=stage4_a3) else
+new_d2<= stage4_d3 when (stage4_rf_wr='1' and rf_a2=stage4_a3) else
 				stage5_d3 when (stage5_rf_wr='1' and rf_a2=stage5_a3) else			--stage4 clash gets higher priority as necessary
 				rf_d1;
 	
