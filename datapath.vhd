@@ -6,7 +6,9 @@ use ieee.numeric_std.all;
 
 entity datapath is
 	port ( 
-		clk,rst : in std_logic );
+		clk,rst : in std_logic;
+		output : out std_logic
+		);
 end entity; 
 
 architecture behave of datapath is  
@@ -306,4 +308,6 @@ m_3b : mux2 port map(a1 => p_reg2_adderout, a0 => output_m3a, s => m3b_select, o
 --adder_out is a direct bypassed connection
 m_2xx:	mux2 port map(a1 => adder_out, a0 => incPC, s => m2xx_select, o => output_m2xx); 
 	
+--Dummy output
+output <= rst;
 end behave;
