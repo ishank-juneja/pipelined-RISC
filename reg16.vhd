@@ -10,7 +10,7 @@ end entity;
 architecture WhatDoYouCare of reg16 is
 begin 
 
-   process (clk) is 
+   process (clk, reset) is 
    begin
 	if(reset = '1') then
 			Q<="0000000000000000";
@@ -38,7 +38,7 @@ end entity;
 architecture WhatDoYouCare8 of reg8 is
 begin 
 
-   process (clk) is 
+   process (clk, reset) is 
    begin
 	if(reset = '1') then
 			Q<="00000000";
@@ -65,7 +65,7 @@ end entity;
 architecture WhatDoYouCare3 of reg3 is
 begin 
 
-   process (clk) is 
+   process (clk, reset) is 
    begin
 	if(reset = '1') then
 			Q<="000";
@@ -93,7 +93,7 @@ end entity;
 architecture WhatDoYouCare1 of reg1 is
 begin 
 
-   process (clk) is 
+   process (clk, reset) is 
    begin
 	if(reset = '1') then
 			Q<='0';
