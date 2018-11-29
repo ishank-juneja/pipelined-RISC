@@ -4,7 +4,7 @@ library std;
 use std.standard.all;
 
 entity stage4 is
-	port (	alu_out_in, output_adder, new_d2_in: in std_logic_vector(15 downto 0);
+	port (	alu_out_in, new_d2_in: in std_logic_vector(15 downto 0);
 			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
