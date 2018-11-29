@@ -28,8 +28,7 @@ begin
 		output  <= "110";
 	elsif(input(7) = '1') then
 		output  <= "111";
-	else
-		output <= "XXX";
+	else output <= "XXX";	
 	end if;
 end process;
 end behave;

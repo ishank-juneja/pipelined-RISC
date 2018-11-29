@@ -52,7 +52,7 @@ begin
 
 PC_WR<= not(pause) or r7_wr;
 PC : reg16 port map(D => input_pc, clk => clk, WR => PC_WR, reset=>rst, Q => output_pc_sig);
-InstrMem : memory port map(en => '1', clk => clk, RD => control_signal(14), WR => '0', 
+InstrMem : memory port map(en => '1', clk => clk, RD => '1', WR => '0', --control_signal(14)
 							mem_a => output_pc_sig, din => "0000000000000000", dout => output_mem_sig);
 M10 : mux2 port map(a1 => output_decoder, a0 => output_mem_sig(7 downto 0), s => control_signal(15), o => output_m10);
 output_pc<=output_pc_sig;
