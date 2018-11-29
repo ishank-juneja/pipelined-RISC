@@ -5,7 +5,7 @@ use std.standard.all;
 
 entity stage2 is
 	port ( 	p_reg1_pc, p_reg1_instr, input_d3 : in std_logic_vector(15 downto 0);
-			p_reg1_ctrl : in std_logic_vector(19 downto 0);
+			p_reg1_ctrl : in std_logic_vector(15 downto 0);
 			clk, rst, p_reg4_wr : in std_logic;
 			input_a3, p_reg1_pe : in std_logic_vector(2 downto 0);
 			stage3mem_rd : in std_logic;--Control signal for inst currently in stage 3			
@@ -47,13 +47,14 @@ component mux2 is
 		port (a1,a0 : in std_logic_vector;
 				s : in std_logic;
 				o : out std_logic_vector);
-	end component;
+end component;
 
-	component mux4 is
+component mux4 is
 		port (a3,a2,a1,a0 : in std_logic_vector;
 				sel : in std_logic_vector(1 downto 0);
 				o : out std_logic_vector);
-	end component;
+end component;
+
 signal output_m21,output_m20,output_m22: std_logic_vector(2 downto 0);
 
 begin
@@ -68,8 +69,5 @@ rfa2 <= output_m22;
 rfa1 <= output_m20;
 DH : DH_stall port map(stage3mem_rd => stage3mem_rd, rf_a1 => output_m20, rf_a2 => output_m22,
 						stage3_a3 => stage3_a3, kill_bit => stall_DH); 
-		--------------------------------- 	
-		--kill_bit	: out std_logic	--kill bit to stall the pipeline, active high		)
-
 
 end behave;

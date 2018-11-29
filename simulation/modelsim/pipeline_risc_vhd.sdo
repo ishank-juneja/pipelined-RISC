@@ -15,8 +15,13 @@
 
 
 // 
-// Device: Altera 5M240ZT144C4 Package TQFP144
+// Device: Altera EP4CE22F17C6 Package FBGA256
 // 
+
+//
+// This file contains Slow Corner delays for the design using part EP4CE22F17C6,
+// with speed grade 6, core voltage 1.2V, and temperature 85 Celsius
+//
 
 // 
 // This SDF file should be used for ModelSim-Altera (VHDL) only
@@ -25,13 +30,18 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "datapath")
-  (DATE "11/27/2018 16:36:04")
+  (DATE "11/29/2018 11:13:02")
   (VENDOR "Altera")
   (PROGRAM "Quartus Prime")
   (VERSION "Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition")
   (DIVIDER .)
   (TIMESCALE 1 ps)
 
+	// No Timing Cells with timing info are found in the compiled design. A dummy dff Timing Cell is created.
+  (CELL
+    (CELLTYPE "dff")
+    (INSTANCE * )
+  )
 	// No Timing Cells with timing info are found in the compiled design. A dummy dff Timing Cell is created.
   (CELL
     (CELLTYPE "dff")

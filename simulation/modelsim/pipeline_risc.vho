@@ -17,20 +17,20 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition"
 
--- DATE "11/27/2018 16:36:04"
+-- DATE "11/29/2018 11:13:02"
 
 -- 
--- Device: Altera 5M240ZT144C4 Package TQFP144
+-- Device: Altera EP4CE22F17C6 Package FBGA256
 -- 
 
 -- 
 -- This VHDL file should be used for ModelSim-Altera (VHDL) only
 -- 
 
+LIBRARY CYCLONEIVE;
 LIBRARY IEEE;
-LIBRARY MAXV;
+USE CYCLONEIVE.CYCLONEIVE_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE MAXV.MAXV_COMPONENTS.ALL;
 
 ENTITY 	datapath IS
     PORT (
@@ -40,6 +40,8 @@ ENTITY 	datapath IS
 END datapath;
 
 -- Design Ports Information
+-- clk	=>  Location: PIN_L13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- rst	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 ARCHITECTURE structure OF datapath IS
@@ -54,6 +56,8 @@ SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
 SIGNAL ww_clk : std_logic;
 SIGNAL ww_rst : std_logic;
+SIGNAL \clk~input_o\ : std_logic;
+SIGNAL \rst~input_o\ : std_logic;
 
 BEGIN
 
@@ -63,25 +67,27 @@ ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
 
--- Location: PIN_77,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
-\clk~I\ : maxv_io
+-- Location: IOIBUF_X53_Y10_N15
+\clk~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
-	operation_mode => "input")
+	bus_hold => "false",
+	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	oe => GND,
-	padio => ww_clk);
+	i => ww_clk,
+	o => \clk~input_o\);
 
--- Location: PIN_2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
-\rst~I\ : maxv_io
+-- Location: IOIBUF_X40_Y34_N8
+\rst~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
-	operation_mode => "input")
+	bus_hold => "false",
+	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	oe => GND,
-	padio => ww_rst);
+	i => ww_rst,
+	o => \rst~input_o\);
 END structure;
 
 

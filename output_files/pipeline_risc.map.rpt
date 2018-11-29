@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pipeline_risc
-Thu Nov 29 08:46:16 2018
+Thu Nov 29 11:12:44 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -10,7 +10,42 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "reg16:PR4_aluout"
+ 10. Port Connectivity Checks: "reg16:PR4_memdout"
+ 11. Port Connectivity Checks: "reg3:PR4_rfa3"
+ 12. Port Connectivity Checks: "reg16:PR4_LS7"
+ 13. Port Connectivity Checks: "reg16:PR4_ctrl"
+ 14. Port Connectivity Checks: "reg16:PR4_pc"
+ 15. Port Connectivity Checks: "stage4:stage4_1|memory:data_mem"
+ 16. Port Connectivity Checks: "stage4:stage4_1"
+ 17. Port Connectivity Checks: "reg16:PR3_newd2"
+ 18. Port Connectivity Checks: "reg16:PR3_aluout"
+ 19. Port Connectivity Checks: "reg3:PR3_rfa3"
+ 20. Port Connectivity Checks: "reg16:PR3_LS7"
+ 21. Port Connectivity Checks: "reg16:PR3_ctrl"
+ 22. Port Connectivity Checks: "reg16:PR3_pc"
+ 23. Port Connectivity Checks: "stage3:stage3_1|mux2:m_31"
+ 24. Port Connectivity Checks: "adder16:adder16_1"
+ 25. Port Connectivity Checks: "reg16:PR2_lmloop"
+ 26. Port Connectivity Checks: "reg16:PR2_adderout"
+ 27. Port Connectivity Checks: "reg16:PR2_ctrl"
+ 28. Port Connectivity Checks: "reg3:PR2_rfa3"
+ 29. Port Connectivity Checks: "reg3:PR2_rfa2"
+ 30. Port Connectivity Checks: "reg3:PR2_rfa1"
+ 31. Port Connectivity Checks: "reg16:PR2_d2"
+ 32. Port Connectivity Checks: "reg16:PR2_d1"
+ 33. Port Connectivity Checks: "reg16:PR2_LS7"
+ 34. Port Connectivity Checks: "reg16:PR2_SE6"
+ 35. Port Connectivity Checks: "reg16:PR2_pc"
+ 36. Port Connectivity Checks: "reg8:PR0_mux"
+ 37. Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem"
+ 38. Post-Synthesis Netlist Statistics for Top Partition
+ 39. Elapsed Time Per Partition
+ 40. Analysis & Synthesis Messages
 
 
 
@@ -37,20 +72,20 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Nov 29 08:46:16 2018           ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 29 11:12:44 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pipeline_risc                               ;
 ; Top-level Entity Name              ; datapath                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 2                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -152,13 +187,383 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                   ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                            ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+; forwarding_unit.vhd              ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd ;         ;
+; stage3.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage3.vhd          ;         ;
+; DH_stall.vhd                     ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/DH_stall.vhd        ;         ;
+; control.vhd                      ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/control.vhd         ;         ;
+; stage5.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage5.vhd          ;         ;
+; stage4.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage4.vhd          ;         ;
+; CH_stall.vhd                     ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/CH_stall.vhd        ;         ;
+; stage0.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage0.vhd          ;         ;
+; rf_Updated.vhd                   ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/rf_Updated.vhd      ;         ;
+; reg16.vhd                        ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/reg16.vhd           ;         ;
+; nand16.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/nand16.vhd          ;         ;
+; mux8.vhd                         ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/mux8.vhd            ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/memory.vhd          ;         ;
+; extenders.vhd                    ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/extenders.vhd       ;         ;
+; encoder.vhd                      ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/encoder.vhd         ;         ;
+; decoder.vhd                      ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/decoder.vhd         ;         ;
+; alu.vhd                          ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/alu.vhd             ;         ;
+; adder16.vhd                      ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/adder16.vhd         ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/datapath.vhd        ;         ;
+; stage1.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage1.vhd          ;         ;
+; stage2.vhd                       ; yes             ; User VHDL File  ; /home/ishank/Desktop/pipelined_RISC/stage2.vhd          ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+;                                             ;       ;
+; Total combinational functions               ; 0     ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+;     -- Dedicated logic registers            ; 0     ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 2     ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 2     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |datapath                  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 2    ; 0            ; |datapath           ; datapath    ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "reg16:PR4_aluout" ;
++------+-------+----------+--------------------+
+; Port ; Type  ; Severity ; Details            ;
++------+-------+----------+--------------------+
+; wr   ; Input ; Info     ; Stuck at VCC       ;
++------+-------+----------+--------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "reg16:PR4_memdout" ;
++------+-------+----------+---------------------+
+; Port ; Type  ; Severity ; Details             ;
++------+-------+----------+---------------------+
+; wr   ; Input ; Info     ; Stuck at VCC        ;
++------+-------+----------+---------------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg3:PR4_rfa3" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg16:PR4_LS7" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "reg16:PR4_ctrl" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; wr   ; Input ; Info     ; Stuck at VCC     ;
++------+-------+----------+------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR4_pc" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "stage4:stage4_1|memory:data_mem" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; en   ; Input ; Info     ; Stuck at VCC                      ;
++------+-------+----------+-----------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "stage4:stage4_1"                                                                          ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; output_m40 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "reg16:PR3_newd2" ;
++------+-------+----------+-------------------+
+; Port ; Type  ; Severity ; Details           ;
++------+-------+----------+-------------------+
+; wr   ; Input ; Info     ; Stuck at VCC      ;
++------+-------+----------+-------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "reg16:PR3_aluout" ;
++------+-------+----------+--------------------+
+; Port ; Type  ; Severity ; Details            ;
++------+-------+----------+--------------------+
+; wr   ; Input ; Info     ; Stuck at VCC       ;
++------+-------+----------+--------------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg3:PR3_rfa3" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg16:PR3_LS7" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "reg16:PR3_ctrl" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; wr   ; Input ; Info     ; Stuck at VCC     ;
++------+-------+----------+------------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR3_pc" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "stage3:stage3_1|mux2:m_31" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; a0   ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adder16:adder16_1"                                                                  ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_lmloop" ;
++------+-------+----------+--------------------+
+; Port ; Type  ; Severity ; Details            ;
++------+-------+----------+--------------------+
+; wr   ; Input ; Info     ; Stuck at VCC       ;
++------+-------+----------+--------------------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_adderout" ;
++------+-------+----------+----------------------+
+; Port ; Type  ; Severity ; Details              ;
++------+-------+----------+----------------------+
+; wr   ; Input ; Info     ; Stuck at VCC         ;
++------+-------+----------+----------------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_ctrl" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; wr   ; Input ; Info     ; Stuck at VCC     ;
++------+-------+----------+------------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg3:PR2_rfa3" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg3:PR2_rfa2" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg3:PR2_rfa1" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_d2" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_d1" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_LS7" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++-------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_SE6" ;
++------+-------+----------+-----------------+
+; Port ; Type  ; Severity ; Details         ;
++------+-------+----------+-----------------+
+; wr   ; Input ; Info     ; Stuck at VCC    ;
++------+-------+----------+-----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg16:PR2_pc" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "reg8:PR0_mux" ;
++------+-------+----------+----------------+
+; Port ; Type  ; Severity ; Details        ;
++------+-------+----------+----------------+
+; wr   ; Input ; Info     ; Stuck at VCC   ;
++------+-------+----------+----------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "stage0:stage0_0|memory:InstrMem" ;
++------+-------+----------+-----------------------------------+
+; Port ; Type  ; Severity ; Details                           ;
++------+-------+----------+-----------------------------------+
+; en   ; Input ; Info     ; Stuck at VCC                      ;
+; wr   ; Input ; Info     ; Stuck at GND                      ;
+; din  ; Input ; Info     ; Stuck at GND                      ;
++------+-------+----------+-----------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 29 08:46:04 2018
+    Info: Processing started: Thu Nov 29 11:12:31 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline_risc -c pipeline_risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_unit.vhd
@@ -240,17 +645,89 @@ Info (12021): Found 2 design units, including 1 entities, in source file datapat
     Info (12022): Found design unit 1: datapath-behave File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 12
     Info (12023): Found entity 1: datapath File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file stage1.vhd
-    Info (12022): Found design unit 1: stage1-behave File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 16
+    Info (12022): Found design unit 1: stage1-behave File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 18
     Info (12023): Found entity 1: stage1 File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file stage2.vhd
     Info (12022): Found design unit 1: stage2-behave File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 23
     Info (12023): Found entity 1: stage2 File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 6
-Error (10346): VHDL error at datapath.vhd(268): formal port or parameter "output_adder" must have actual or default value File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 268
-Error (10784): HDL error at datapath.vhd(63): see declaration for object "output_adder" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 63
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 1229 megabytes
-    Error: Processing ended: Thu Nov 29 08:46:16 2018
-    Error: Elapsed time: 00:00:12
-    Error: Total CPU time (on all processors): 00:00:28
+Info (12127): Elaborating entity "datapath" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at datapath.vhd(158): used implicit default value for signal "temp_ctrl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 158
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(165): object "output_m40" assigned a value but never read File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 165
+Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(168): object "cout" assigned a value but never read File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 168
+Info (12128): Elaborating entity "stage0" for hierarchy "stage0:stage0_0" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 178
+Info (12128): Elaborating entity "reg16" for hierarchy "stage0:stage0_0|reg16:PC" File: /home/ishank/Desktop/pipelined_RISC/stage0.vhd Line: 53
+Warning (10492): VHDL Process Statement warning at reg16.vhd(15): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ishank/Desktop/pipelined_RISC/reg16.vhd Line: 15
+Info (12128): Elaborating entity "memory" for hierarchy "stage0:stage0_0|memory:InstrMem" File: /home/ishank/Desktop/pipelined_RISC/stage0.vhd Line: 54
+Info (12128): Elaborating entity "mux2" for hierarchy "stage0:stage0_0|mux2:M10" File: /home/ishank/Desktop/pipelined_RISC/stage0.vhd Line: 56
+Info (12128): Elaborating entity "reg8" for hierarchy "reg8:PR0_mux" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 188
+Warning (10492): VHDL Process Statement warning at reg16.vhd(43): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ishank/Desktop/pipelined_RISC/reg16.vhd Line: 43
+Info (12128): Elaborating entity "stage1" for hierarchy "stage1:stage1_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 192
+Info (12128): Elaborating entity "LS7" for hierarchy "stage1:stage1_1|LS7:LS7_1" File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 47
+Info (12128): Elaborating entity "SE9" for hierarchy "stage1:stage1_1|SE9:SE9_1" File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 48
+Info (12128): Elaborating entity "SE6" for hierarchy "stage1:stage1_1|SE6:SE6_1" File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 49
+Info (12128): Elaborating entity "encoder" for hierarchy "stage1:stage1_1|encoder:PE" File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 51
+Warning (10631): VHDL Process Statement warning at encoder.vhd(13): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: /home/ishank/Desktop/pipelined_RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[0]" at encoder.vhd(13) File: /home/ishank/Desktop/pipelined_RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[1]" at encoder.vhd(13) File: /home/ishank/Desktop/pipelined_RISC/encoder.vhd Line: 13
+Info (10041): Inferred latch for "output[2]" at encoder.vhd(13) File: /home/ishank/Desktop/pipelined_RISC/encoder.vhd Line: 13
+Info (12128): Elaborating entity "decoder" for hierarchy "stage1:stage1_1|decoder:DE" File: /home/ishank/Desktop/pipelined_RISC/stage1.vhd Line: 52
+Info (12128): Elaborating entity "control" for hierarchy "control:ctrl" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 196
+Info (12128): Elaborating entity "reg3" for hierarchy "reg3:PR1_pe" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 204
+Warning (10492): VHDL Process Statement warning at reg16.vhd(70): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ishank/Desktop/pipelined_RISC/reg16.vhd Line: 70
+Info (12128): Elaborating entity "stage2" for hierarchy "stage2:stage2_2" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 210
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_20" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 61
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_21" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 62
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_22" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 63
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|mux2:m_23" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 64
+Info (12128): Elaborating entity "rf" for hierarchy "stage2:stage2_2|rf:rf_1" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 65
+Info (12128): Elaborating entity "mux2" for hierarchy "stage2:stage2_2|rf:rf_1|mux2:M1_2" File: /home/ishank/Desktop/pipelined_RISC/rf_Updated.vhd Line: 46
+Info (12128): Elaborating entity "mux8" for hierarchy "stage2:stage2_2|rf:rf_1|mux8:M1" File: /home/ishank/Desktop/pipelined_RISC/rf_Updated.vhd Line: 56
+Info (12128): Elaborating entity "DH_stall" for hierarchy "stage2:stage2_2|DH_stall:DH" File: /home/ishank/Desktop/pipelined_RISC/stage2.vhd Line: 70
+Info (12128): Elaborating entity "adder16" for hierarchy "adder16:adder16_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 235
+Info (12128): Elaborating entity "eightbitadder" for hierarchy "adder16:adder16_1|eightbitadder:a0" File: /home/ishank/Desktop/pipelined_RISC/adder16.vhd Line: 66
+Info (12128): Elaborating entity "fulladder" for hierarchy "adder16:adder16_1|eightbitadder:a0|fulladder:fa0" File: /home/ishank/Desktop/pipelined_RISC/adder16.vhd Line: 35
+Info (12128): Elaborating entity "wrb_edit" for hierarchy "wrb_edit:ctrl_edit" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 240
+Info (10041): Inferred latch for "x" at stage3.vhd(89) File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 89
+Info (12128): Elaborating entity "stage3" for hierarchy "stage3:stage3_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 248
+Info (12128): Elaborating entity "mux2" for hierarchy "stage3:stage3_1|mux2:m_31" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 58
+Info (12128): Elaborating entity "alu" for hierarchy "stage3:stage3_1|alu:alu_1" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 63
+Info (12128): Elaborating entity "NAND16" for hierarchy "stage3:stage3_1|alu:alu_1|NAND16:N" File: /home/ishank/Desktop/pipelined_RISC/alu.vhd Line: 31
+Info (12128): Elaborating entity "forwarding_unit" for hierarchy "stage3:stage3_1|forwarding_unit:forwarding" File: /home/ishank/Desktop/pipelined_RISC/stage3.vhd Line: 65
+Info (10041): Inferred latch for "stage4_d3[0]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[1]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[2]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[3]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[4]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[5]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[6]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[7]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[8]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[9]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[10]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[11]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[12]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[13]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[14]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (10041): Inferred latch for "stage4_d3[15]" at forwarding_unit.vhd(21) File: /home/ishank/Desktop/pipelined_RISC/forwarding_unit.vhd Line: 21
+Info (12128): Elaborating entity "reg1" for hierarchy "reg1:zero_flag" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 262
+Warning (10492): VHDL Process Statement warning at reg16.vhd(98): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ishank/Desktop/pipelined_RISC/reg16.vhd Line: 98
+Info (12128): Elaborating entity "BEQ_JLR_stall" for hierarchy "BEQ_JLR_stall:flush_3" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 267
+Info (12128): Elaborating entity "stage4" for hierarchy "stage4:stage4_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 272
+Warning (10541): VHDL Signal Declaration warning at stage4.vhd(8): used implicit default value for signal "output_m40" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ishank/Desktop/pipelined_RISC/stage4.vhd Line: 8
+Info (12128): Elaborating entity "stage5" for hierarchy "stage5:stage5_1" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 289
+Info (12128): Elaborating entity "mux4" for hierarchy "stage5:stage5_1|mux4:m_50" File: /home/ishank/Desktop/pipelined_RISC/stage5.vhd Line: 33
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 9
+    Warning (15610): No output dependent on input pin "rst" File: /home/ishank/Desktop/pipelined_RISC/datapath.vhd Line: 9
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 1248 megabytes
+    Info: Processing ended: Thu Nov 29 11:12:44 2018
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:28
 
 
