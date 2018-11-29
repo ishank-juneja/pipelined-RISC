@@ -67,8 +67,7 @@ component stage4 is
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
-			rf_wr_4: out std_logic;
-			M50_4 : out std_logic_vector(1 downto 0)
+			rf_wr_4: out std_logic
 			);
 end component;
 
@@ -252,7 +251,7 @@ flush_first2 <= p_reg1_ctrl(2) and p_reg1_ctrl(4);
 stage3_1: stage3 port map(output_SE6 => p_reg2_SE6 , rf_d1 => p_reg2_d1, rf_d2 => p_reg2_d2, PC_4 => p_reg3_pc, 
 						aluout_4 => p_reg3_aluout, LS7_4 => p_reg3_LS7, input1_m34=> input_lmloop, input_d3 => output_m50,
 						control_signal => p_reg2_ctrl, clk => clk, rst => rst, rf_wr_4 => rf_wr4, rf_wr_5=> rf_wr5,
-						M50_4 => p_reg4_ctrl(1 downto 0), carry => carry, zero => zero, alu_out => alu_out, output_m31 => output_m31,
+						M50_4 => p_reg3_ctrl(1 downto 0), carry => carry, zero => zero, alu_out => alu_out, output_m31 => output_m31,
 						new_d1_out => new_d1,new_d2_out => new_d2, rf_a1 => p_reg2_rfa1,rf_a2 => p_reg2_rfa2,
 						stage4rf_a3 => p_reg3_rfa3,stage5rf_a3=> p_reg4_rfa3);
 
@@ -277,7 +276,6 @@ stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_
 			control_signal=> p_reg3_ctrl,
 			clk=> clk,rst => rst,
 			rf_wr_4=> rf_wr4,
-			M50_4 => p_reg4_ctrl(1 downto 0),
 			alu_out_in=> p_reg3_aluout, new_d2_in=> p_reg3_newd2);
 
 --Interface registers for 4--5
