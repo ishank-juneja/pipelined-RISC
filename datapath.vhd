@@ -22,15 +22,14 @@ port ( input_pc : in std_logic_vector(15 downto 0);
 end component;
 
 component stage1 is
-port (instruction : in std_logic_vector(15 downto 0);
-		p_reg0_m10 : in std_logic_vector(7 downto 0);
-		clk,rst : in std_logic;
-		
-		output_SE9,output_SE6,output_LS7 : out std_logic_vector(15 downto 0);		
-		output_pe : out std_logic_vector(2 downto 0);
-		output_decoder : out std_logic_vector(7 downto 0);
-		done : out std_logic
-		);
+	port ( 	p_reg0_pc : in std_logic_vector(15 downto 0);
+			p_reg0_m10 : in std_logic_vector(7 downto 0);
+			clk,rst : in std_logic;
+			----------------------------------------------			
+			output_pe : out std_logic_vector(2 downto 0);
+			output_decoder : out std_logic_vector(7 downto 0);
+			done : out std_logic
+			);
 end component;
 
 component stage2 is
@@ -60,7 +59,7 @@ component stage3 is
 end component;
 
 component stage4 is
-	port (	alu_out_in, output_adder, new_d2_in: in std_logic_vector(15 downto 0);
+	port (	alu_out_in, new_d2_in: in std_logic_vector(15 downto 0);
 			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
@@ -71,12 +70,11 @@ component stage4 is
 end component;
 
 component stage5 is
-	port ( input_d3_out: out std_logic_vector(15 downto 0);
-			control_signal : in std_logic_vector(15 downto 0);			
+	port ( 	control_signal : in std_logic_vector(15 downto 0);			
 			alu_out_in, PC_in, output_LS7_in, mem_dout : in std_logic_vector(15 downto 0);
+			---------------------------------------------			
 			rf_wr_5 : out std_logic;
-			rfa3_in: in std_logic_vector(2 downto 0);
-			rfa3_out: out std_logic_vector(2 downto 0)
+			input_d3_out: out std_logic_vector(15 downto 0)
 			);
 end component;
 
@@ -147,20 +145,25 @@ end component;
 --2 instructions flushed 
 --Handled directly using apt. control bit
 	
-signal output_m50,input_pc,output_pc,output_mem,p_reg0_instr,p_reg0_pc : std_logic_vector(15 downto 0);
-signal p_reg1_instr,p_reg1_pc,output_SE9,output_SE6,output_LS7,p_reg1_SE9,p_reg1_SE6,p_reg1_LS7: std_logic_vector(15 downto 0);
-signal p_reg2_pc,p_reg2_SE9,p_reg2_SE6,p_reg2_LS7,p_reg2_d1,p_reg2_d2: std_logic_vector(15 downto 0);
-signal p_reg3_pc,output_d1,output_d2 : std_logic_vector(15 downto 0);
+signal output_m50, input_pc, output_pc, output_mem, p_reg0_instr, p_reg0_pc, 
+		p_reg4_pc: std_logic_vector(15 downto 0);
+signal p_reg1_instr, p_reg1_pc, output_SE9, output_SE6, output_LS7, p_reg1_SE9,
+		 p_reg1_SE6, p_reg1_LS7 : std_logic_vector(15 downto 0);
+signal p_reg2_pc, p_reg2_SE9, p_reg2_SE6, p_reg2_LS7, p_reg2_d1, p_reg2_d2 : std_logic_vector(15 downto 0);
+signal p_reg3_pc, output_d1, output_d2, p_reg4_LS7 : std_logic_vector(15 downto 0);
 
-signal r7_wr,rf_write,done,pause,carry_sig,zero_sig,stall_DH: std_logic;
-signal output_m10,p_reg0_m10,p_reg1_m10,output_decoder: std_logic_vector(7 downto 0);
-signal control_signal,p_reg1_ctrl,p_reg2_ctrl,p_reg3_ctrl,p_reg4_ctrl,temp_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
+signal r7_wr, rf_write, done, pause, stall_DH : std_logic;
+signal output_m10, p_reg0_m10, p_reg1_m10, output_decoder : std_logic_vector(7 downto 0);
+signal control_signal, p_reg1_ctrl, p_reg2_ctrl, p_reg3_ctrl, p_reg4_ctrl, temp_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
 signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_reg3_rfa3 : std_logic_vector(2 downto 0);
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
 
-signal mem_dout,p_reg4_memdout ,alu_out,p_reg4_aluout,p_reg3_aluout,new_d2,new_d1,p_reg3_newd1,p_reg3_newd2,incPC,p_reg3_adderout,adder_out,
-output_m_2x,output_m31,input_lmloop,output_m40,output_m3a,output_m3b,output_m2xx, p_reg2_adderout : std_logic_vector(15 downto 0);
+signal mem_dout, p_reg4_memdout, alu_out, p_reg4_aluout, p_reg3_aluout, 
+		new_d2, new_d1, p_reg3_newd1, p_reg3_newd2, incPC, p_reg3_adderout, adder_out,
+		output_m_2x, output_m31, input_lmloop, output_m40, output_m3a, output_m3b,
+		 output_m2xx, p_reg2_adderout : std_logic_vector(15 downto 0);
+
 signal zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
 		flush_first2, flush_first3, create_bubble2, create_bubble3, rf_wr4, rf_wr5, beq_taken: std_logic;
 
