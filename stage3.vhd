@@ -47,15 +47,16 @@ component forwarding_unit is
 			new_d1,new_d2 : out std_logic_vector(15 downto 0));		 
 end component;
 
-signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1: std_logic_vector(15 downto 0);
+signal output_m30,output_m32,output_m33,output_m34,new_d1,new_d2,cpl_new_d1,m31_a1: std_logic_vector(15 downto 0);
 
 begin
 
 new_d1_out <= new_d1;
 new_d2_out <= new_d2;
 cpl_new_d1 <= not new_d1;
+m31_a1 <= std_logic_vector(unsigned(input1_m34)+1);
 
-m_31 : mux2 port map(a1 => std_logic_vector(unsigned(input1_m34)+1), a0 => "0000000000000000", s => control_signal(15), o => output_m31); 
+m_31 : mux2 port map(a1 => m31_a1, a0 => "0000000000000000", s => control_signal(15), o => output_m31); 
 m_32 : mux2 port map(a1 => cpl_new_d1, a0 => new_d1, s => control_signal(10), o => output_m32); 
 m_33 : mux2 port map(a1 => output_SE6, a0 => new_d2, s => control_signal(9), o => output_m33); 
 m_34 : mux2 port map(a1 => input1_m34, a0 => output_m33, s => control_signal(15), o => output_m34); 
@@ -76,24 +77,34 @@ library std;
 use std.standard.all;
 
 entity wrb_edit is
-	port (instr,ctrl : in std_logic_vector(15 downto 0);
+	port (bits : in std_logic_vector(1 downto 0);
+			ctrl : in std_logic_vector(15 downto 0);
 			carry,zero : in std_logic;
 			new_ctrl : out std_logic_vector(15 downto 0));
 end entity;
 architecture struct of wrb_edit is
-	signal x : std_logic;
-	signal opcode : std_logic_vector(3 downto 0);
+	signal x,y : std_logic;
 begin
 	
-opcode<=instr(15 downto 12);
-x <= '1' 	when (instr(1 downto 0)="00") else
-		carry when (instr(1 downto 0)="10") else
-		zero 	when (instr(1 downto 0)="01");
+x <= '1' 	when (bits="00") else
+		carry when (bits="10") else
+		zero 	when (bits="01") else
+		'0';
 
-new_ctrl(2) <= '1' when ((opcode = "0000" or opcode = "0010") and x = '1') else
-					'0';
-new_ctrl(15 downto 3)<=ctrl(15 downto 3);
+y <= '1' when (ctrl(9) = '0' and ctrl(7) = '1') else						--ctrl(9) and ctrl(7) identify add or nand type instruction
+		'0';																				--and x = '1' implies we need to execute the instruction	
+					
+new_ctrl(2) <=  x when (y ='1') else									--write back bit
+					ctrl(2) ;											
+
+new_ctrl(7) <=  x when (y ='1') else									--zero back bit
+					ctrl(7) ;											
+
+new_ctrl(8) <=  x when (y ='1' and ctrl(8) = '1') else			--carry bit
+					ctrl(8) ;											
+			
+new_ctrl(15 downto 9)<=ctrl(15 downto 9);
+new_ctrl(6 downto 3)<=ctrl(6 downto 3);
 new_ctrl(1 downto 0) <=ctrl(1 downto 0);
 
 end struct;
-

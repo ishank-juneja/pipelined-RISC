@@ -62,7 +62,7 @@ m_20 : mux2 port map(a1 => p_reg1_instr(8 downto 6), a0 => p_reg1_instr(11 downt
 m_21 : mux2 port map(a1 => p_reg1_instr(5 downto 3), a0 => p_reg1_instr(11 downto 9), s => p_reg1_ctrl(6), o => output_m21);
 m_22 : mux2 port map(a1 => output_m21, a0 => p_reg1_pe, s => p_reg1_ctrl(7), o => output_m22);
 m_23 : mux2 port map(a1 => p_reg1_instr(11 downto 9), a0 => p_reg1_pe, s => p_reg1_ctrl(8), o => rfa3);
-rf_1 : rf 	port map(WR => p_reg4_wr, clk => not(clk), PC_WR => p_reg1_ctrl(0), rst=>rst, a1 => output_m20, 
+rf_1 : rf 	port map(WR => p_reg4_wr, clk => clk, PC_WR => p_reg1_ctrl(0), rst=>rst, a1 => output_m20, 
 					a2 => output_m22, a3 => input_a3, d3 => input_d3, PC_in => p_reg1_pc, 
 					d1 => output_d1, d2 => output_d2, R7_WR => r7_wr);
 rfa2 <= output_m22;

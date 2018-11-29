@@ -32,13 +32,13 @@ architecture struct of rf is
 	signal wr0,wr1,wr2,wr3,wr4,wr5,wr6,wr7,r7_write : std_logic;
 begin
 
-	wr0 <= not a3(0) and not a3(1) and not a3(2) and WR;
-	wr1 <= not a3(0) and not a3(1) and     a3(2) and WR;
-	wr2 <= not a3(0) and 	 a3(1) and not a3(2) and WR;
-	wr3 <= not a3(0) and 	 a3(1) and     a3(2) and WR;
-	wr4 <= 	  a3(0) and not a3(1) and not  a3(2) and WR;
-	wr5 <= 	  a3(0) and not a3(1) and      a3(2) and WR;
-	wr6 <= 	  a3(0) and 	 a3(1) and not a3(2) and WR;
+	wr0 <= not a3(2) and not a3(1) and not a3(0) and WR;
+	wr1 <= not a3(2) and not a3(1) and     a3(0) and WR;
+	wr2 <= not a3(2) and 	 a3(1) and not a3(0) and WR;
+	wr3 <= not a3(2) and 	 a3(1) and     a3(0) and WR;
+	wr4 <= 	  a3(2) and not a3(1) and not  a3(0) and WR;
+	wr5 <= 	  a3(2) and not a3(1) and      a3(0) and WR;
+	wr6 <= 	  a3(2) and 	 a3(1) and not a3(0) and WR;
 	r7_write <=  a3(0) and 	 a3(1) and     a3(2) and WR;
 	wr7 <= 	  r7_write or PC_WR;
 	
