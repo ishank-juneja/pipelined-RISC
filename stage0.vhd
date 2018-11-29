@@ -47,10 +47,11 @@ component memory is
 end component;
 
 signal output_pc_sig,output_mem_sig: std_logic_vector(15 downto 0);
-
+signal PC_WR : std_logic;
 begin
 
-PC : reg16 port map(D => input_pc, clk => clk, WR => not(pause) or r7_wr, reset=>rst, Q => output_pc_sig);
+PC_WR<= not(pause) or r7_wr;
+PC : reg16 port map(D => input_pc, clk => clk, WR => PC_WR, reset=>rst, Q => output_pc_sig);
 InstrMem : memory port map(en => '1', clk => clk, RD => control_signal(14), WR => '0', 
 							mem_a => output_pc_sig, din => "0000000000000000", dout => output_mem_sig);
 M10 : mux2 port map(a1 => output_decoder, a0 => output_mem_sig(7 downto 0), s => control_signal(15), o => output_m10);
