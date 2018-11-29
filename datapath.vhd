@@ -155,7 +155,7 @@ signal p_reg1_instr, p_reg1_pc, output_SE9, output_SE6, output_LS7, p_reg1_SE9,
 signal p_reg2_pc, p_reg2_SE9, p_reg2_SE6, p_reg2_LS7, p_reg2_d1, p_reg2_d2 : std_logic_vector(15 downto 0);
 signal p_reg3_pc, output_d1, output_d2, p_reg4_LS7 : std_logic_vector(15 downto 0);
 
-signal r7_wr, rf_write, done, pause, stall_DH : std_logic;
+signal r7_wr, done, pause, stall_DH : std_logic;
 signal output_m10, p_reg0_m10, p_reg1_m10, output_decoder : std_logic_vector(7 downto 0);
 signal control_signal, p_reg1_ctrl, p_reg2_ctrl, p_reg3_ctrl, p_reg4_ctrl, temp_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
@@ -309,7 +309,7 @@ flush_first5 <= '1' when (p_reg4_rfa3 = "111") else
 ------------Other than the 6 stages-------------
 --PC updation that happens in parellel 
 
-m51_select <= p_reg4_rfa3(2) and p_reg4_rfa3(1) and p_reg4_rfa3(0);
+m51_select <= p_reg4_rfa3(2) and p_reg4_rfa3(1) and p_reg4_rfa3(0) and p_reg4_ctrl(2);
 m_51 : mux2 port map(a1 => output_m50, a0 => output_m3b, s => m51_select, o => input_pc);
 
 m3b_select <= zero and p_reg2_ctrl(10);
