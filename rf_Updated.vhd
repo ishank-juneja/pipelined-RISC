@@ -39,7 +39,7 @@ begin
 	wr4 <= 	  a3(2) and not a3(1) and not  a3(0) and WR;
 	wr5 <= 	  a3(2) and not a3(1) and      a3(0) and WR;
 	wr6 <= 	  a3(2) and 	 a3(1) and not a3(0) and WR;
-	r7_write <=  a3(0) and 	 a3(1) and     a3(2) and WR;
+	r7_write <=  a3(2) and 	 a3(1) and     a3(0) and WR;
 	wr7 <= 	  r7_write or PC_WR;
 	
 	R7_WR <= r7_write;

@@ -63,7 +63,7 @@ end component;
 
 component stage4 is
 	port (	alu_out_in, new_d2_in: in std_logic_vector(15 downto 0);
-			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
+			output_m40, mem_dout: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
@@ -272,7 +272,7 @@ flush_3 : BEQ_JLR_stall port map(branch_taken => beq_taken, beq_ins => p_reg2_ct
 
 ------------------Data Memory Access-----------------
 --MEM: Stage 4
-stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout, alu_out_out=> p_reg3_aluout,
+stage4_1: stage4 port map(output_m40=> output_m40, mem_dout=> mem_dout,
 			control_signal=> p_reg3_ctrl,
 			clk=> clk,rst => rst,
 			rf_wr_4=> rf_wr4,

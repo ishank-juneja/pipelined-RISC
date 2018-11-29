@@ -5,7 +5,7 @@ use std.standard.all;
 
 entity stage4 is
 	port (	alu_out_in, new_d2_in: in std_logic_vector(15 downto 0);
-			output_m40, mem_dout, alu_out_out: out std_logic_vector(15 downto 0);
+			output_m40, mem_dout: out std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
@@ -42,7 +42,7 @@ signal m40_select: std_logic;
 
 begin
 
-alu_out_out <= alu_out_in;
+
 rf_wr_4 <= control_signal(2);
 data_mem : memory port map(en=>	'1', clk=> clk, RD=> control_signal(6), WR=> control_signal(5), mem_a => alu_out_in, din => new_d2_in, dout => mem_dout);	
 
