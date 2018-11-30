@@ -228,7 +228,7 @@ stage2_2: stage2 port map( p_reg4_pc=>p_reg4_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg
 
 --Interface registers for the 2--3 interface
 --If a bubble/NOP is required to be introduced, then reset regs
-s <= p_reg2_ctrl(15) and not(done);
+s <= not(p_reg2_ctrl(15)) or (done);
 PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset => rst, Q => p_reg2_pc );
 PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_SE6 );
 PR2_LS7 : reg16 port map(D => p_reg1_LS7 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_LS7 );
