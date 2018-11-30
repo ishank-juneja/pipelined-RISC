@@ -19,14 +19,14 @@
 #
 # Quartus Prime
 # Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-# Date created = 14:03:16  November 26, 2018
+# Date created = 23:43:47  November 29, 2018
 #
 # -------------------------------------------------------------------------- #
 #
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		pipeline_risc_assignment_defaults.qdf
+#		datapath_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -41,42 +41,38 @@ set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
 set_global_assignment -name TOP_LEVEL_ENTITY datapath
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.0.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:03:16  NOVEMBER 26, 2018"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:43:47  NOVEMBER 29, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VHDL_FILE forwarding_unit.vhd
-set_global_assignment -name VHDL_FILE stage3.vhd
-set_global_assignment -name VHDL_FILE DH_stall.vhd
-set_global_assignment -name VHDL_FILE control.vhd
 set_global_assignment -name VHDL_FILE stage5.vhd
 set_global_assignment -name VHDL_FILE stage4.vhd
+set_global_assignment -name VHDL_FILE stage3.vhd
+set_global_assignment -name VHDL_FILE stage2.vhd
+set_global_assignment -name VHDL_FILE stage1.vhd
 set_global_assignment -name VHDL_FILE stage0.vhd
 set_global_assignment -name VHDL_FILE rf_Updated.vhd
 set_global_assignment -name VHDL_FILE reg16.vhd
 set_global_assignment -name VHDL_FILE nand16.vhd
 set_global_assignment -name VHDL_FILE mux8.vhd
 set_global_assignment -name VHDL_FILE memory.vhd
+set_global_assignment -name VHDL_FILE forwarding_unit.vhd
 set_global_assignment -name VHDL_FILE extenders.vhd
 set_global_assignment -name VHDL_FILE encoder.vhd
+set_global_assignment -name VHDL_FILE DH_stall.vhd
 set_global_assignment -name VHDL_FILE decoder.vhd
+set_global_assignment -name VHDL_FILE datapath.vhd
+set_global_assignment -name VHDL_FILE control.vhd
 set_global_assignment -name VHDL_FILE alu.vhd
 set_global_assignment -name VHDL_FILE adder16.vhd
-set_global_assignment -name VHDL_FILE datapath.vhd
-set_global_assignment -name VHDL_FILE stage1.vhd
-set_global_assignment -name VHDL_FILE stage2.vhd
-set_location_assignment PIN_E1 -to clk
-set_location_assignment PIN_J15 -to rst
-set_location_assignment PIN_A15 -to output
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH datapath -section_id eda_simulation
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

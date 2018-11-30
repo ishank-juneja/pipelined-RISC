@@ -63,7 +63,10 @@ m_34 : mux2 port map(a1 => input1_m34, a0 => output_m33, s => control_signal(15)
 
 alu_1: alu port map(alu_a => output_m32,alu_b => output_m34,op => control_signal(11),cin => control_signal(10),carry => carry,zero => zero, alu_out => alu_out); 
 
-forwarding : forwarding_unit port map(rf_d1=> rf_d1,rf_d2=> rf_d2,stage4_rf_wr=> rf_wr_4, stage5_rf_wr=> rf_wr_5, rf_a1=> rf_a1, rf_a2=> rf_a2, stage4_a3=> stage4rf_a3, stage5_a3=> stage5rf_a3, M50_4=> M50_4, pc_4 => PC_4,aluout_4 => aluout_4, LS7_4=> LS7_4,stage5_d3=> input_d3, new_d1=> new_d1, new_d2=> new_d2);
+forwarding : forwarding_unit port map(rf_d1=> rf_d1,rf_d2=> rf_d2,stage4_rf_wr=> rf_wr_4, stage5_rf_wr=> rf_wr_5, rf_a1=> rf_a1,
+													rf_a2=> rf_a2,	stage4_a3=> stage4rf_a3, stage5_a3=> stage5rf_a3, M50_4=> M50_4, 
+													pc_4 => PC_4,aluout_4 => aluout_4, LS7_4=> LS7_4,stage5_d3=> input_d3, new_d1=> new_d1, 
+													new_d2=> new_d2);
 
 --carry : reg1 port map(D => carry, clk => clk, WR => control_signal(8), reset=>rst, Q => carry_out);
 --zero : reg1 port map(D => zero, clk => clk, WR => control_signal(7), reset=>rst, Q => zero_out);
