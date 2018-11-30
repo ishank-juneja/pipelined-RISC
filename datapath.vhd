@@ -16,7 +16,7 @@ architecture behave of datapath is
 component stage0 is
 port ( input_pc : in std_logic_vector(15 downto 0);
 		control_signal : in std_logic_vector(15 downto 0);
-		r7_wr, clk, rst,pause : in std_logic;
+		r7_wr, clk, rst,pause,done : in std_logic;
 		output_decoder: in std_logic_vector(7 downto 0);
 		-----------------------------------------------
 		output_pc, output_mem : out std_logic_vector(15 downto 0);
@@ -55,7 +55,7 @@ component stage3 is
 	port ( 	rf_a1, rf_a2, stage4rf_a3, stage5rf_a3 : in std_logic_vector(2 downto 0);
 			output_SE6,rf_d1,rf_d2, PC_4, aluout_4, LS7_4,input1_m34, input_d3 : in std_logic_vector(15 downto 0);
 			control_signal : in std_logic_vector(15 downto 0);			
-			clk,rst,rf_wr_4, rf_wr_5: in std_logic;
+			clk,rst,rf_wr_4, rf_wr_5, done: in std_logic;
 			M50_4 : in std_logic_vector(1 downto 0);
 			--------------------------------------------------			
 			carry, zero : out std_logic;
@@ -168,7 +168,7 @@ signal mem_dout, p_reg4_memdout, alu_out, p_reg4_aluout, p_reg3_aluout,
 
 signal 	sanidhya, zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
 		flush_first2, flush_first3, flush_first5, create_bubble2, create_bubble3, 
-		 not_stallDH, not_pause, jlr_ins : std_logic; 
+		 not_stallDH, not_pause, jlr_ins, done1, done2 : std_logic; 
 begin 
 sanidhya <= control_signal(0) and '1';
 
@@ -178,7 +178,7 @@ pause <= (not(done) and control_signal(15)) or stall_DH;
 
 --IF: Stage 0
 stage0_0: stage0 port map(  input_pc => input_pc, control_signal => control_signal, r7_wr => r7_wr,clk=>clk, rst => rst, 
-							pause => pause, output_decoder => output_decoder, output_pc => output_pc, 
+							pause => pause, done=>done, output_decoder => output_decoder, output_pc => output_pc, 
 							output_mem => output_mem, output_m10 => output_m10);
 
 not_pause <= not(pause);
@@ -209,6 +209,7 @@ PR1_LS7 : reg16 port map(D => output_LS7 ,clk => clk, WR => not_stallDH, reset=>
 PR1_pc : reg16 port map(D => p_reg0_pc ,clk => clk, WR => not_stallDH, reset=>rst, Q => p_reg1_pc );
 PR1_instr: reg16 port map(D => p_reg0_instr ,clk => clk, WR => not_stallDH, reset=>rst, Q => p_reg1_instr);
 PR1_pe: reg3 port map(D => output_pe ,clk => clk, WR => not_stallDH, reset=>rst, Q => p_reg1_pe);
+PR1_done : reg1 port map (D=>done,clk => clk, WR => not_stallDH, reset=>rst, Q =>done1);
 --Just Disabling the control signals part should be enough to introduce NOP
 temp1_ctrl <= "0000000000000000" when (create_bubble2 = '1') else
 					control_signal;
@@ -234,6 +235,7 @@ PR2_d2 : reg16 port map(D => output_d2 ,clk => clk, WR => '1', reset => rst, Q =
 PR2_rfa1 : reg3 port map(D => output_rfa1 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa1 );
 PR2_rfa2 : reg3 port map(D => output_rfa2 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa2 );
 PR2_rfa3 : reg3 port map(D => output_rfa3 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa3 );
+PR2_done : reg1 port map (D=>done1 ,clk => clk, WR => '1', reset=>rst, Q =>done2);
 
 --Creating a bubble in just control signals should be enough
 create_bubble3 <= flush_first3 or flush_first5 or stall_DH;
@@ -244,7 +246,7 @@ ctrl_edit : wrb_edit port map(bits => p_reg2_SE6(1 downto 0), ctrl => temp_ctrl,
 										zero => zero_out, new_ctrl => p_reg2_ctrl);
 
 PR2_adderout : reg16 port map(D => adder_out, clk=>clk, WR=>'1',reset=>rst, Q => p_reg2_adderout);
---Loop to increment LM	
+--Loop to increment LM	address
 PR2_lmloop : reg16 port map(D => output_m31, clk=>clk, WR=>'1',reset=>rst, Q=>input_lmloop);
 
 --MUX for PC relative shift, if at all
@@ -259,7 +261,7 @@ flush_first2 <= not(p_reg1_ctrl(3)) and p_reg1_ctrl(4);
 
 -------------------Execute Stage-----------------------
 --EX: Stage 3
-stage3_1: stage3 port map(output_SE6 => p_reg2_SE6 , rf_d1 => p_reg2_d1, rf_d2 => p_reg2_d2, PC_4 => p_reg3_pc, 
+stage3_1: stage3 port map(output_SE6 => p_reg2_SE6 , rf_d1 => p_reg2_d1, rf_d2 => p_reg2_d2, PC_4 => p_reg3_pc, done=>done2,
 						aluout_4 => p_reg3_aluout, LS7_4 => p_reg3_LS7, input1_m34=> input_lmloop, input_d3 => output_m50,
 						control_signal => p_reg2_ctrl, clk => clk, rst => rst, rf_wr_4 => p_reg3_ctrl(2), rf_wr_5=> p_reg4_ctrl(2),
 						M50_4 => p_reg3_ctrl(1 downto 0), carry => carry, zero => zero, alu_out => alu_out, output_m31 => output_m31,

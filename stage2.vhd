@@ -69,9 +69,9 @@ rfa1 <= output_m20;
 rfa2 <= output_m22;
 
 --data correction if same register is being read and written into in the same cycle... output would have been un-updated value
-output_d1 <= input_d3 when (output_m20 = input_a3) else
+output_d1 <= input_d3 when (output_m20 = input_a3 and p_reg4_wr = '1') else
 				 temp_d1;
-output_d2 <= input_d3 when (output_m22 = input_a3) else
+output_d2 <= input_d3 when (output_m22 = input_a3 and p_reg4_wr = '1') else
 				 temp_d2;
 				 
 
