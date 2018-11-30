@@ -6,14 +6,10 @@ use ieee.numeric_std.all;
 
 entity Pipeline is
 	port ( 
-		clk,rst_bar,clk50 : in std_logic;
+		clk,rst,clk50 : in std_logic;
 		output : out std_logic
 		);
 end entity;
-
-architecture struct of Pipeline is
-
-signal rst : std_logic;
 
 component datapath is
 	port ( 
@@ -21,9 +17,11 @@ component datapath is
 		output : out std_logic
 		);
 end component;
-begin
 
-DP : datapath port map(clk => clk, rst => rst, output => output);
-rst <= not(rst_bar);
+architecture struct of pipeline is
+
+
+begin
+DP : datapath port map (clk=>clk , rst=>rst , output=>output);
 
 end struct;

@@ -4,9 +4,9 @@ library std;
 use std.standard.all;
 
 entity stage2 is
-	port ( 	p_reg4_pc, p_reg1_instr, input_d3 : in std_logic_vector(15 downto 0);
+	port ( 	p_reg1_pc, p_reg1_instr, input_d3 : in std_logic_vector(15 downto 0);
 			p_reg1_ctrl : in std_logic_vector(15 downto 0);
-			clk, rst, p_reg4_wr,real_instr : in std_logic;			--real_instr=p_reg4_ctrl(13) identifies if instruction is valid or NOP
+			clk, rst, p_reg4_wr,real_instr : in std_logic;			--real_instr=p_reg1_ctrl(13) identifies if instruction is valid or NOP
 			input_a3, p_reg1_pe : in std_logic_vector(2 downto 0);
 			stage3mem_rd : in std_logic;--Control signal for inst currently in stage 3			
 			stage3_a3 : in std_logic_vector(2 downto 0);--WB add. for inst in stage 3
@@ -63,7 +63,7 @@ m_21 : mux2 port map(a0 => p_reg1_instr(5 downto 3), a1 => p_reg1_instr(11 downt
 m_22 : mux2 port map(a0 => output_m21, 				  a1 => p_reg1_pe, s => p_reg1_ctrl(15), o => output_m22);
 m_23 : mux2 port map(a0 => p_reg1_instr(11 downto 9),a1 => p_reg1_pe, s => p_reg1_ctrl(15), o => rfa3);
 rf_1 : rf 	port map(WR => p_reg4_wr, clk => clk, PC_WR => real_instr, rst=>rst, a1 => output_m20, 
-							a2 => output_m22, a3 => input_a3, d3 => input_d3, PC_in => p_reg4_pc, 
+							a2 => output_m22, a3 => input_a3, d3 => input_d3, PC_in => p_reg1_pc, 
 							d1 => temp_d1, d2 => temp_d2, R7_WR => r7_wr);
 rfa1 <= output_m20;
 rfa2 <= output_m22;
