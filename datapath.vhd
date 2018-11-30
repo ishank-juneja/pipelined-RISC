@@ -201,7 +201,7 @@ stage1_1: stage1 port map(instruction => p_reg0_instr, p_reg0_m10 => p_reg0_m10,
 						output_SE9 => output_SE9, output_SE6 => output_SE6, output_LS7 => output_LS7, 
 						done => done, output_pe => output_pe, output_decoder => output_decoder);
 --Generate control signals, Decode instruction 
-ctrl: control port map(instruction=> p_reg0_instr, output=>control_signal);
+ctrl: control port map(instruction => p_reg0_instr, output => control_signal);
 
 not_stallDH <= not stall_DH;
 --Interface registers for the 1--2 interface
@@ -212,7 +212,9 @@ PR1_pc : reg16 port map(D => p_reg0_pc ,clk => clk, WR => not_stallDH, reset=>rs
 PR1_instr: reg16 port map(D => p_reg0_instr ,clk => clk, WR => not_stallDH, reset=>rst, Q => p_reg1_instr);
 PR1_pe: reg3 port map(D => output_pe ,clk => clk, WR => not_stallDH, reset=>rst, Q => p_reg1_pe);
 --Just Disabling the control signals part should be enough to introduce NOP
+--------------------
 PR1_ctrl : reg16 port map(D => control_signal, clk => clk, WR => not_stallDH, reset => create_bubble2, Q => p_reg1_ctrl);
+--------------------
 
 ---------------Register File Acces--------------------
 --RF: Stage 2
@@ -235,7 +237,9 @@ PR2_rfa3 : reg3 port map(D => output_rfa3 ,clk => clk, WR => '1', reset => rst, 
 
 --Creating a bubble in just control signals should be enough
 create_bubble3 <= rst or flush_first3 or flush_first5 or NOP_DH;
+---------------
 PR2_ctrl : reg16 port map(D => p_reg1_ctrl, clk=>clk, WR=>'1', reset => create_bubble3, Q => temp_ctrl);
+---------------
 ctrl_edit : wrb_edit port map(bits => p_reg2_SE6(1 downto 0), ctrl => temp_ctrl, carry => carry_out,
 								zero => zero_out, new_ctrl => p_reg2_ctrl);
 
@@ -251,7 +255,7 @@ incPC <= std_logic_vector(unsigned(output_pc)+1);
 
 --For Flushing pipeline in case of JAL instruction
 --These 2 bits form a signature for JAL
-flush_first2 <= not(p_reg1_ctrl(3)) and p_reg1_ctrl(4);
+flush_first2 <= (not p_reg1_ctrl(3)) and p_reg1_ctrl(4);
 
 -------------------Execute Stage-----------------------
 --EX: Stage 3
@@ -267,7 +271,9 @@ create_bubble5 <= rst or flush_first5;
 
 --Interface Registers for 3--4
 PR3_pc : reg16 port map(D => p_reg2_pc, clk => clk, WR => '1', reset=>rst, Q => p_reg3_pc);
+--------------
 PR3_ctrl : reg16 port map(D=>p_reg2_ctrl, clk=>clk, WR=>'1', reset => create_bubble5, Q => p_reg3_ctrl);
+---------------
 PR3_LS7 : reg16 port map(D => p_reg2_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_LS7);
 PR3_rfa3 : reg3 port map(D => p_reg2_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_rfa3);
 PR3_aluout : reg16 port map(D => alu_out ,clk => clk, WR => '1', reset=>rst, Q => p_reg3_aluout);
@@ -291,7 +297,9 @@ stage4_1: stage4 port map(	mem_dout => mem_dout, control_signal => p_reg3_ctrl,
 
 --Interface registers for 4--5
 PR4_pc : reg16 port map(D => p_reg3_pc ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_pc);
+---************
 PR4_ctrl : reg16 port map(D=>p_reg3_ctrl, clk=>clk, WR=>'1',reset => create_bubble5, Q=>p_reg4_ctrl);
+---------------
 PR4_LS7 : reg16 port map(D => p_reg3_LS7 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_LS7 );
 PR4_rfa3 : reg3 port map(D => p_reg3_rfa3 ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_rfa3);
 PR4_memdout : reg16 port map(D => mem_dout ,clk => clk, WR => '1', reset=>rst, Q => p_reg4_memdout );
@@ -312,8 +320,11 @@ flush_first5 <= '1' when (p_reg4_rfa3 = "111") else
 m51_select <= p_reg4_rfa3(2) and p_reg4_rfa3(1) and p_reg4_rfa3(0) and p_reg4_ctrl(2);
 m_51 : mux2 port map(a1 => output_m50, a0 => output_m3b, s => m51_select, o => input_pc);
 
+--Signature for BEQ
 m3b_select <= zero and p_reg2_ctrl(10);
+--Signature for JLR
 m3a_select <= p_reg2_ctrl(4) and p_reg2_ctrl(3);
+--Signature for JAL
 m2xx_select <= p_reg1_ctrl(4) and (not p_reg1_ctrl(3));
 m_3a : mux2 port map(a1 => new_d1, a0 => output_m2xx, s => m3a_select, o => output_m3a); 
 --Option 1 for this MUX corresponds to BEQ instruction since its a suggestion comming from EX stage

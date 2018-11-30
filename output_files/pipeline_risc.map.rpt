@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pipeline_risc
-Thu Nov 29 18:15:39 2018
+Thu Nov 29 21:00:18 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -81,7 +81,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 29 18:15:39 2018       ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 29 21:00:18 2018       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pipeline_risc                               ;
 ; Top-level Entity Name              ; datapath                                    ;
@@ -273,7 +273,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                           ; Entity Name     ; Library Name ;
 +----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------+--------------+
-; |datapath                                    ; 572 (33)          ; 512 (0)      ; 256         ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                                     ; datapath        ; work         ;
+; |datapath                                    ; 572 (35)          ; 512 (0)      ; 256         ; 0            ; 0       ; 0         ; 3    ; 0            ; |datapath                                                                                     ; datapath        ; work         ;
 ;    |adder16:adder16_1|                       ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1                                                                   ; adder16         ; work         ;
 ;       |eightbitadder:a0|                     ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0                                                  ; eightbitadder   ; work         ;
 ;          |fulladder:fa0|                     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|adder16:adder16_1|eightbitadder:a0|fulladder:fa0                                    ; fulladder       ; work         ;
@@ -312,19 +312,19 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;    |reg3:PR3_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR3_rfa3                                                                       ; reg3            ; work         ;
 ;    |reg3:PR4_rfa3|                           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg3:PR4_rfa3                                                                       ; reg3            ; work         ;
 ;    |reg8:PR0_mux|                            ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|reg8:PR0_mux                                                                        ; reg8            ; work         ;
-;    |stage0:stage0_0|                         ; 35 (1)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                                     ; stage0          ; work         ;
+;    |stage0:stage0_0|                         ; 34 (1)            ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0                                                                     ; stage0          ; work         ;
 ;       |memory:InstrMem|                      ; 20 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|memory:InstrMem                                                     ; memory          ; work         ;
-;       |mux2:M10|                             ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|mux2:M10                                                            ; mux2            ; work         ;
+;       |mux2:M10|                             ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|mux2:M10                                                            ; mux2            ; work         ;
 ;       |reg16:PC|                             ; 4 (4)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage0:stage0_0|reg16:PC                                                            ; reg16           ; work         ;
 ;    |stage1:stage1_1|                         ; 11 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1                                                                     ; stage1          ; work         ;
 ;       |decoder:DE|                           ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|decoder:DE                                                          ; decoder         ; work         ;
 ;       |encoder:PE|                           ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage1:stage1_1|encoder:PE                                                          ; encoder         ; work         ;
-;    |stage2:stage2_2|                         ; 121 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                                     ; stage2          ; work         ;
+;    |stage2:stage2_2|                         ; 120 (0)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2                                                                     ; stage2          ; work         ;
 ;       |DH_stall:DH|                          ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|DH_stall:DH                                                         ; DH_stall        ; work         ;
 ;       |mux2:m_20|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_20                                                           ; mux2            ; work         ;
 ;       |mux2:m_22|                            ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_22                                                           ; mux2            ; work         ;
 ;       |mux2:m_23|                            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|mux2:m_23                                                           ; mux2            ; work         ;
-;       |rf:rf_1|                              ; 104 (8)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                                             ; rf              ; work         ;
+;       |rf:rf_1|                              ; 103 (7)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1                                                             ; rf              ; work         ;
 ;          |mux2:M1_2|                         ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux2:M1_2                                                   ; mux2            ; work         ;
 ;          |mux8:M1|                           ; 80 (80)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|mux8:M1                                                     ; mux8            ; work         ;
 ;          |reg16:r0|                          ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |datapath|stage2:stage2_2|rf:rf_1|reg16:r0                                                    ; reg16           ; work         ;
@@ -529,15 +529,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[6]                                        ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; Yes        ; |datapath|reg16:PR2_d1|Q[11]                                       ;
 ; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |datapath|stage0:stage0_0|reg16:PC|Q[1]                            ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[1]                           ;
 ; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage5:stage5_1|mux4:m_50|o[15]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d1[14]    ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d2[14]    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d1[7]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|new_d2[6]     ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|mux2:m_34|o[5]                           ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |datapath|stage2:stage2_2|mux2:m_22|o[1]                           ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[3]  ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[5]  ;
 ; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |datapath|stage3:stage3_1|forwarding_unit:forwarding|stage4_d3[15] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 
@@ -922,7 +922,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 15.60                       ;
-; Average LUT depth     ; 7.05                        ;
+; Average LUT depth     ; 7.07                        ;
 +-----------------------+-----------------------------+
 
 
@@ -941,7 +941,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 29 18:15:26 2018
+    Info: Processing started: Thu Nov 29 21:00:03 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline_risc -c pipeline_risc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file forwarding_unit.vhd
@@ -1103,15 +1103,15 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 972 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 971 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 953 logic cells
+    Info (21061): Implemented 952 logic cells
     Info (21064): Implemented 16 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 1282 megabytes
-    Info: Processing ended: Thu Nov 29 18:15:39 2018
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:30
+    Info: Peak virtual memory: 1293 megabytes
+    Info: Processing ended: Thu Nov 29 21:00:18 2018
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:32
 
 
