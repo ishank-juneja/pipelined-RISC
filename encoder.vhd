@@ -36,7 +36,7 @@ begin
 	elsif(input(7) = '1') then
 		output  <= "111";
 	else
-		output <= "XXX";
+		output <= "111";
 	end if;
 end process;
 end behave;

@@ -76,6 +76,7 @@ signal RAM : mem_array := (
 "0000000001100001",
 --ADI R0 R5 0x0003
 "0001000101000011"
+>>>>>>> master
 );
 --Array that Implements Memory
 

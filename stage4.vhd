@@ -8,7 +8,6 @@ entity stage4 is
 			control_signal : in std_logic_vector(15 downto 0);
 			clk,rst: in std_logic;
 			----------------------------------------------------
-			rf_wr_4: out std_logic;
 			mem_dout: out std_logic_vector(15 downto 0)
 			);
 end entity;
@@ -38,7 +37,6 @@ end component;
 begin
 
 
-rf_wr_4 <= control_signal(2);
 data_mem : memory port map(en=>	'1', clk=> clk, RD=> control_signal(6), WR=> control_signal(5), mem_a => alu_out_in, din => new_d2_in, dout => mem_dout);	
 
 end behave;
