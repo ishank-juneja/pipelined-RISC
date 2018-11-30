@@ -183,7 +183,7 @@ stage0_0: stage0 port map(  input_pc => input_pc, control_signal => control_sign
 
 not_pause <= not(pause);
 --temp_instr: temorary signal to hold instruction
-temp_instr  <= "1111111111111111" when (create_bubble2 = '1') else
+temp_instr  <= "1111111111111111" when (create_bubble2 = '1' or rst = '1') else
 				output_mem;
 
 --Pipeline registers for interface 0--1
