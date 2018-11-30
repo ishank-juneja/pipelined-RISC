@@ -4,7 +4,7 @@ library std;
 use std.standard.all;
 use ieee.numeric_std.all;
 
-entity Pipeline is
+entity pipelined_risc is
 	port ( 
 		clk,rst,clk50 : in std_logic;
 		output : out std_logic
