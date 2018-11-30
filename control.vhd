@@ -26,7 +26,6 @@ output <=  	--ADD type
 			"0000000000000111" when (opcode = "0011") else
 			"0100001011000101" when (opcode = "0100") else
 			"0101001000100000" when (opcode = "0101") else
->>>>>>> master
 			"1110000001000101" when (opcode = "0110") else
 			"1110000000100000" when (opcode = "0111") else
 			"0111010000000000" when (opcode = "1100") else
