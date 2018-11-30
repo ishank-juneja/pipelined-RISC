@@ -153,7 +153,7 @@ signal p_reg1_instr, p_reg1_pc, output_SE9, output_SE6, output_LS7, p_reg1_SE9,
 signal p_reg2_pc, p_reg2_SE9, p_reg2_SE6, p_reg2_LS7, p_reg2_d1, p_reg2_d2 : std_logic_vector(15 downto 0);
 signal p_reg3_pc, output_d1, output_d2, p_reg4_LS7 : std_logic_vector(15 downto 0);
 
-signal r7_wr, done, pause, stall_DH : std_logic;
+signal r7_wr, done, pause, stall_DH,s : std_logic;
 signal output_m10, p_reg0_m10, p_reg1_m10, output_decoder : std_logic_vector(7 downto 0);
 signal control_signal, p_reg1_ctrl, p_reg2_ctrl, p_reg3_ctrl, p_reg4_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
 signal temp_ctrl, temp1_ctrl, temp2_ctrl, temp3_ctrl, temp4_ctrl : std_logic_vector(15 downto 0);
@@ -183,14 +183,14 @@ stage0_0: stage0 port map(  input_pc => input_pc, control_signal => control_sign
 
 not_pause <= not(pause);
 --temp_instr: temorary signal to hold instruction
-temp_instr  <= "1111111111111111" when (create_bubble2 = '1') else
+temp_instr  <= "1111111111111111" when (create_bubble2 = '1' or rst = '1') else
 				output_mem;
 
 --Pipeline registers for interface 0--1
 --rst of these instructions are not affected since
 --it is a special case where control signals have not been generated
 PR0_pc : reg16 port map(D => output_pc, clk => clk, WR => not_pause, reset => rst, Q => p_reg0_pc);
-PR0_instr: reg16 port map(D => temp_instr, clk => clk, WR => not_pause, reset => rst, Q => p_reg0_instr);
+PR0_instr: reg16 port map(D => temp_instr, clk => clk, WR => not_pause, reset => '0', Q => p_reg0_instr);
 PR0_mux: reg8 port map(D => output_m10, clk => clk, WR => not_stallDH, reset => rst, Q => p_reg0_m10);
 
 --------------Instruction Decode----------------------
@@ -226,11 +226,11 @@ stage2_2: stage2 port map( p_reg4_pc=>p_reg4_pc, p_reg1_ctrl=>p_reg1_ctrl, p_reg
 
 --Interface registers for the 2--3 interface
 --If a bubble/NOP is required to be introduced, then reset regs
-
+s <= p_reg2_ctrl(15) and not(done);
 PR2_pc : reg16 port map(D => p_reg1_pc ,clk => clk, WR => '1', reset => rst, Q => p_reg2_pc );
 PR2_SE6 : reg16 port map(D => p_reg1_SE6 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_SE6 );
 PR2_LS7 : reg16 port map(D => p_reg1_LS7 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_LS7 );
-PR2_d1 : reg16 port map(D => output_d1 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_d1 );
+PR2_d1 : reg16 port map(D => output_d1 ,clk => clk, WR => s, reset => rst, Q => p_reg2_d1 );
 PR2_d2 : reg16 port map(D => output_d2 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_d2 );
 PR2_rfa1 : reg3 port map(D => output_rfa1 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa1 );
 PR2_rfa2 : reg3 port map(D => output_rfa2 ,clk => clk, WR => '1', reset => rst, Q => p_reg2_rfa2 );
