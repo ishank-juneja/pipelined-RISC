@@ -156,7 +156,7 @@ signal p_reg3_pc, output_d1, output_d2, p_reg4_LS7 : std_logic_vector(15 downto 
 signal r7_wr, done, pause, stall_DH,s : std_logic;
 signal output_m10, p_reg0_m10, p_reg1_m10, output_decoder : std_logic_vector(7 downto 0);
 signal control_signal, p_reg1_ctrl, p_reg2_ctrl, p_reg3_ctrl, p_reg4_ctrl, p_reg3_LS7: std_logic_vector(15 downto 0);
-signal temp_ctrl, temp1_ctrl, temp2_ctrl, temp3_ctrl, temp4_ctrl : std_logic_vector(15 downto 0);
+signal temp_ctrl, temp1_ctrl, temp2_ctrl, temp3_ctrl, temp4_ctrl, temp2_instr : std_logic_vector(15 downto 0);
 signal output_pe : std_logic_vector(2 downto 0);
 signal p_reg1_pe,output_rfa3,output_rfa1,output_rfa2,p_reg4_rfa3,p_reg2_rfa3 ,p_reg3_rfa3 : std_logic_vector(2 downto 0);
 signal p_reg4_rfa1,p_reg2_rfa1 ,p_reg3_rfa1, p_reg4_rfa2,p_reg2_rfa2 ,p_reg3_rfa2 : std_logic_vector(2 downto 0);
@@ -183,14 +183,16 @@ stage0_0: stage0 port map(  input_pc => input_pc, control_signal => control_sign
 
 not_pause <= not(pause);
 --temp_instr: temorary signal to hold instruction
-temp_instr  <= "1111111111111111" when (create_bubble2 = '1' or rst = '1') else
+temp_instr  <= "1111111111111111" when (create_bubble2 = '1') else
 				output_mem;
 
 --Pipeline registers for interface 0--1
 --rst of these instructions are not affected since
 --it is a special case where control signals have not been generated
 PR0_pc : reg16 port map(D => output_pc, clk => clk, WR => not_pause, reset => rst, Q => p_reg0_pc);
-PR0_instr: reg16 port map(D => temp_instr, clk => clk, WR => not_pause, reset => '0', Q => p_reg0_instr);
+PR0_instr: reg16 port map(D => temp_instr, clk => clk, WR => not_pause, reset => '0', Q => temp2_instr);
+p_reg0_instr  <= "1111111111111111" when (rst = '1') else
+						temp2_instr;
 PR0_mux: reg8 port map(D => output_m10, clk => clk, WR => not_stallDH, reset => rst, Q => p_reg0_m10);
 
 --------------Instruction Decode----------------------
