@@ -1,0 +1,3 @@
+--FPGA Choice
+Cyclone 4E Family
+EP4CE22F17C6
