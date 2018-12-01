@@ -14,7 +14,7 @@ end entity;
 
 architecture behave of stage4 is 
 
-component memory2 is
+component data_memory is
 	port (
 		en	: in std_logic;	--Chip Enable for memory	
 		clk	:	in std_logic;	--XXMHz on board clock
@@ -37,6 +37,6 @@ end component;
 begin
 
 
-data_mem : memory2 port map(en=>	'1', clk=> clk, RD=> control_signal(6), WR=> control_signal(5), mem_a => alu_out_in, din => new_d2_in, dout => mem_dout);	
+data_mem : data_memory port map(en=>	'1', clk=> clk, RD=> control_signal(6), WR=> control_signal(5), mem_a => alu_out_in, din => new_d2_in, dout => mem_dout);	
 
 end behave;

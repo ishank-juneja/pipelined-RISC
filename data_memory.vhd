@@ -15,7 +15,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity memory2 is
+entity data_memory is
 	port (
 		en	: in std_logic;	--Chip Enable for memory	
 		clk	:	in std_logic;	--XXMHz on board clock
@@ -31,7 +31,7 @@ entity memory2 is
 		);  
 end entity;
 
-architecture behav of memory2 is
+architecture behav of data_memory is
 
 --Declare Constants 
 constant DEPTH : integer := 4;

@@ -166,11 +166,11 @@ signal mem_dout, p_reg4_memdout, alu_out, p_reg4_aluout, p_reg3_aluout,
 		output_m_2x, output_m31, input_lmloop, output_m40, output_m3a, output_m3b,
 		 output_m2xx, p_reg2_adderout, temp_instr: std_logic_vector(15 downto 0);
 
-signal 	sanidhya, zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
+signal 	dummy_out, zero, zero_out, carry, carry_out, cout, m51_select, m3b_select, m3a_select, m2xx_select,
 		flush_first2, flush_first3, flush_first5, create_bubble2, create_bubble3, real_instr,
 		 not_stallDH, not_pause, jlr_ins, done1, done2 : std_logic; 
 begin 
-sanidhya <= control_signal(0) and '1';
+dummy_out <= control_signal(0) and '1';
 
 -------------Instruction Fetch--------------------	
 --Stall pipeline for LM and SM instructions 	
@@ -341,5 +341,5 @@ m_3a : mux2 port map(a1 => new_d1, a0 => output_m2xx, s => m3a_select, o => outp
 m_3b : mux2 port map(a1 => p_reg2_adderout, a0 => output_m3a, s => m3b_select, o => output_m3b); 
 	
 --Dummy output
-output <= sanidhya;
+output <= dummy_out;
 end behave;

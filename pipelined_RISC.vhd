@@ -4,14 +4,17 @@ library std;
 use std.standard.all;
 use ieee.numeric_std.all;
 
-entity Pipeline is
+--clok_50 is a sample clock required for signal tap
+--running at 50MHz
+entity pipelined_RISC is
 	port ( 
-		clk,rst_bar,clk50 : in std_logic;
+		clk, rst_bar, clk50 : in std_logic;
+		-------------------------------------		
 		output : out std_logic
 		);
 end entity;
 
-architecture struct of Pipeline is
+architecture struct of pipelined_RISC is
 
 signal rst : std_logic;
 
