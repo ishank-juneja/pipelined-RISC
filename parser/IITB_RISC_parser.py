@@ -164,7 +164,7 @@ NOP = "1111111111111111"
 for i in range(CODE_SIZE):
 	bin_coded, err_msg = get_bin(instructions[i])
 	if(bin_coded == -1):
-		sys.exit("{} in instruction: {}".format(err_msg, i+1))		
+		sys.exit("ERROR: {} in instruction: {}".format(err_msg, i+1))		
 	else: 
 		binary.append(bin_coded)
 

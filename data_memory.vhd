@@ -72,7 +72,7 @@ signal RAM : mem_array := (
 begin
 		
 --Memory thread
-synchronous_RAM: process(clk, mem_a, RAM, en, RD) 
+synchronous_RAM: process(clk, mem_a, RAM, en, RD, WR) 
 	
 --variable declaration	
 variable index : integer;
@@ -81,7 +81,7 @@ begin
 	--variable assignments
 	--An Asynchrnous Read task	
 	--Here Depth is 4	
-	index := to_integer(unsigned(mem_a(DEPTH downto 0)));	
+	index := to_integer(unsigned(mem_a((DEPTH - 1) downto 0)));	
 	
 	if(en = '1') then		
 	
